@@ -5,7 +5,7 @@ function isPrerelease(version) {
 }
 
 function getNewVersion(lastTag, conventionalReleaseType, prerelease) {
-  if (lastTag === null) {
+  if (!lastTag) {
     return prerelease ? '1.0.0-0' : '1.0.0';
   }
 

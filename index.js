@@ -4,17 +4,18 @@ const conventionalRecommendedBump = require('conventional-recommended-bump');
 const { getNewVersion } = require('./utils.js');
 
 async function run() {
+  const pify = (await import('pify')).default;
   try {
     core.startGroup('Finding last tag...');
 
     // get the last tag
-    const octokit = github.getOctokit(core.getInput('repoToken'));
+    const octokit = github.getOctokit(core.getInput('repo-token'));
 
     const repo = {
-      owner: github.context.repo.owner,
-      repo: github.context.repo.repo,
+      owner: github.context.payload.repository.owner.login,
+      repo: github.context.payload.repository.name,
     };
-    core.info('querying tags for ', repo);
+    core.info(`querying tags for ${JSON.stringify(repo)}`);
 
     const data = await octokit.graphql(
       `
@@ -36,7 +37,7 @@ async function run() {
       repo
     );
 
-    core.debug('graphql response', data);
+    core.debug(`graphql response ${data}`);
 
     let lastTag;
     const edges = data.repository.releases.edges;
@@ -46,15 +47,14 @@ async function run() {
       lastTag = edges[0].node.tag.name;
     }
 
-    core.info('last tag', lastTag);
+    core.info(`last tag ${lastTag ?? 'first release'}`);
     core.endGroup();
 
-    core.startGroup('Finding recommended version...');
     // get release type recommendation based on conventional commits
-    const { releaseType: conventionalReleaseType } = await conventionalRecommendedBump({
+    const { releaseType: conventionalReleaseType } = await pify(conventionalRecommendedBump)({
       preset: 'angular',
     });
-    core.endGroup();
+    core.info(`conventional release type ${conventionalReleaseType}`);
 
     const prerelease = core.getBooleanInput('prerelease');
 

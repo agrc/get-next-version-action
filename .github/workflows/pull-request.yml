@@ -1,0 +1,116 @@
+name: Pull Request Events
+on:
+  pull_request:
+
+concurrency:
+  group: '${{ github.ref_name }}'
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Set up code
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📥 Download dependencies
+        run: npm ci
+
+      - name: 🧵 Lint
+        run: npm run lint
+
+  test-unit:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Set up code
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📥 Download dependencies
+        run: npm ci
+
+      - name: 🧪 Run tests
+        run: npm test
+
+  test-functional:
+    name: Functional Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Set up code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📥 Download dependencies
+        run: npm ci
+
+      - name: Get Next Prerelease
+        id: prerelease
+        uses: ./
+        with:
+          prerelease: true
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify Output
+        run: "[[ ${{ steps.prerelease.outputs.version }} =~ ^[[:digit:]]\\.[[:digit:]]\\.[[:digit:]]-[[:digit:]]$ ]]"
+
+      - name: Get Next Release
+        id: release
+        uses: ./
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify Output
+        run: "[[ ${{ steps.release.outputs.version }} =~ ^[[:digit:]]\\.[[:digit:]]\\.[[:digit:]]$ ]]"
+
+      - name: Print sender login
+        run: |
+          echo "login: ${{ github.event.sender.login }}"
+          echo "id: ${{ github.event.sender.id }}"
+          echo "type: ${{ github.event.sender.type }}"
+          echo "event: ${{ github.job }}"
+
+  build:
+    name: Commit Release Assets
+    runs-on: ubuntu-latest
+    if: ${{ github.event.sender.login == 'ugrc-release-bot' }}
+    permissions:
+      contents: write
+    steps:
+      - name: ⬇️ Set up code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📥 Download dependencies
+        run: npm ci
+
+      - name: Commit
+        run: |
+          git add dist/*
+          git commit -m 'chore: build release assets'
