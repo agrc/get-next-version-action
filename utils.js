@@ -25,4 +25,4 @@ function getReleaseType(currentRelease, conventionalReleaseType, prerelease) {
 module.exports = {
   isPrerelease,
   getNewVersion,
-}
+};
