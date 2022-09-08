@@ -8,9 +8,7 @@ async function run() {
     core.startGroup('Finding last tag...');
 
     // get the last tag
-    const octokit = github.getOctokit(
-      core.getInput('repoToken')
-    );
+    const octokit = github.getOctokit(core.getInput('repoToken'));
 
     const repo = {
       owner: github.context.repo.owner,
@@ -47,7 +45,7 @@ async function run() {
 
     core.startGroup('Finding recommended version...');
     // get release type recommendation based on conventional commits
-    const {releaseType: conventionalReleaseType} = await conventionalRecommendedBump({
+    const { releaseType: conventionalReleaseType } = await conventionalRecommendedBump({
       preset: 'angular',
     });
     core.endGroup();
