@@ -3,14 +3,12 @@ const { isPrerelease, getNewVersion } = require('./utils.js');
 describe('isPrerelease', () => {
   const cases = [
     ['1.0.0', false],
-    ['1.0.0-0', true]
+    ['1.0.0-0', true],
   ];
 
-  test.each(cases)(
-    'when tag is %s', (tag, expectation) => {
-      expect(isPrerelease(tag)).toBe(expectation);
-    }
-  )
+  test.each(cases)('when tag is %s', (tag, expectation) => {
+    expect(isPrerelease(tag)).toBe(expectation);
+  });
 });
 
 describe('getNewVersion', () => {
