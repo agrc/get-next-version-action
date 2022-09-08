@@ -23,7 +23,7 @@
     "format": "prettier . --write",
     "lint": "eslint .",
     "prepare": "ncc build index.js -o dist --source-map --license licenses.txt",
-    "test": "jest"
+    "test": "vitest --reporter verbose"
   },
   "prettier": {
     "printWidth": 120,
@@ -32,12 +32,13 @@
   "eslintConfig": {
     "env": {
       "commonjs": true,
-      "es6": true,
+      "es2022": true,
       "jest": true,
       "node": true
     },
     "parserOptions": {
-      "ecmaVersion": 2018
+      "ecmaVersion": "latest",
+      "sourceType": "module"
     },
     "extends": [
       "eslint:recommended",
@@ -54,6 +55,7 @@
     "@actions/github": "^5.0.3",
     "conventional-changelog-angular": "^5.0.13",
     "conventional-recommended-bump": "^6.1.0",
+    "pify": "^6.1.0",
     "semver": "^7.3.7"
   },
   "devDependencies": {
@@ -61,9 +63,9 @@
     "eslint": "^8.23.0",
     "eslint-config-plugin": "^1.0.11",
     "eslint-plugin-pretty": "^0.0.0",
-    "jest": "^29.0.2",
     "prettier": "^2.7.1",
     "prettier-plugin-organize-imports": "^3.1.1",
-    "prettier-plugin-packagejson": "^2.2.18"
+    "prettier-plugin-packagejson": "^2.2.18",
+    "vitest": "^0.23.1"
   }
 }

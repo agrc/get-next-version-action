@@ -1,4 +1,5 @@
 const { isPrerelease, getNewVersion } = require('./utils.js');
+const { describe, test, expect } = await import('vitest');
 
 describe('isPrerelease', () => {
   const cases = [
