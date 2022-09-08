@@ -1,13 +1,17 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Get Next Version'
+description: 'Get the next version for a project release based on conventional commits'
+author: UGRC
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  prerelease:
+    description: 'Determines if the proposed version number includes a prerelease tag (e.g. 1.0.0-0)'
+    required: false
+    default: false
+  repoToken:
+    description: 'A token with access to your repo (e.g. ${{ secrets.GITHUB_TOKEN }})'
     required: true
-    default: '1000'
 outputs:
-  time: # output will be available to future steps
-    description: 'The current time after waiting'
+  version:
+    description: 'The version number'
 runs:
   using: 'node16'
   main: 'dist/index.js'
