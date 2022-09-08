@@ -38,8 +38,14 @@ async function run() {
 
     core.debug('graphql response', data);
 
-    // will have v5.1.2-0 syntax
-    const lastTag = data.repository.releases.edges[0].node.tag.name;
+    let lastTag;
+    const edges = data.repository.releases.edges;
+
+    if (edges?.length > 0) {
+      // will have v5.1.2-0 syntax
+      lastTag = edges[0].node.tag.name;
+    }
+
     core.info('last tag', lastTag);
     core.endGroup();
 
