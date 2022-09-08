@@ -1,0 +1,11 @@
+{
+  "cSpell.words": [
+    "codeql",
+    "packagejson",
+    "pify",
+    "premajor",
+    "tibdex"
+  ],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
