@@ -82,17 +82,10 @@ jobs:
       - name: Verify Output
         run: "[[ ${{ steps.release.outputs.version }} =~ ^[[:digit:]]\\.[[:digit:]]\\.[[:digit:]]$ ]]"
 
-      - name: Print sender login
-        run: |
-          echo "login: ${{ github.event.sender.login }}"
-          echo "id: ${{ github.event.sender.id }}"
-          echo "type: ${{ github.event.sender.type }}"
-          echo "event: ${{ github.job }}"
-
   build:
     name: Commit Release Assets
     runs-on: ubuntu-latest
-    if: ${{ github.event.sender.login == 'ugrc-release-bot' }}
+    if: ${{ github.event.sender.login == 'ugrc-release-bot[bot]' }}
     permissions:
       contents: write
     steps:
