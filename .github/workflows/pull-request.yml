@@ -103,7 +103,11 @@ jobs:
       - name: 📥 Download dependencies
         run: npm ci
 
-      - name: Commit
+      - name: Commit and push if needed
         run: |
           git add dist/*
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "no changes to dist/*"
+            exit 0
+          fi
           git commit -m 'chore: build release assets'
