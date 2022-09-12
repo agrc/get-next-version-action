@@ -22,7 +22,7 @@
     "all": "npm run lint && npm run prepare && npm run test",
     "format": "prettier . --write",
     "lint": "eslint .",
-    "prepare": "ncc build index.js -o dist --source-map --license licenses.txt",
+    "prepare": "cpy \"./node_modules/conventional-changelog-angular/templates/**\" ./dist/templates && esbuild index.js --bundle --outfile=dist/index.js --platform=node",
     "test": "vitest --reporter verbose"
   },
   "prettier": {
@@ -59,7 +59,8 @@
     "semver": "^7.3.7"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.34.0",
+    "cpy-cli": "^4.2.0",
+    "esbuild": "^0.15.7",
     "eslint": "^8.23.1",
     "eslint-config-plugin": "^1.0.11",
     "eslint-plugin-pretty": "^0.0.0",

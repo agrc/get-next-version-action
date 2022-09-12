@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const conventionalRecommendedBump = require('conventional-recommended-bump');
-require('conventional-changelog-angular'); // this is so that ncc includes it in the build
+const angularPreset = require('conventional-changelog-angular');
 const { getNewVersion } = require('./utils.js');
 
 async function run() {
@@ -53,7 +53,8 @@ async function run() {
 
     // get release type recommendation based on conventional commits
     const { releaseType: conventionalReleaseType } = await pify(conventionalRecommendedBump)({
-      preset: 'angular',
+      // pass an object rather than a string to make sure that it gets included in the build
+      config: angularPreset,
     });
     core.info(`conventional release type ${conventionalReleaseType}`);
 
