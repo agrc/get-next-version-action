@@ -1,5 +1,5 @@
 {
-  "name": "get-next-version",
+  "name": "get-next-version-action",
   "version": "1.0.0",
   "description": "A GitHub Action for getting the proposed next version of a project for release based on conventional commits",
   "keywords": [
@@ -7,13 +7,13 @@
     "Actions",
     "JavaScript"
   ],
-  "homepage": "https://github.com/ugrc/get-next-version#readme",
+  "homepage": "https://github.com/ugrc/get-next-version-action#readme",
   "bugs": {
-    "url": "https://github.com/ugrc/get-next-version/issues"
+    "url": "https://github.com/ugrc/get-next-version-action/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ugrc/get-next-version.git"
+    "url": "git+https://github.com/ugrc/get-next-version-action.git"
   },
   "license": "MIT",
   "author": "",
