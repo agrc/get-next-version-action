@@ -50,6 +50,7 @@ jobs:
         uses: ./
         with:
           prerelease: ${{ env.prerelease }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🚀 Create release
         uses: google-github-actions/release-please-action@v3
