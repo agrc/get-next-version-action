@@ -113,3 +113,4 @@ jobs:
             exit 0
           fi
           git commit -m 'chore: build release assets'
+          git push
