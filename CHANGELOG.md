@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1-0](https://github.com/agrc/get-next-version-action/compare/v1.0.0-1...v1.0.1-0) (2022-09-12)
+
+
+### 🐛 Bug Fixes
+
+* major/minor tag step if statement ([f5639db](https://github.com/agrc/get-next-version-action/commit/f5639dbc29a6022a65b189c4bbed7e425fb46495))
+
 ## 1.0.0-1 (2022-09-12)
 
 
