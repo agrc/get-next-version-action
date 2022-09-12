@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.0.0 (2022-09-12)
+
+
+### 🎨 Design Improvements
+
+* implement prettier ([448811e](https://github.com/agrc/get-next-version-action/commit/448811ef8af6af9be32210b88045ec32c2a04677))
+
+
+### 🐛 Bug Fixes
+
+* add git user configs to build commit ([a791844](https://github.com/agrc/get-next-version-action/commit/a791844e04480a72be6c9770c936117ef359b777))
+* better test without node modules ([496f144](https://github.com/agrc/get-next-version-action/commit/496f144af2cd420c93fc1535108f9e11fdc5824d))
+* checkout pr source branch for build commit ([d102113](https://github.com/agrc/get-next-version-action/commit/d1021136da7e4f48d6554eca8ab6537cbcc61add))
+* fix build output ([0f6780f](https://github.com/agrc/get-next-version-action/commit/0f6780f01d411c5ebe5c20b542ce5e6e184ed258))
+* fix if expression ([35cc29d](https://github.com/agrc/get-next-version-action/commit/35cc29d70e5111b4a8b6ab8d8e93a3e42c1dee46))
+* handle no existing tags ([2ed9097](https://github.com/agrc/get-next-version-action/commit/2ed90975b905cc5d2091d4381198eff4eae6d4d0))
+* include angular preset in build output ([531d9dd](https://github.com/agrc/get-next-version-action/commit/531d9dd59d5f4ebd746815b42c8f3b58777d1530))
+
 ## 1.0.0-1 (2022-09-12)
 
 
