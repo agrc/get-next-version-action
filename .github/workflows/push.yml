@@ -46,7 +46,7 @@ jobs:
       - name: 📥 Download dependencies
         run: npm ci
 
-      - name: Get Next version
+      - name: ⏩ Get Next version
         id: get-next-version
         uses: ./
         with:

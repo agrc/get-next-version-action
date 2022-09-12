@@ -63,23 +63,26 @@ jobs:
       - name: 📥 Download dependencies
         run: npm ci
 
-      - name: Get Next Prerelease
+      - name: 🗑️ Remove node_modules
+        run: rm -rf node_modules
+
+      - name: ⏩ Get Next Prerelease
         id: prerelease
         uses: ./
         with:
           prerelease: true
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Verify Output
+      - name: ✅ Verify Output
         run: "[[ ${{ steps.prerelease.outputs.version }} =~ ^[[:digit:]]\\.[[:digit:]]\\.[[:digit:]]-[[:digit:]]$ ]]"
 
-      - name: Get Next Release
+      - name: ⏩ Get Next Release
         id: release
         uses: ./
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Verify Output
+      - name: ✅ Verify Output
         run: "[[ ${{ steps.release.outputs.version }} =~ ^[[:digit:]]\\.[[:digit:]]\\.[[:digit:]]$ ]]"
 
   build:
@@ -111,7 +114,7 @@ jobs:
       - name: 📥 Download dependencies
         run: npm ci
 
-      - name: Commit and push if needed
+      - name: 🏗️ Commit and push if needed
         run: |
           git config user.name "${{ secrets.UGRC_RELEASE_BOT_NAME }}"
           git config user.email "${{ secrets.UGRC_RELEASE_BOT_EMAIL }}"
