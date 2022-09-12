@@ -73,7 +73,7 @@ jobs:
           release-as: ${{ steps.get-next-version.outputs.version }}
 
       - name: 🏷️ Tag major and minor versions
-        if: ${{ steps.release-please.outputs.release_created && !env.prerelease }}
+        if: ${{ steps.release-please.outputs.release_created && env.prerelease == 'false' }}
         run: |
           git config user.name "${{ secrets.UGRC_RELEASE_BOT_NAME }}"
           git config user.email "${{ secrets.UGRC_RELEASE_BOT_EMAIL }}"
