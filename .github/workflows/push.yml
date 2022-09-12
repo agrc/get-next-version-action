@@ -74,6 +74,8 @@ jobs:
       - name: 🏷️ Tag major and minor versions
         if: ${{ steps.release-please.outputs.release_created }} && !${{ env.prerelease }}
         run: |
+          git config user.name "UGRC Release Bot"
+          git config user.email "ugrc-release-bot@github.com"
           echo "deleting existing tags, if any"
           git tag -d v${{ steps.release-please.outputs.major }} || true
           git tag -d v${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }} || true
