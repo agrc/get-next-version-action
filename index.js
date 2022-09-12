@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const conventionalRecommendedBump = require('conventional-recommended-bump');
+require('conventional-changelog-angular'); // this is so that ncc includes it in the build
 const { getNewVersion } = require('./utils.js');
 
 async function run() {
@@ -60,7 +61,7 @@ async function run() {
     const newVersion = getNewVersion(lastTag, conventionalReleaseType, prerelease);
 
     core.info(`prerelease: ${prerelease}`);
-    core.info(`next version: ${newVersion}`)
+    core.info(`next version: ${newVersion}`);
 
     core.setOutput('version', newVersion);
   } catch (error) {
