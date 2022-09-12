@@ -74,10 +74,11 @@ jobs:
 
       - name: 🙏 Enable PR Auto-merge
         uses: peter-evans/enable-pull-request-automerge@v2
-        if: ${{ steps.release-please.outputs.release_created }}
+        if: ${{ steps.release-please.outputs.release_created != 'true' }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-number: ${{ fromJSON(steps.release-please.outputs.pr).number }}
+          merge-method: rebase
 
       - name: 🏷️ Tag major and minor versions
         if: ${{ steps.release-please.outputs.release_created && env.prerelease == 'false' }}
