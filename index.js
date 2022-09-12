@@ -57,8 +57,12 @@ async function run() {
     core.info(`conventional release type ${conventionalReleaseType}`);
 
     const prerelease = core.getBooleanInput('prerelease');
+    const newVersion = getNewVersion(lastTag, conventionalReleaseType, prerelease);
 
-    core.setOutput('version', getNewVersion(lastTag, conventionalReleaseType, prerelease));
+    core.info(`prerelease: ${prerelease}`);
+    core.info(`next version: ${newVersion}`)
+
+    core.setOutput('version', newVersion);
   } catch (error) {
     core.setFailed(error.message);
   }
