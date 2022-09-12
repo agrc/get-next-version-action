@@ -103,6 +103,8 @@ jobs:
 
       - name: Commit and push if needed
         run: |
+          git config user.name "UGRC Release Bot"
+          git config user.email "ugrc-release-bot@github.com"
           git add dist/*
           if [ -z "$(git status --porcelain)" ]; then
             echo "no changes to dist/*"
