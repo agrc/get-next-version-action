@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0-0](https://github.com/agrc/get-next-version-action/compare/v1.0.0...v1.1.0-0) (2022-09-12)
+
+
+### 🚀 Features
+
+* enable auto-merge on release PRs ([eebae32](https://github.com/agrc/get-next-version-action/commit/eebae3297d5a2ae56f6f2aaed2e1044450cfe15f))
+* keep dev in sync with main after release ([f1daa28](https://github.com/agrc/get-next-version-action/commit/f1daa28fa1f3ab54bdd38c2af724db610db96249))
+
+
+### 🐛 Bug Fixes
+
+* fix if statement on auto-merge ([8f3cccc](https://github.com/agrc/get-next-version-action/commit/8f3cccc768bf6fdf3f77f94af827da247c4c9156))
+* major/minor tag step if statement ([721b8ec](https://github.com/agrc/get-next-version-action/commit/721b8ecee62e0099fa6f887859290c192a042a1c))
+
 ## 1.0.0 (2022-09-12)
 
 
