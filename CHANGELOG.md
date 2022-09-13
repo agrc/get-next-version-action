@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/agrc/get-next-version-action/compare/v1.1.0...v1.1.0) (2022-09-13)
+
+
+### 🐛 Bug Fixes
+
+* correct parameter names ([1104612](https://github.com/agrc/get-next-version-action/commit/110461267133ddcb6ff7929188c91f7c36a52f12))
+* correct secret and parameter names ([28df18a](https://github.com/agrc/get-next-version-action/commit/28df18a9498b57734c2fc1252390b939dab44bae))
+
 ## [1.1.0](https://github.com/agrc/get-next-version-action/compare/v1.0.1...v1.1.0) (2022-09-12)
 
 
