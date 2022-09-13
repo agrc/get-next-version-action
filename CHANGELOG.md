@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/agrc/get-next-version-action/compare/v1.1.1...v1.1.2) (2022-09-13)
+
+
+### 🐛 Bug Fixes
+
+* point to v1 of release action ([c446cd8](https://github.com/agrc/get-next-version-action/commit/c446cd843098cad40fcd936132df8d24f63b9d30))
+
 ## [1.1.1](https://github.com/agrc/get-next-version-action/compare/v1.1.0...v1.1.1) (2022-09-13)
 
 
