@@ -22,12 +22,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: agrc/release-composite-action@dev
+      - uses: agrc/release-composite-action@v1
         with:
           create-major-minor-tags: true
           prerelease: ${{ github.ref_name == 'dev' }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           release-bot-app-id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
           release-bot-app-key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
-          release-bot-name: ${{ secrets.UGRC_RELEASE_NAME }}
-          release-bot-email: ${{ secrets.UGRC_RELEASE_EMAIL }}
+          release-bot-app-name: ${{ secrets.UGRC_RELEASE_BOT_NAME }}
+          release-bot-app-email: ${{ secrets.UGRC_RELEASE_BOT_EMAIL }}
