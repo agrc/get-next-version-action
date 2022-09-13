@@ -7,7 +7,8 @@
     "packagejson",
     "pify",
     "premajor",
-    "tibdex"
+    "tibdex",
+    "ugrc"
   ],
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode"
