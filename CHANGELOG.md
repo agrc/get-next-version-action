@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3-0](https://github.com/agrc/get-next-version-action/compare/v1.1.2...v1.1.3-0) (2022-09-13)
+
+
+### 📖 Documentation Improvements
+
+* add badges ([232610a](https://github.com/agrc/get-next-version-action/commit/232610ac4b7241e45d6700d172d9721bd9f872ca))
+
 ## [1.1.2](https://github.com/agrc/get-next-version-action/compare/v1.1.1...v1.1.2) (2022-09-13)
 
 
