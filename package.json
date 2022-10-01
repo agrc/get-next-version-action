@@ -60,7 +60,7 @@
   },
   "devDependencies": {
     "cpy-cli": "^4.2.0",
-    "esbuild": "^0.15.7",
+    "esbuild": "^0.15.10",
     "eslint": "^8.23.1",
     "eslint-config-plugin": "^1.0.11",
     "eslint-plugin-pretty": "^0.0.0",
