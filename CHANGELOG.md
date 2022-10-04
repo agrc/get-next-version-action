@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/agrc/get-next-version-action/compare/v1.1.3...v1.1.4) (2022-10-04)
+
+
+### 📖 Documentation Improvements
+
+* link to more useful angular docs for commit messages ([e9f047a](https://github.com/agrc/get-next-version-action/commit/e9f047a411d88ecb265d56fa67b7390e34d53c8a))
+
 ## [1.1.3](https://github.com/agrc/get-next-version-action/compare/v1.1.2...v1.1.3) (2022-09-13)
 
 
