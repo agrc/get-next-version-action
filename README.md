@@ -4,7 +4,7 @@
 [![Push Events](https://github.com/agrc/get-next-version-action/actions/workflows/push.yml/badge.svg)](https://github.com/agrc/get-next-version-action/actions/workflows/push.yml)
 [![Pull Request Events](https://github.com/agrc/get-next-version-action/actions/workflows/pull-request.yml/badge.svg)](https://github.com/agrc/get-next-version-action/actions/workflows/pull-request.yml)
 
-A GitHub Action for getting the proposed next version of a project for release based on [conventional commits](https://www.conventionalcommits.org).
+A GitHub Action for getting the proposed next version of a project for release based on the [Angular preset for conventional commits](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format).
 
 ## Usage
 
