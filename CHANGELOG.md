@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.1.4-0](https://github.com/agrc/get-next-version-action/compare/v1.1.3...v1.1.4-0) (2022-10-06)
+
+
+### 📖 Documentation Improvements
+
+* link to more useful angular docs for commit messages ([e9f047a](https://github.com/agrc/get-next-version-action/commit/e9f047a411d88ecb265d56fa67b7390e34d53c8a))
+
+
+### 🐛 Bug Fixes
+
+* correct concurrency ([444e69a](https://github.com/agrc/get-next-version-action/commit/444e69af76403637299f024ffb46e7623d510558))
+
+
+### 🌲 Dependencies
+
+* october dependency updates ([36197d8](https://github.com/agrc/get-next-version-action/commit/36197d8be8ac9e953d514b8d022eac7de321b086))
+
 ## [1.1.3](https://github.com/agrc/get-next-version-action/compare/v1.1.2...v1.1.3) (2022-09-13)
 
 
