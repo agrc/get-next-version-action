@@ -1,8 +1,8 @@
 # Get Next Version Action
 
-[![Tests](https://github.com/agrc/get-next-version-action/actions/workflows/tests.yml/badge.svg)](https://github.com/agrc/get-next-version-action/actions/workflows/tests.yml)
+[![codecov](https://codecov.io/gh/agrc/get-next-version-action/branch/main/graph/badge.svg?token=ImA9Wme6pQ)](https://codecov.io/gh/agrc/get-next-version-action)
 [![Push Events](https://github.com/agrc/get-next-version-action/actions/workflows/push.yml/badge.svg)](https://github.com/agrc/get-next-version-action/actions/workflows/push.yml)
-[![Pull Request Events](https://github.com/agrc/get-next-version-action/actions/workflows/pull-request.yml/badge.svg)](https://github.com/agrc/get-next-version-action/actions/workflows/pull-request.yml)
+[![Pull Request Events](https://github.com/agrc/get-next-version-action/actions/workflows/pull_request.yml/badge.svg)](https://github.com/agrc/get-next-version-action/actions/workflows/pull_request.yml)
 
 A GitHub Action for getting the proposed next version of a project for release based on the [Angular preset for conventional commits](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#-commit-message-format).
 
