@@ -26,7 +26,20 @@ function getReleaseType(lastTag, conventionalReleaseType, prerelease) {
   }
 }
 
+function getLatestRelease(releasesQueryResponse) {
+  if (releasesQueryResponse.length === 0) {
+    return null;
+  }
+
+  const releases = releasesQueryResponse.map((release) => release.node.tag.name);
+
+  releases.sort((x, y) => (semver.gt(x, y) ? -1 : 1));
+
+  return releases[0];
+}
+
 module.exports = {
   isPrerelease,
   getNewVersion,
+  getLatestRelease,
 };
