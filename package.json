@@ -23,7 +23,7 @@
     "format": "prettier . --write",
     "lint": "eslint .",
     "prepare": "cpy \"./node_modules/conventional-changelog-angular/templates/**\" ./dist/templates && esbuild index.js --bundle --outfile=dist/index.js --platform=node",
-    "test": "vitest --reporter verbose --coverage --watch"
+    "test": "vitest --reporter verbose --coverage"
   },
   "prettier": {
     "printWidth": 120,
