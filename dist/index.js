@@ -24451,9 +24451,18 @@ var require_utils5 = __commonJS({
         return conventionalReleaseType;
       }
     }
+    function getLatestRelease2(releasesQueryResponse) {
+      if (releasesQueryResponse.length === 0) {
+        return null;
+      }
+      const releases = releasesQueryResponse.map((release) => release.node.tag.name);
+      releases.sort((x, y) => semver.gt(x, y) ? -1 : 1);
+      return releases[0];
+    }
     module2.exports = {
       isPrerelease,
-      getNewVersion: getNewVersion2
+      getNewVersion: getNewVersion2,
+      getLatestRelease: getLatestRelease2
     };
   }
 });
@@ -24564,7 +24573,7 @@ var core = require_core();
 var github = require_github();
 var conventionalRecommendedBump = require_conventional_recommended_bump();
 var angularPreset = require_conventional_changelog_angular();
-var { getNewVersion } = require_utils5();
+var { getNewVersion, getLatestRelease } = require_utils5();
 async function run() {
   const pify2 = (await Promise.resolve().then(() => (init_pify(), pify_exports))).default;
   try {
@@ -24579,7 +24588,7 @@ async function run() {
       `
       query lastTags($owner: String!, $repo: String!) {
         repository(owner: $owner, name: $repo) {
-          releases(last: 1) {
+          releases(first: 100, orderBy: {field: NAME, direction: DESC}) {
             edges {
               node {
                 id
@@ -24595,19 +24604,15 @@ async function run() {
       repo
     );
     core.debug(`graphql response: ${JSON.stringify(data, null, 2)}`);
-    let lastTag;
-    const edges = data.repository.releases.edges;
-    if (edges?.length > 0) {
-      lastTag = edges[0].node.tag.name;
-    }
-    core.info(`last tag ${lastTag ?? "first release"}`);
+    const latestRelease = getLatestRelease(data.repository.releases.edges);
+    core.info(`latest release ${latestRelease ?? "first release"}`);
     core.endGroup();
     const { releaseType: conventionalReleaseType } = await pify2(conventionalRecommendedBump)({
       config: angularPreset
     });
     core.info(`conventional release type ${conventionalReleaseType}`);
     const prerelease = core.getBooleanInput("prerelease");
-    const newVersion = getNewVersion(lastTag, conventionalReleaseType, prerelease);
+    const newVersion = getNewVersion(latestRelease, conventionalReleaseType, prerelease);
     core.info(`prerelease: ${prerelease}`);
     core.info(`next version: ${newVersion}`);
     core.setOutput("version", newVersion);
