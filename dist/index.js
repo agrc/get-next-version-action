@@ -24594,7 +24594,7 @@ async function run() {
       `,
       repo
     );
-    core.debug(`graphql response ${data}`);
+    core.debug(`graphql response: ${JSON.stringify(data, null, 2)}`);
     let lastTag;
     const edges = data.repository.releases.edges;
     if (edges?.length > 0) {
