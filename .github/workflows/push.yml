@@ -17,9 +17,35 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  test-unit:
+    name: Unit tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Set up code
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📥 Download dependencies
+        run: npm ci
+
+      - name: 🧪 Run tests
+        run: npm test
+
+      - name: 📤 Report coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
   release:
     name: Create release
     runs-on: ubuntu-latest
+    needs: test-unit
 
     steps:
       - name: 🚀 Create Release
