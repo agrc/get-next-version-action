@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const conventionalRecommendedBump = require('conventional-recommended-bump');
 const angularPreset = require('conventional-changelog-angular');
-const { getNewVersion } = require('./utils.js');
+const { getNewVersion, getLatestRelease } = require('./utils.js');
 
 async function run() {
   const pify = (await import('pify')).default;
@@ -22,7 +22,7 @@ async function run() {
       `
       query lastTags($owner: String!, $repo: String!) {
         repository(owner: $owner, name: $repo) {
-          releases(last: 1) {
+          releases(first: 100, orderBy: {field: NAME, direction: DESC}) {
             edges {
               node {
                 id
@@ -40,15 +40,9 @@ async function run() {
 
     core.debug(`graphql response: ${JSON.stringify(data, null, 2)}`);
 
-    let lastTag;
-    const edges = data.repository.releases.edges;
+    const latestRelease = getLatestRelease(data.repository.releases.edges);
 
-    if (edges?.length > 0) {
-      // will have v5.1.2-0 syntax
-      lastTag = edges[0].node.tag.name;
-    }
-
-    core.info(`last tag ${lastTag ?? 'first release'}`);
+    core.info(`latest release ${latestRelease ?? 'first release'}`);
     core.endGroup();
 
     // get release type recommendation based on conventional commits
@@ -59,7 +53,7 @@ async function run() {
     core.info(`conventional release type ${conventionalReleaseType}`);
 
     const prerelease = core.getBooleanInput('prerelease');
-    const newVersion = getNewVersion(lastTag, conventionalReleaseType, prerelease);
+    const newVersion = getNewVersion(latestRelease, conventionalReleaseType, prerelease);
 
     core.info(`prerelease: ${prerelease}`);
     core.info(`next version: ${newVersion}`);
