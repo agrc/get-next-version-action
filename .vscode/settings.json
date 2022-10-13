@@ -1,8 +1,10 @@
 {
   "cSpell.words": [
     "automerge",
+    "Codecov",
     "codeql",
     "esbuild",
+    "lcov",
     "outfile",
     "packagejson",
     "pify",
