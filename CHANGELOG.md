@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.5](https://github.com/agrc/get-next-version-action/compare/v1.1.4...v1.1.5) (2022-10-13)
+
+
+### 🐛 Bug Fixes
+
+* get correct latest release ([1cf8aa5](https://github.com/agrc/get-next-version-action/commit/1cf8aa538500cb81249a0ebeb21b715c44a00b9b))
+* refactor actions to eliminate duplicate ([a0a8359](https://github.com/agrc/get-next-version-action/commit/a0a83597420e5a6e6821e3a6e24eec6a3ea4428a))
+* remove watch ([7303a1a](https://github.com/agrc/get-next-version-action/commit/7303a1a3559cc76529ce981a65041c085a63b98a))
+* stringify graphql response debug log ([4215117](https://github.com/agrc/get-next-version-action/commit/42151179d47695cf05120bfe4164b2187b4f1305))
+
+
+### 📖 Documentation Improvements
+
+* update badges and add code cov ([e0a4d1c](https://github.com/agrc/get-next-version-action/commit/e0a4d1c9a1004073ad4e68309fd4bb2085704c85))
+
 ## [1.1.4](https://github.com/agrc/get-next-version-action/compare/v1.1.3...v1.1.4) (2022-10-06)
 
 
