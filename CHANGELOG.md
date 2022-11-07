@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.6](https://github.com/agrc/get-next-version-action/compare/v1.1.5...v1.1.6) (2022-11-07)
+
+
+### 🐛 Bug Fixes
+
+* November dependency bumps 🌲 ([08bca6c](https://github.com/agrc/get-next-version-action/commit/08bca6c98b626c4a0261318c6f324bc39429a921))
+
 ## [1.1.5](https://github.com/agrc/get-next-version-action/compare/v1.1.4...v1.1.5) (2022-10-13)
 
 

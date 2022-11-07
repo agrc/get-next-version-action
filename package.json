@@ -1,6 +1,6 @@
 {
   "name": "get-next-version-action",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "A GitHub Action for getting the proposed next version of a project for release based on conventional commits",
   "keywords": [
     "GitHub",
