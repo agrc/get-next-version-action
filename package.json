@@ -59,7 +59,7 @@
     "semver": "^7.3.8"
   },
   "devDependencies": {
-    "@vitest/coverage-c8": "^0.24.5",
+    "@vitest/coverage-c8": "^0.25.3",
     "cpy-cli": "^4.2.0",
     "esbuild": "^0.15.13",
     "eslint": "^8.27.0",
