@@ -68,6 +68,6 @@
     "prettier": "^2.7.1",
     "prettier-plugin-organize-imports": "^3.1.1",
     "prettier-plugin-packagejson": "^2.3.0",
-    "vitest": "^0.24.5"
+    "vitest": "^0.25.3"
   }
 }
