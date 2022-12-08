@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.7](https://github.com/agrc/get-next-version-action/compare/v1.1.6...v1.1.7) (2022-12-08)
+
+
+### 🐛 Bug Fixes
+
+* :evergreen_tree: november package updates ([d60e264](https://github.com/agrc/get-next-version-action/commit/d60e2649212695273f364c8276c6aae96b733ffd))
+
+
+### 🌲 Dependencies
+
+* add a couple of missing ones ([294d5e4](https://github.com/agrc/get-next-version-action/commit/294d5e4fe5007e9d7fc18abd5b24ac35bc619de1))
+
 ## [1.1.6](https://github.com/agrc/get-next-version-action/compare/v1.1.5...v1.1.6) (2022-11-07)
 
 
