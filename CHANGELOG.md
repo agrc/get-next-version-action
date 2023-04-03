@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.8](https://github.com/agrc/get-next-version-action/compare/v1.1.7...v1.1.8) (2023-04-03)
+
+
+### 🌲 Dependencies
+
+* q2 package updates ([665fd2c](https://github.com/agrc/get-next-version-action/commit/665fd2c3562aae5e3732c83824aae0541d4b0191))
+
 ## [1.1.7](https://github.com/agrc/get-next-version-action/compare/v1.1.6...v1.1.7) (2022-12-08)
 
 
