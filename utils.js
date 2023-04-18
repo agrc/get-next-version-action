@@ -4,9 +4,17 @@ function isPrerelease(version) {
   return version.includes('-');
 }
 
+function isPreMajor(version) {
+  return semver.minor(version) === 0 && semver.patch(version) === 0 && semver.prerelease(version);
+}
+
 function getNewVersion(lastTag, conventionalReleaseType, prerelease) {
   if (!lastTag) {
     return prerelease ? '1.0.0-0' : '1.0.0';
+  }
+
+  if (isPreMajor(lastTag) && prerelease) {
+    return semver.inc(lastTag, 'prerelease', prerelease);
   }
 
   const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease);

@@ -30,6 +30,7 @@ describe('getNewVersion', () => {
     [null, 'minor', false, '1.0.0'],
     [null, 'major', false, '1.0.0'],
     [null, 'major', true, '1.0.0-0'],
+    ['2.0.0-0', 'minor', true, '2.0.0-1'],
   ];
 
   test.each(cases)('%s with %s and prerelease: %j should be %s', (lastTag, bumpType, prerelease, expectation) => {
