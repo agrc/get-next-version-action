@@ -24745,9 +24745,15 @@ var require_utils5 = __commonJS({
     function isPrerelease(version2) {
       return version2.includes("-");
     }
+    function isPreMajor(version2) {
+      return semver.minor(version2) === 0 && semver.patch(version2) === 0 && semver.prerelease(version2);
+    }
     function getNewVersion2(lastTag, conventionalReleaseType, prerelease) {
       if (!lastTag) {
         return prerelease ? "1.0.0-0" : "1.0.0";
+      }
+      if (isPreMajor(lastTag) && prerelease) {
+        return semver.inc(lastTag, "prerelease", prerelease);
       }
       const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease);
       return semver.inc(lastTag, releaseType, prerelease);
