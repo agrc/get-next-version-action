@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.9](https://github.com/agrc/get-next-version-action/compare/v1.1.8...v1.1.9) (2023-04-18)
+
+
+### 🐛 Bug Fixes
+
+* prevent subsequent prereleases after major from affecting minor ([01a6be5](https://github.com/agrc/get-next-version-action/commit/01a6be5566d484ea88881bb0830a114dc80110f3))
+
 ## [1.1.8](https://github.com/agrc/get-next-version-action/compare/v1.1.7...v1.1.8) (2023-04-03)
 
 
