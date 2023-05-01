@@ -61,7 +61,7 @@
   "devDependencies": {
     "@vitest/coverage-c8": "^0.29.8",
     "cpy-cli": "^4.2.0",
-    "esbuild": "^0.17.15",
+    "esbuild": "^0.17.18",
     "eslint": "^8.37.0",
     "eslint-config-plugin": "^1.0.11",
     "eslint-plugin-pretty": "^0.0.0",
