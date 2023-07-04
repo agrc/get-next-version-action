@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.10](https://github.com/agrc/get-next-version-action/compare/v1.1.9...v1.1.10) (2023-07-04)
+
+
+### 🐛 Bug Fixes
+
+* Q3 Dependency Bumps 🌲 ([8e73446](https://github.com/agrc/get-next-version-action/commit/8e73446c87f915ad0394a5fe67c65c035fdc1585))
+* use better regex's for checking semver ([49b4969](https://github.com/agrc/get-next-version-action/commit/49b496947fefe557755771e445053df07e1c790b))
+
 ## [1.1.9](https://github.com/agrc/get-next-version-action/compare/v1.1.8...v1.1.9) (2023-04-18)
 
 
