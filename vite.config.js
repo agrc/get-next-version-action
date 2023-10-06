@@ -4,7 +4,7 @@ export default defineConfig({
   test: {
     coverage: {
       cleanOnRerun: true,
-      provider: 'c8',
+      provider: 'v8',
       reporter: ['text', 'lcov'],
     },
   },
