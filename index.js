@@ -45,14 +45,14 @@ async function run() {
     core.endGroup();
 
     // get release type recommendation based on conventional commits
-    const { releaseType: conventionalReleaseType } = await conventionalRecommendedBump({
+    const recommendation = await conventionalRecommendedBump({
       // pass an object rather than a string to make sure that it gets included in the build
-      config: angularPreset,
+      config: await angularPreset(),
     });
-    core.info(`conventional release type ${conventionalReleaseType}`);
+    core.info(`conventional release type ${recommendation.releaseType}`);
 
     const prerelease = core.getBooleanInput('prerelease');
-    const newVersion = getNewVersion(latestRelease, conventionalReleaseType, prerelease);
+    const newVersion = getNewVersion(latestRelease, recommendation.releaseType, prerelease);
 
     core.info(`prerelease: ${prerelease}`);
     core.info(`next version: ${newVersion}`);
