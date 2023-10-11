@@ -34,7 +34,7 @@ async function run() {
         }
       }
       `,
-      repo
+      repo,
     );
 
     core.debug(`graphql response: ${JSON.stringify(data, null, 2)}`);
