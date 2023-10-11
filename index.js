@@ -14,6 +14,9 @@ async function run() {
     const repo = {
       owner: github.context.payload.repository.owner.login,
       repo: github.context.payload.repository.name,
+      // for testing locally with act
+      // owner: 'agrc',
+      // repo: 'get-next-version-action'
     };
     core.info(`querying tags for ${JSON.stringify(repo)}`);
 
