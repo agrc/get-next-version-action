@@ -5,7 +5,7 @@ inputs:
   prerelease:
     description: 'Determines if the proposed version number includes a prerelease tag (e.g. 1.0.0-0)'
     required: false
-    default: false
+    default: 'false'
   repo-token:
     description: 'A token with access to your repo (e.g. {{ secrets.GITHUB_TOKEN }})'
     required: true
