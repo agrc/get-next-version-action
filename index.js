@@ -5,7 +5,6 @@ const angularPreset = require('conventional-changelog-angular');
 const { getNewVersion, getLatestRelease } = require('./utils.js');
 
 async function run() {
-  const pify = (await import('pify')).default;
   try {
     core.startGroup('Finding last tag...');
 
@@ -46,7 +45,7 @@ async function run() {
     core.endGroup();
 
     // get release type recommendation based on conventional commits
-    const { releaseType: conventionalReleaseType } = await pify(conventionalRecommendedBump)({
+    const { releaseType: conventionalReleaseType } = await conventionalRecommendedBump({
       // pass an object rather than a string to make sure that it gets included in the build
       config: angularPreset,
     });
