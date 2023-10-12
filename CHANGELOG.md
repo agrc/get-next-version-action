@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.1.11](https://github.com/agrc/get-next-version-action/compare/v1.1.10...v1.1.11) (2023-10-12)
+
+
+### 🐛 Bug Fixes
+
+* add prettier plugins config ([ec66ca9](https://github.com/agrc/get-next-version-action/commit/ec66ca9f056fe10e0395a069fb3e845d04dffaed))
+* conventionalRecommendedBump returns a promise now ([7e650de](https://github.com/agrc/get-next-version-action/commit/7e650deb4ab053dc42e749286a4f69593d4def34))
+* default values can only be strings ([0a4868e](https://github.com/agrc/get-next-version-action/commit/0a4868efc04822e7a601f9987c82871741766fd4))
+* handle new apis for conventional commit packages ([d6dfd68](https://github.com/agrc/get-next-version-action/commit/d6dfd68aa92b98168405ae5aa1fe539cc63f8d10))
+
+
+### 🌲 Dependencies
+
+* bump the major-dependencies group with 4 updates ([d0a4e3a](https://github.com/agrc/get-next-version-action/commit/d0a4e3a9296a630f06ccf75427337df3f6fad988))
+
+
+### 📖 Documentation Improvements
+
+* add note about using the act project ([3407531](https://github.com/agrc/get-next-version-action/commit/34075317d47e445f87507a8bcd0666250d121a33))
+
+
+### 🎨 Design Improvements
+
+* fresh prettier run ([01fe57a](https://github.com/agrc/get-next-version-action/commit/01fe57a078fe05cf92089312cc8bcb0d73d8d371))
+
 ## [1.1.10](https://github.com/agrc/get-next-version-action/compare/v1.1.9...v1.1.10) (2023-07-04)
 
 
