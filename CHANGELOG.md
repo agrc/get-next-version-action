@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.12](https://github.com/agrc/get-next-version-action/compare/v1.1.11...v1.1.12) (2023-10-16)
+
+
+### 🌲 Dependencies
+
+* bump undici from 5.25.4 to 5.26.3 ([181ee76](https://github.com/agrc/get-next-version-action/commit/181ee761db3e09912dcdb833e0daddd9cb032013))
+
 ## [1.1.11](https://github.com/agrc/get-next-version-action/compare/v1.1.10...v1.1.11) (2023-10-12)
 
 
