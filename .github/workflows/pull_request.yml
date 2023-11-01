@@ -17,7 +17,7 @@ jobs:
           show-progress: false
 
       - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: npm
@@ -38,7 +38,7 @@ jobs:
           show-progress: false
 
       - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: npm
@@ -65,7 +65,7 @@ jobs:
           fetch-depth: 0
 
       - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: npm
@@ -117,7 +117,7 @@ jobs:
           show-progress: false
 
       - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: npm
