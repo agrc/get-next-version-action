@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.13](https://github.com/agrc/get-next-version-action/compare/v1.1.12...v1.1.13) (2024-01-02)
+
+
+### 🌲 Dependencies
+
+* **dev:** bump the safe-dependencies group with 2 updates ([f3b26ed](https://github.com/agrc/get-next-version-action/commit/f3b26ed82fdd4121b6e99b2b7a106ced51d3d74b))
+
 ## [1.1.12](https://github.com/agrc/get-next-version-action/compare/v1.1.11...v1.1.12) (2023-10-16)
 
 
