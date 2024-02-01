@@ -64,13 +64,13 @@
   },
   "devDependencies": {
     "cpy-cli": "^5.0.0",
-    "esbuild": "^0.19.5",
-    "eslint": "^8.52.0",
+    "esbuild": "^0.20.0",
+    "eslint": "^8.56.0",
     "eslint-config-plugin": "^1.0.11",
     "eslint-plugin-pretty": "^0.0.0",
-    "prettier": "^3.0.3",
-    "prettier-plugin-organize-imports": "^3.2.3",
-    "prettier-plugin-packagejson": "^2.4.6",
+    "prettier": "^3.2.4",
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "prettier-plugin-packagejson": "^2.4.10",
     "vitest": "^0.34.6"
   }
 }
