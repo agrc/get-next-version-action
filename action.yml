@@ -12,6 +12,8 @@ inputs:
 outputs:
   version:
     description: 'The version number'
+  current-version:
+    description: 'The latest release version'
 runs:
   using: 'node20'
   main: 'dist/index.js'
