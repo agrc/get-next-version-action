@@ -26214,6 +26214,9 @@ async function run() {
     );
     core.debug(`graphql response: ${JSON.stringify(data, null, 2)}`);
     const latestRelease = getLatestRelease(data.repository.releases.edges);
+    const currentVersion = latestRelease?.slice(1);
+    core.info(`current-version ${currentVersion}`);
+    core.setOutput("current-version", currentVersion);
     core.info(`latest release ${latestRelease ?? "first release"}`);
     core.endGroup();
     const recommendation = await conventionalRecommendedBump({
