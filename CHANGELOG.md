@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/agrc/get-next-version-action/compare/v1.1.12...v1.2.0) (2024-04-03)
+
+
+### 🚀 Features
+
+* update to node20 ([c006898](https://github.com/agrc/get-next-version-action/commit/c0068980a496107217c243c57cc7ca67a188ae40))
+
+
+### 🌲 Dependencies
+
+* **dev:** bump the safe-dependencies group with 2 updates ([f3b26ed](https://github.com/agrc/get-next-version-action/commit/f3b26ed82fdd4121b6e99b2b7a106ced51d3d74b))
+* q4 updates ([a2a6fa6](https://github.com/agrc/get-next-version-action/commit/a2a6fa66cfa7d78961428509b57998f37d9dc7df))
+
 ## [1.1.12](https://github.com/agrc/get-next-version-action/compare/v1.1.11...v1.1.12) (2023-10-16)
 
 
