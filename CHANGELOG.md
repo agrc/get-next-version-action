@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/agrc/get-next-version-action/compare/v1.2.0...v1.3.0) (2024-04-04)
+
+
+### 🚀 Features
+
+* add current-version output ([4bbe144](https://github.com/agrc/get-next-version-action/commit/4bbe144b3b82a1c63e550089c36058527c005f4f))
+
+
+### 🐛 Bug Fixes
+
+* log current-version output ([8cf6883](https://github.com/agrc/get-next-version-action/commit/8cf6883f166ee684d985f0ead39d64625ea18315))
+* strip off "v" from output ([4cab59c](https://github.com/agrc/get-next-version-action/commit/4cab59c866637c642d93f7c72dfad7207f2e3d3a))
+
 ## [1.3.0-0](https://github.com/agrc/get-next-version-action/compare/v1.2.0...v1.3.0-0) (2024-04-03)
 
 
