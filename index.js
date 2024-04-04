@@ -45,8 +45,7 @@ async function run() {
     const latestRelease = getLatestRelease(data.repository.releases.edges);
     const currentVersion = latestRelease?.slice(1);
 
-    core.info(`current-version ${currentVersion}`);
-    core.setOutput('current-version', currentVersion);
+    core.setOutput('current-version-number', currentVersion);
 
     core.info(`latest release ${latestRelease ?? 'first release'}`);
     core.endGroup();
