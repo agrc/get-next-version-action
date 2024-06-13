@@ -1,8 +1,8 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
-const conventionalRecommendedBump = require('conventional-recommended-bump');
-const angularPreset = require('conventional-changelog-angular');
-const { getNewVersion, getLatestRelease } = require('./utils.js');
+import core from '@actions/core';
+import github from '@actions/github';
+import angularPreset from 'conventional-changelog-angular';
+import { Bumper } from 'conventional-recommended-bump';
+import { getLatestRelease, getNewVersion } from './utils.js';
 
 async function run() {
   try {
@@ -51,10 +51,11 @@ async function run() {
     core.endGroup();
 
     // get release type recommendation based on conventional commits
-    const recommendation = await conventionalRecommendedBump({
+    const bumper = new Bumper({
       // pass an object rather than a string to make sure that it gets included in the build
       config: await angularPreset(),
     });
+    const recommendation = await bumper.bump();
     core.info(`conventional release type ${recommendation.releaseType}`);
 
     const prerelease = core.getBooleanInput('prerelease');

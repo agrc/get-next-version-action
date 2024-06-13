@@ -69,14 +69,12 @@ var require_command = __commonJS({
   "node_modules/@actions/core/lib/command.js"(exports2) {
     "use strict";
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       Object.defineProperty(o, k2, { enumerable: true, get: function() {
         return m[k];
       } });
     } : function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       o[k2] = m[k];
     });
     var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
@@ -85,13 +83,10 @@ var require_command = __commonJS({
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
-      if (mod && mod.__esModule)
-        return mod;
+      if (mod && mod.__esModule) return mod;
       var result = {};
       if (mod != null) {
-        for (var k in mod)
-          if (k !== "default" && Object.hasOwnProperty.call(mod, k))
-            __createBinding(result, mod, k);
+        for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
       }
       __setModuleDefault(result, mod);
       return result;
@@ -489,14 +484,12 @@ var require_file_command = __commonJS({
   "node_modules/@actions/core/lib/file-command.js"(exports2) {
     "use strict";
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       Object.defineProperty(o, k2, { enumerable: true, get: function() {
         return m[k];
       } });
     } : function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       o[k2] = m[k];
     });
     var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
@@ -505,13 +498,10 @@ var require_file_command = __commonJS({
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
-      if (mod && mod.__esModule)
-        return mod;
+      if (mod && mod.__esModule) return mod;
       var result = {};
       if (mod != null) {
-        for (var k in mod)
-          if (k !== "default" && Object.hasOwnProperty.call(mod, k))
-            __createBinding(result, mod, k);
+        for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
       }
       __setModuleDefault(result, mod);
       return result;
@@ -1320,14 +1310,14 @@ var require_util = __commonJS({
         }
         const port = url.port != null ? url.port : url.protocol === "https:" ? 443 : 80;
         let origin = url.origin != null ? url.origin : `${url.protocol}//${url.hostname}:${port}`;
-        let path = url.path != null ? url.path : `${url.pathname || ""}${url.search || ""}`;
+        let path2 = url.path != null ? url.path : `${url.pathname || ""}${url.search || ""}`;
         if (origin.endsWith("/")) {
           origin = origin.substring(0, origin.length - 1);
         }
-        if (path && !path.startsWith("/")) {
-          path = `/${path}`;
+        if (path2 && !path2.startsWith("/")) {
+          path2 = `/${path2}`;
         }
-        url = new URL(origin + path);
+        url = new URL(origin + path2);
       }
       return url;
     }
@@ -1345,8 +1335,7 @@ var require_util = __commonJS({
         return host.substring(1, idx2);
       }
       const idx = host.indexOf(":");
-      if (idx === -1)
-        return host;
+      if (idx === -1) return host;
       return host.substring(0, idx);
     }
     function getServerName(host) {
@@ -1366,7 +1355,7 @@ var require_util = __commonJS({
     function isAsyncIterable(obj) {
       return !!(obj != null && typeof obj[Symbol.asyncIterator] === "function");
     }
-    function isIterable(obj) {
+    function isIterable2(obj) {
       return !!(obj != null && (typeof obj[Symbol.iterator] === "function" || typeof obj[Symbol.asyncIterator] === "function"));
     }
     function bodyLength(body) {
@@ -1416,8 +1405,7 @@ var require_util = __commonJS({
       return headerNameLowerCasedRecord[value] || value.toLowerCase();
     }
     function parseHeaders(headers, obj = {}) {
-      if (!Array.isArray(headers))
-        return headers;
+      if (!Array.isArray(headers)) return headers;
       for (let i = 0; i < headers.length; i += 2) {
         const key = headers[i].toString().toLowerCase();
         let val = obj[key];
@@ -1591,8 +1579,7 @@ var require_util = __commonJS({
       return `${val}`;
     }
     function parseRangeHeader(range) {
-      if (range == null || range === "")
-        return { start: 0, end: null, size: null };
+      if (range == null || range === "") return { start: 0, end: null, size: null };
       const m = range ? range.match(/^bytes (\d+)-(\d+)\/(\d+)?$/) : null;
       return m ? {
         start: parseInt(m[1]),
@@ -1615,7 +1602,7 @@ var require_util = __commonJS({
       parseURL,
       getServerName,
       isStream,
-      isIterable,
+      isIterable: isIterable2,
       isAsyncIterable,
       isDestroyed,
       headerNameToString,
@@ -1917,7 +1904,7 @@ var require_HeaderParser = __commonJS({
       this.header = {};
       this.finished = false;
       this.ss = new StreamSearch(B_DCRLF);
-      this.ss.on("info", function(isMatch, data, start, end) {
+      this.ss.on("info", function(isMatch2, data, start, end) {
         if (data && !self.maxed) {
           if (self.nread + end - start >= self.maxHeaderSize) {
             end = self.maxHeaderSize - self.nread + start;
@@ -1928,7 +1915,7 @@ var require_HeaderParser = __commonJS({
           }
           self.buffer += data.toString("binary", start, end);
         }
-        if (isMatch) {
+        if (isMatch2) {
           self._finish();
         }
       });
@@ -2107,8 +2094,8 @@ var require_Dicer = __commonJS({
     Dicer.prototype.setBoundary = function(boundary) {
       const self = this;
       this._bparser = new StreamSearch("\r\n--" + boundary);
-      this._bparser.on("info", function(isMatch, data, start, end) {
-        self._oninfo(isMatch, data, start, end);
+      this._bparser.on("info", function(isMatch2, data, start, end) {
+        self._oninfo(isMatch2, data, start, end);
       });
     };
     Dicer.prototype._ignore = function() {
@@ -2118,7 +2105,7 @@ var require_Dicer = __commonJS({
         this._part.resume();
       }
     };
-    Dicer.prototype._oninfo = function(isMatch, data, start, end) {
+    Dicer.prototype._oninfo = function(isMatch2, data, start, end) {
       let buf;
       const self = this;
       let i = 0;
@@ -2191,7 +2178,7 @@ var require_Dicer = __commonJS({
           }
         }
       }
-      if (isMatch) {
+      if (isMatch2) {
         this._hparser.reset();
         if (this._isPreamble) {
           this._isPreamble = false;
@@ -2269,7 +2256,7 @@ var require_parseParams = __commonJS({
     "use strict";
     var decodeText = require_decodeText();
     var RE_ENCODED = /%([a-fA-F0-9]{2})/g;
-    function encodedReplacer(match2, byte) {
+    function encodedReplacer(match, byte) {
       return String.fromCharCode(parseInt(byte, 16));
     }
     function parseParams(str) {
@@ -2378,19 +2365,19 @@ var require_parseParams = __commonJS({
 var require_basename = __commonJS({
   "node_modules/@fastify/busboy/lib/utils/basename.js"(exports2, module2) {
     "use strict";
-    module2.exports = function basename(path) {
-      if (typeof path !== "string") {
+    module2.exports = function basename(path2) {
+      if (typeof path2 !== "string") {
         return "";
       }
-      for (var i = path.length - 1; i >= 0; --i) {
-        switch (path.charCodeAt(i)) {
+      for (var i = path2.length - 1; i >= 0; --i) {
+        switch (path2.charCodeAt(i)) {
           case 47:
           case 92:
-            path = path.slice(i + 1);
-            return path === ".." || path === "." ? "" : path;
+            path2 = path2.slice(i + 1);
+            return path2 === ".." || path2 === "." ? "" : path2;
         }
       }
-      return path === ".." || path === "." ? "" : path;
+      return path2 === ".." || path2 === "." ? "" : path2;
     };
   }
 });
@@ -3645,14 +3632,11 @@ var require_util2 = __commonJS({
       if (url.href === "about:blank" || url.href === "about:srcdoc") {
         return true;
       }
-      if (url.protocol === "data:")
-        return true;
-      if (url.protocol === "file:")
-        return true;
+      if (url.protocol === "data:") return true;
+      if (url.protocol === "file:") return true;
       return isOriginPotentiallyTrustworthy(url.origin);
       function isOriginPotentiallyTrustworthy(origin) {
-        if (origin == null || origin === "null")
-          return false;
+        if (origin == null || origin === "null") return false;
         const originAsURL = new URL(origin);
         if (originAsURL.protocol === "https:" || originAsURL.protocol === "wss:") {
           return true;
@@ -3772,8 +3756,8 @@ var require_util2 = __commonJS({
     function createDeferredPromise() {
       let res;
       let rej;
-      const promise = new Promise((resolve, reject) => {
-        res = resolve;
+      const promise = new Promise((resolve2, reject) => {
+        res = resolve2;
         rej = reject;
       });
       return { promise, resolve: res, reject: rej };
@@ -4622,12 +4606,10 @@ var require_dataURL = __commonJS({
       let lead = 0;
       let trail = str.length - 1;
       if (leading) {
-        for (; lead < str.length && isHTTPWhiteSpace(str[lead]); lead++)
-          ;
+        for (; lead < str.length && isHTTPWhiteSpace(str[lead]); lead++) ;
       }
       if (trailing) {
-        for (; trail > 0 && isHTTPWhiteSpace(str[trail]); trail--)
-          ;
+        for (; trail > 0 && isHTTPWhiteSpace(str[trail]); trail--) ;
       }
       return str.slice(lead, trail + 1);
     }
@@ -4638,12 +4620,10 @@ var require_dataURL = __commonJS({
       let lead = 0;
       let trail = str.length - 1;
       if (leading) {
-        for (; lead < str.length && isASCIIWhitespace(str[lead]); lead++)
-          ;
+        for (; lead < str.length && isASCIIWhitespace(str[lead]); lead++) ;
       }
       if (trailing) {
-        for (; trail > 0 && isASCIIWhitespace(str[trail]); trail--)
-          ;
+        for (; trail > 0 && isASCIIWhitespace(str[trail]); trail--) ;
       }
       return str.slice(lead, trail + 1);
     }
@@ -5237,8 +5217,7 @@ Content-Type: ${value.type || "application/octet-stream"}\r
           const contentType = this.headers.get("Content-Type");
           if (/multipart\/form-data/.test(contentType)) {
             const headers = {};
-            for (const [key, value] of this.headers)
-              headers[key.toLowerCase()] = value;
+            for (const [key, value] of this.headers) headers[key.toLowerCase()] = value;
             const responseFormData = new FormData();
             let busboy;
             try {
@@ -5275,13 +5254,11 @@ Content-Type: ${value.type || "application/octet-stream"}\r
                 });
               }
             });
-            const busboyResolve = new Promise((resolve, reject) => {
-              busboy.on("finish", resolve);
+            const busboyResolve = new Promise((resolve2, reject) => {
+              busboy.on("finish", resolve2);
               busboy.on("error", (err) => reject(new TypeError(err)));
             });
-            if (this.body !== null)
-              for await (const chunk of consumeBody(this[kState].body))
-                busboy.write(chunk);
+            if (this.body !== null) for await (const chunk of consumeBody(this[kState].body)) busboy.write(chunk);
             busboy.end();
             await busboyResolve;
             return responseFormData;
@@ -5409,7 +5386,7 @@ var require_request = __commonJS({
     }
     var Request = class _Request {
       constructor(origin, {
-        path,
+        path: path2,
         method,
         body,
         headers,
@@ -5423,11 +5400,11 @@ var require_request = __commonJS({
         throwOnError,
         expectContinue
       }, handler) {
-        if (typeof path !== "string") {
+        if (typeof path2 !== "string") {
           throw new InvalidArgumentError("path must be a string");
-        } else if (path[0] !== "/" && !(path.startsWith("http://") || path.startsWith("https://")) && method !== "CONNECT") {
+        } else if (path2[0] !== "/" && !(path2.startsWith("http://") || path2.startsWith("https://")) && method !== "CONNECT") {
           throw new InvalidArgumentError("path must be an absolute URL or start with a slash");
-        } else if (invalidPathRegex.exec(path) !== null) {
+        } else if (invalidPathRegex.exec(path2) !== null) {
           throw new InvalidArgumentError("invalid request path");
         }
         if (typeof method !== "string") {
@@ -5490,7 +5467,7 @@ var require_request = __commonJS({
         this.completed = false;
         this.aborted = false;
         this.upgrade = upgrade || null;
-        this.path = query ? util.buildURL(path, query) : path;
+        this.path = query ? util.buildURL(path2, query) : path2;
         this.origin = origin;
         this.idempotent = idempotent == null ? method === "HEAD" || method === "GET" : idempotent;
         this.blocking = blocking == null ? false : blocking;
@@ -5671,12 +5648,9 @@ var require_request = __commonJS({
         const headers = {};
         for (const header of rawHeaders) {
           const [key, value] = header.split(": ");
-          if (value == null || value.length === 0)
-            continue;
-          if (headers[key])
-            headers[key] += `,${value}`;
-          else
-            headers[key] = value;
+          if (value == null || value.length === 0) continue;
+          if (headers[key]) headers[key] += `,${value}`;
+          else headers[key] = value;
         }
         return headers;
       }
@@ -5710,10 +5684,8 @@ var require_request = __commonJS({
         }
       } else if (request.contentType === null && key.length === 12 && key.toLowerCase() === "content-type") {
         request.contentType = val;
-        if (skipAppend)
-          request.headers[key] = processHeaderValue(key, val, skipAppend);
-        else
-          request.headers += processHeaderValue(key, val);
+        if (skipAppend) request.headers[key] = processHeaderValue(key, val, skipAppend);
+        else request.headers += processHeaderValue(key, val);
       } else if (key.length === 17 && key.toLowerCase() === "transfer-encoding") {
         throw new InvalidArgumentError("invalid transfer-encoding header");
       } else if (key.length === 10 && key.toLowerCase() === "connection") {
@@ -5735,19 +5707,15 @@ var require_request = __commonJS({
         if (Array.isArray(val)) {
           for (let i = 0; i < val.length; i++) {
             if (skipAppend) {
-              if (request.headers[key])
-                request.headers[key] += `,${processHeaderValue(key, val[i], skipAppend)}`;
-              else
-                request.headers[key] = processHeaderValue(key, val[i], skipAppend);
+              if (request.headers[key]) request.headers[key] += `,${processHeaderValue(key, val[i], skipAppend)}`;
+              else request.headers[key] = processHeaderValue(key, val[i], skipAppend);
             } else {
               request.headers += processHeaderValue(key, val[i]);
             }
           }
         } else {
-          if (skipAppend)
-            request.headers[key] = processHeaderValue(key, val, skipAppend);
-          else
-            request.headers += processHeaderValue(key, val);
+          if (skipAppend) request.headers[key] = processHeaderValue(key, val, skipAppend);
+          else request.headers += processHeaderValue(key, val);
         }
       }
     }
@@ -5821,9 +5789,9 @@ var require_dispatcher_base = __commonJS({
       }
       close(callback) {
         if (callback === void 0) {
-          return new Promise((resolve, reject) => {
+          return new Promise((resolve2, reject) => {
             this.close((err, data) => {
-              return err ? reject(err) : resolve(data);
+              return err ? reject(err) : resolve2(data);
             });
           });
         }
@@ -5861,12 +5829,12 @@ var require_dispatcher_base = __commonJS({
           err = null;
         }
         if (callback === void 0) {
-          return new Promise((resolve, reject) => {
+          return new Promise((resolve2, reject) => {
             this.destroy(err, (err2, data) => {
               return err2 ? (
                 /* istanbul ignore next: should never error */
                 reject(err2)
-              ) : resolve(data);
+              ) : resolve2(data);
             });
           });
         }
@@ -6507,9 +6475,9 @@ var require_RedirectHandler = __commonJS({
           return this.handler.onHeaders(statusCode, headers, resume, statusText);
         }
         const { origin, pathname, search } = util.parseURL(new URL(this.location, this.opts.origin && new URL(this.opts.path, this.opts.origin)));
-        const path = search ? `${pathname}${search}` : pathname;
+        const path2 = search ? `${pathname}${search}` : pathname;
         this.opts.headers = cleanRequestHeaders(this.opts.headers, statusCode === 303, this.opts.origin !== origin);
-        this.opts.path = path;
+        this.opts.path = path2;
         this.opts.origin = origin;
         this.opts.maxRedirections = 0;
         this.opts.query = null;
@@ -6926,16 +6894,16 @@ var require_client = __commonJS({
         return this[kNeedDrain] < 2;
       }
       async [kClose]() {
-        return new Promise((resolve) => {
+        return new Promise((resolve2) => {
           if (!this[kSize]) {
-            resolve(null);
+            resolve2(null);
           } else {
-            this[kClosedResolve] = resolve;
+            this[kClosedResolve] = resolve2;
           }
         });
       }
       async [kDestroy](err) {
-        return new Promise((resolve) => {
+        return new Promise((resolve2) => {
           const requests = this[kQueue].splice(this[kPendingIdx]);
           for (let i = 0; i < requests.length; i++) {
             const request = requests[i];
@@ -6946,7 +6914,7 @@ var require_client = __commonJS({
               this[kClosedResolve]();
               this[kClosedResolve] = null;
             }
-            resolve();
+            resolve2();
           };
           if (this[kHTTP2Session] != null) {
             util.destroy(this[kHTTP2Session], err);
@@ -7526,7 +7494,7 @@ var require_client = __commonJS({
         });
       }
       try {
-        const socket = await new Promise((resolve, reject) => {
+        const socket = await new Promise((resolve2, reject) => {
           client[kConnector]({
             host,
             hostname,
@@ -7538,7 +7506,7 @@ var require_client = __commonJS({
             if (err) {
               reject(err);
             } else {
-              resolve(socket2);
+              resolve2(socket2);
             }
           });
         });
@@ -7749,7 +7717,7 @@ var require_client = __commonJS({
         writeH2(client, client[kHTTP2Session], request);
         return;
       }
-      const { body, method, path, host, upgrade, headers, blocking, reset } = request;
+      const { body, method, path: path2, host, upgrade, headers, blocking, reset } = request;
       const expectsPayload = method === "PUT" || method === "POST" || method === "PATCH";
       if (body && typeof body.read === "function") {
         body.read(0);
@@ -7799,7 +7767,7 @@ var require_client = __commonJS({
       if (blocking) {
         socket[kBlocking] = true;
       }
-      let header = `${method} ${path} HTTP/1.1\r
+      let header = `${method} ${path2} HTTP/1.1\r
 `;
       if (typeof host === "string") {
         header += `host: ${host}\r
@@ -7862,12 +7830,10 @@ upgrade: ${upgrade}\r
       return true;
     }
     function writeH2(client, session, request) {
-      const { body, method, path, host, upgrade, expectContinue, signal, headers: reqHeaders } = request;
+      const { body, method, path: path2, host, upgrade, expectContinue, signal, headers: reqHeaders } = request;
       let headers;
-      if (typeof reqHeaders === "string")
-        headers = Request[kHTTP2CopyHeaders](reqHeaders.trim());
-      else
-        headers = reqHeaders;
+      if (typeof reqHeaders === "string") headers = Request[kHTTP2CopyHeaders](reqHeaders.trim());
+      else headers = reqHeaders;
       if (upgrade) {
         errorRequest(client, request, new Error("Upgrade not supported for H2"));
         return false;
@@ -7903,12 +7869,11 @@ upgrade: ${upgrade}\r
         }
         stream.once("close", () => {
           h2State.openStreams -= 1;
-          if (h2State.openStreams === 0)
-            session.unref();
+          if (h2State.openStreams === 0) session.unref();
         });
         return true;
       }
-      headers[HTTP2_HEADER_PATH] = path;
+      headers[HTTP2_HEADER_PATH] = path2;
       headers[HTTP2_HEADER_SCHEME] = "https";
       const expectsPayload = method === "PUT" || method === "POST" || method === "PATCH";
       if (body && typeof body.read === "function") {
@@ -8165,12 +8130,12 @@ upgrade: ${upgrade}\r
           cb();
         }
       }
-      const waitForDrain = () => new Promise((resolve, reject) => {
+      const waitForDrain = () => new Promise((resolve2, reject) => {
         assert(callback === null);
         if (socket[kError]) {
           reject(socket[kError]);
         } else {
-          callback = resolve;
+          callback = resolve2;
         }
       });
       if (client[kHTTPConnVersion] === "h2") {
@@ -8515,8 +8480,8 @@ var require_pool_base = __commonJS({
         if (this[kQueue].isEmpty()) {
           return Promise.all(this[kClients].map((c) => c.close()));
         } else {
-          return new Promise((resolve) => {
-            this[kClosedResolve] = resolve;
+          return new Promise((resolve2) => {
+            this[kClosedResolve] = resolve2;
           });
         }
       }
@@ -8685,8 +8650,7 @@ var require_balanced_pool = __commonJS({
     var kMaxWeightPerServer = Symbol("kMaxWeightPerServer");
     var kErrorPenalty = Symbol("kErrorPenalty");
     function getGreatestCommonDivisor(a, b) {
-      if (b === 0)
-        return a;
+      if (b === 0) return a;
       return getGreatestCommonDivisor(b, a % b);
     }
     function defaultFactory(origin, opts) {
@@ -9087,7 +9051,7 @@ var require_readable = __commonJS({
         if (this.closed) {
           return Promise.resolve(null);
         }
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve2, reject) => {
           const signalListenerCleanup = signal ? util.addAbortListener(signal, () => {
             this.destroy();
           }) : noop;
@@ -9096,7 +9060,7 @@ var require_readable = __commonJS({
             if (signal && signal.aborted) {
               reject(signal.reason || Object.assign(new Error("The operation was aborted"), { name: "AbortError" }));
             } else {
-              resolve(null);
+              resolve2(null);
             }
           }).on("error", noop).on("data", function(chunk) {
             limit -= chunk.length;
@@ -9118,11 +9082,11 @@ var require_readable = __commonJS({
         throw new TypeError("unusable");
       }
       assert(!stream[kConsume]);
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve2, reject) => {
         stream[kConsume] = {
           type,
           stream,
-          resolve,
+          resolve: resolve2,
           reject,
           length: 0,
           body: []
@@ -9157,12 +9121,12 @@ var require_readable = __commonJS({
       }
     }
     function consumeEnd(consume2) {
-      const { type, body, resolve, stream, length } = consume2;
+      const { type, body, resolve: resolve2, stream, length } = consume2;
       try {
         if (type === "text") {
-          resolve(toUSVString(Buffer.concat(body)));
+          resolve2(toUSVString(Buffer.concat(body)));
         } else if (type === "json") {
-          resolve(JSON.parse(Buffer.concat(body)));
+          resolve2(JSON.parse(Buffer.concat(body)));
         } else if (type === "arrayBuffer") {
           const dst = new Uint8Array(length);
           let pos = 0;
@@ -9170,12 +9134,12 @@ var require_readable = __commonJS({
             dst.set(buf, pos);
             pos += buf.byteLength;
           }
-          resolve(dst.buffer);
+          resolve2(dst.buffer);
         } else if (type === "blob") {
           if (!Blob2) {
             Blob2 = require("buffer").Blob;
           }
-          resolve(new Blob2(body, { type: stream[kContentType] }));
+          resolve2(new Blob2(body, { type: stream[kContentType] }));
         }
         consumeFinish(consume2);
       } catch (err) {
@@ -9430,9 +9394,9 @@ var require_api_request = __commonJS({
     };
     function request(opts, callback) {
       if (callback === void 0) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve2, reject) => {
           request.call(this, opts, (err, data) => {
-            return err ? reject(err) : resolve(data);
+            return err ? reject(err) : resolve2(data);
           });
         });
       }
@@ -9605,9 +9569,9 @@ var require_api_stream = __commonJS({
     };
     function stream(opts, factory, callback) {
       if (callback === void 0) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve2, reject) => {
           stream.call(this, opts, factory, (err, data) => {
-            return err ? reject(err) : resolve(data);
+            return err ? reject(err) : resolve2(data);
           });
         });
       }
@@ -9888,9 +9852,9 @@ var require_api_upgrade = __commonJS({
     };
     function upgrade(opts, callback) {
       if (callback === void 0) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve2, reject) => {
           upgrade.call(this, opts, (err, data) => {
-            return err ? reject(err) : resolve(data);
+            return err ? reject(err) : resolve2(data);
           });
         });
       }
@@ -9979,9 +9943,9 @@ var require_api_connect = __commonJS({
     };
     function connect(opts, callback) {
       if (callback === void 0) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve2, reject) => {
           connect.call(this, opts, (err, data) => {
-            return err ? reject(err) : resolve(data);
+            return err ? reject(err) : resolve2(data);
           });
         });
       }
@@ -10079,15 +10043,15 @@ var require_mock_utils = __commonJS({
         isPromise
       }
     } = require("util");
-    function matchValue(match2, value) {
-      if (typeof match2 === "string") {
-        return match2 === value;
+    function matchValue(match, value) {
+      if (typeof match === "string") {
+        return match === value;
       }
-      if (match2 instanceof RegExp) {
-        return match2.test(value);
+      if (match instanceof RegExp) {
+        return match.test(value);
       }
-      if (typeof match2 === "function") {
-        return match2(value) === true;
+      if (typeof match === "function") {
+        return match(value) === true;
       }
       return false;
     }
@@ -10141,20 +10105,20 @@ var require_mock_utils = __commonJS({
       }
       return true;
     }
-    function safeUrl(path) {
-      if (typeof path !== "string") {
-        return path;
+    function safeUrl(path2) {
+      if (typeof path2 !== "string") {
+        return path2;
       }
-      const pathSegments = path.split("?");
+      const pathSegments = path2.split("?");
       if (pathSegments.length !== 2) {
-        return path;
+        return path2;
       }
       const qp = new URLSearchParams(pathSegments.pop());
       qp.sort();
       return [...pathSegments, qp.toString()].join("?");
     }
-    function matchKey(mockDispatch2, { path, method, body, headers }) {
-      const pathMatch = matchValue(mockDispatch2.path, path);
+    function matchKey(mockDispatch2, { path: path2, method, body, headers }) {
+      const pathMatch = matchValue(mockDispatch2.path, path2);
       const methodMatch = matchValue(mockDispatch2.method, method);
       const bodyMatch = typeof mockDispatch2.body !== "undefined" ? matchValue(mockDispatch2.body, body) : true;
       const headersMatch = matchHeaders(mockDispatch2, headers);
@@ -10172,7 +10136,7 @@ var require_mock_utils = __commonJS({
     function getMockDispatch(mockDispatches, key) {
       const basePath = key.query ? buildURL(key.path, key.query) : key.path;
       const resolvedPath = typeof basePath === "string" ? safeUrl(basePath) : basePath;
-      let matchedMockDispatches = mockDispatches.filter(({ consumed }) => !consumed).filter(({ path }) => matchValue(safeUrl(path), resolvedPath));
+      let matchedMockDispatches = mockDispatches.filter(({ consumed }) => !consumed).filter(({ path: path2 }) => matchValue(safeUrl(path2), resolvedPath));
       if (matchedMockDispatches.length === 0) {
         throw new MockNotMatchedError(`Mock dispatch not matched for path '${resolvedPath}'`);
       }
@@ -10209,9 +10173,9 @@ var require_mock_utils = __commonJS({
       }
     }
     function buildKey(opts) {
-      const { path, method, body, headers, query } = opts;
+      const { path: path2, method, body, headers, query } = opts;
       return {
-        path,
+        path: path2,
         method,
         body,
         headers,
@@ -10642,11 +10606,11 @@ var require_pluralizer = __commonJS({
 var require_pending_interceptors_formatter = __commonJS({
   "node_modules/undici/lib/mock/pending-interceptors-formatter.js"(exports2, module2) {
     "use strict";
-    var { Transform } = require("stream");
+    var { Transform: Transform3 } = require("stream");
     var { Console } = require("console");
     module2.exports = class PendingInterceptorsFormatter {
       constructor({ disableColors } = {}) {
-        this.transform = new Transform({
+        this.transform = new Transform3({
           transform(chunk, _enc, cb) {
             cb(null, chunk);
           }
@@ -10660,10 +10624,10 @@ var require_pending_interceptors_formatter = __commonJS({
       }
       format(pendingInterceptors) {
         const withPrettyHeaders = pendingInterceptors.map(
-          ({ method, path, data: { statusCode }, persist, times, timesInvoked, origin }) => ({
+          ({ method, path: path2, data: { statusCode }, persist, times, timesInvoked, origin }) => ({
             Method: method,
             Origin: origin,
-            Path: path,
+            Path: path2,
             "Status code": statusCode,
             Persistent: persist ? "\u2705" : "\u274C",
             Invocations: timesInvoked,
@@ -11058,8 +11022,7 @@ var require_RetryHandler = __commonJS({
         }
       }
       onBodySent(chunk) {
-        if (this.handler.onBodySent)
-          return this.handler.onBodySent(chunk);
+        if (this.handler.onBodySent) return this.handler.onBodySent(chunk);
       }
       static [kRetryHandlerDefaultRetry](err, { state, opts }, cb) {
         const { statusCode, code, headers } = err;
@@ -11322,10 +11285,8 @@ var require_headers = __commonJS({
     function headerValueNormalize(potentialValue) {
       let i = 0;
       let j = potentialValue.length;
-      while (j > i && isHTTPWhiteSpaceCharCode(potentialValue.charCodeAt(j - 1)))
-        --j;
-      while (j > i && isHTTPWhiteSpaceCharCode(potentialValue.charCodeAt(i)))
-        ++i;
+      while (j > i && isHTTPWhiteSpaceCharCode(potentialValue.charCodeAt(j - 1))) --j;
+      while (j > i && isHTTPWhiteSpaceCharCode(potentialValue.charCodeAt(i))) ++i;
       return i === 0 && j === potentialValue.length ? potentialValue : potentialValue.substring(i, j);
     }
     function fill(headers, object) {
@@ -13602,7 +13563,7 @@ var require_fetch = __commonJS({
       async function dispatch({ body }) {
         const url = requestCurrentURL(request);
         const agent = fetchParams.controller.dispatcher;
-        return new Promise((resolve, reject) => agent.dispatch(
+        return new Promise((resolve2, reject) => agent.dispatch(
           {
             path: url.pathname + url.search,
             origin: url.origin,
@@ -13678,7 +13639,7 @@ var require_fetch = __commonJS({
                   }
                 }
               }
-              resolve({
+              resolve2({
                 status,
                 statusText,
                 headersList: headers[kHeadersList],
@@ -13721,7 +13682,7 @@ var require_fetch = __commonJS({
                 const val = headersList[n + 1].toString("latin1");
                 headers[kHeadersList].append(key, val);
               }
-              resolve({
+              resolve2({
                 status,
                 statusText: STATUS_CODES[status],
                 headersList: headers[kHeadersList],
@@ -14640,8 +14601,7 @@ var require_cache = __commonJS({
       }
       async matchAll(request = void 0, options = {}) {
         webidl.brandCheck(this, _Cache);
-        if (request !== void 0)
-          request = webidl.converters.RequestInfo(request);
+        if (request !== void 0) request = webidl.converters.RequestInfo(request);
         options = webidl.converters.CacheQueryOptions(options);
         let r = null;
         if (request !== void 0) {
@@ -14910,8 +14870,7 @@ var require_cache = __commonJS({
        */
       async keys(request = void 0, options = {}) {
         webidl.brandCheck(this, _Cache);
-        if (request !== void 0)
-          request = webidl.converters.RequestInfo(request);
+        if (request !== void 0) request = webidl.converters.RequestInfo(request);
         options = webidl.converters.CacheQueryOptions(options);
         let r = null;
         if (request !== void 0) {
@@ -15286,8 +15245,8 @@ var require_util6 = __commonJS({
         }
       }
     }
-    function validateCookiePath(path) {
-      for (const char of path) {
+    function validateCookiePath(path2) {
+      for (const char of path2) {
         const code = char.charCodeAt(0);
         if (code < 33 || char === ";") {
           throw new Error("Invalid cookie path");
@@ -16979,11 +16938,11 @@ var require_undici = __commonJS({
           if (typeof opts.path !== "string") {
             throw new InvalidArgumentError("invalid opts.path");
           }
-          let path = opts.path;
+          let path2 = opts.path;
           if (!opts.path.startsWith("/")) {
-            path = `/${path}`;
+            path2 = `/${path2}`;
           }
-          url = new URL(util.parseOrigin(url).origin + path);
+          url = new URL(util.parseOrigin(url).origin + path2);
         } else {
           if (!opts) {
             opts = typeof url === "object" ? url : {};
@@ -17063,8 +17022,7 @@ var require_lib = __commonJS({
   "node_modules/@actions/http-client/lib/index.js"(exports2) {
     "use strict";
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
       if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
         desc = { enumerable: true, get: function() {
@@ -17073,8 +17031,7 @@ var require_lib = __commonJS({
       }
       Object.defineProperty(o, k2, desc);
     } : function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       o[k2] = m[k];
     });
     var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
@@ -17083,24 +17040,21 @@ var require_lib = __commonJS({
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
-      if (mod && mod.__esModule)
-        return mod;
+      if (mod && mod.__esModule) return mod;
       var result = {};
       if (mod != null) {
-        for (var k in mod)
-          if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k))
-            __createBinding(result, mod, k);
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
       }
       __setModuleDefault(result, mod);
       return result;
     };
     var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -17116,7 +17070,7 @@ var require_lib = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -17202,26 +17156,26 @@ var require_lib = __commonJS({
       }
       readBody() {
         return __awaiter(this, void 0, void 0, function* () {
-          return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
+          return new Promise((resolve2) => __awaiter(this, void 0, void 0, function* () {
             let output = Buffer.alloc(0);
             this.message.on("data", (chunk) => {
               output = Buffer.concat([output, chunk]);
             });
             this.message.on("end", () => {
-              resolve(output.toString());
+              resolve2(output.toString());
             });
           }));
         });
       }
       readBodyBuffer() {
         return __awaiter(this, void 0, void 0, function* () {
-          return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
+          return new Promise((resolve2) => __awaiter(this, void 0, void 0, function* () {
             const chunks = [];
             this.message.on("data", (chunk) => {
               chunks.push(chunk);
             });
             this.message.on("end", () => {
-              resolve(Buffer.concat(chunks));
+              resolve2(Buffer.concat(chunks));
             });
           }));
         });
@@ -17430,14 +17384,14 @@ var require_lib = __commonJS({
        */
       requestRaw(info, data) {
         return __awaiter(this, void 0, void 0, function* () {
-          return new Promise((resolve, reject) => {
+          return new Promise((resolve2, reject) => {
             function callbackForResult(err, res) {
               if (err) {
                 reject(err);
               } else if (!res) {
                 reject(new Error("Unknown error"));
               } else {
-                resolve(res);
+                resolve2(res);
               }
             }
             this.requestRawWithCallback(info, data, callbackForResult);
@@ -17622,12 +17576,12 @@ var require_lib = __commonJS({
         return __awaiter(this, void 0, void 0, function* () {
           retryNumber = Math.min(ExponentialBackoffCeiling, retryNumber);
           const ms = ExponentialBackoffTimeSlice * Math.pow(2, retryNumber);
-          return new Promise((resolve) => setTimeout(() => resolve(), ms));
+          return new Promise((resolve2) => setTimeout(() => resolve2(), ms));
         });
       }
       _processResponse(res, options) {
         return __awaiter(this, void 0, void 0, function* () {
-          return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+          return new Promise((resolve2, reject) => __awaiter(this, void 0, void 0, function* () {
             const statusCode = res.message.statusCode || 0;
             const response = {
               statusCode,
@@ -17635,7 +17589,7 @@ var require_lib = __commonJS({
               headers: {}
             };
             if (statusCode === HttpCodes.NotFound) {
-              resolve(response);
+              resolve2(response);
             }
             function dateTimeDeserializer(key, value) {
               if (typeof value === "string") {
@@ -17674,7 +17628,7 @@ var require_lib = __commonJS({
               err.result = response.result;
               reject(err);
             } else {
-              resolve(response);
+              resolve2(response);
             }
           }));
         });
@@ -17691,11 +17645,11 @@ var require_auth = __commonJS({
     "use strict";
     var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -17711,7 +17665,7 @@ var require_auth = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -17795,11 +17749,11 @@ var require_oidc_utils = __commonJS({
     "use strict";
     var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -17815,7 +17769,7 @@ var require_oidc_utils = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -17893,11 +17847,11 @@ var require_summary = __commonJS({
     "use strict";
     var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -17913,7 +17867,7 @@ var require_summary = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -18186,14 +18140,12 @@ var require_path_utils = __commonJS({
   "node_modules/@actions/core/lib/path-utils.js"(exports2) {
     "use strict";
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       Object.defineProperty(o, k2, { enumerable: true, get: function() {
         return m[k];
       } });
     } : function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       o[k2] = m[k];
     });
     var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
@@ -18202,20 +18154,17 @@ var require_path_utils = __commonJS({
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
-      if (mod && mod.__esModule)
-        return mod;
+      if (mod && mod.__esModule) return mod;
       var result = {};
       if (mod != null) {
-        for (var k in mod)
-          if (k !== "default" && Object.hasOwnProperty.call(mod, k))
-            __createBinding(result, mod, k);
+        for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
       }
       __setModuleDefault(result, mod);
       return result;
     };
     Object.defineProperty(exports2, "__esModule", { value: true });
     exports2.toPlatformPath = exports2.toWin32Path = exports2.toPosixPath = void 0;
-    var path = __importStar(require("path"));
+    var path2 = __importStar(require("path"));
     function toPosixPath(pth) {
       return pth.replace(/[\\]/g, "/");
     }
@@ -18225,7 +18174,7 @@ var require_path_utils = __commonJS({
     }
     exports2.toWin32Path = toWin32Path;
     function toPlatformPath(pth) {
-      return pth.replace(/[/\\]/g, path.sep);
+      return pth.replace(/[/\\]/g, path2.sep);
     }
     exports2.toPlatformPath = toPlatformPath;
   }
@@ -18236,14 +18185,12 @@ var require_core = __commonJS({
   "node_modules/@actions/core/lib/core.js"(exports2) {
     "use strict";
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       Object.defineProperty(o, k2, { enumerable: true, get: function() {
         return m[k];
       } });
     } : function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       o[k2] = m[k];
     });
     var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
@@ -18252,24 +18199,21 @@ var require_core = __commonJS({
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
-      if (mod && mod.__esModule)
-        return mod;
+      if (mod && mod.__esModule) return mod;
       var result = {};
       if (mod != null) {
-        for (var k in mod)
-          if (k !== "default" && Object.hasOwnProperty.call(mod, k))
-            __createBinding(result, mod, k);
+        for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
       }
       __setModuleDefault(result, mod);
       return result;
     };
     var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -18285,7 +18229,7 @@ var require_core = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -18296,7 +18240,7 @@ var require_core = __commonJS({
     var file_command_1 = require_file_command();
     var utils_1 = require_utils();
     var os = __importStar(require("os"));
-    var path = __importStar(require("path"));
+    var path2 = __importStar(require("path"));
     var oidc_utils_1 = require_oidc_utils();
     var ExitCode;
     (function(ExitCode2) {
@@ -18324,7 +18268,7 @@ var require_core = __commonJS({
       } else {
         command_1.issueCommand("add-path", {}, inputPath);
       }
-      process.env["PATH"] = `${inputPath}${path.delimiter}${process.env["PATH"]}`;
+      process.env["PATH"] = `${inputPath}${path2.delimiter}${process.env["PATH"]}`;
     }
     exports2.addPath = addPath;
     function getInput(name, options) {
@@ -18479,8 +18423,8 @@ var require_context = __commonJS({
           if ((0, fs_1.existsSync)(process.env.GITHUB_EVENT_PATH)) {
             this.payload = JSON.parse((0, fs_1.readFileSync)(process.env.GITHUB_EVENT_PATH, { encoding: "utf8" }));
           } else {
-            const path = process.env.GITHUB_EVENT_PATH;
-            process.stdout.write(`GITHUB_EVENT_PATH ${path} does not exist${os_1.EOL}`);
+            const path2 = process.env.GITHUB_EVENT_PATH;
+            process.stdout.write(`GITHUB_EVENT_PATH ${path2} does not exist${os_1.EOL}`);
           }
         }
         this.eventName = process.env.GITHUB_EVENT_NAME;
@@ -18523,8 +18467,7 @@ var require_utils3 = __commonJS({
   "node_modules/@actions/github/lib/internal/utils.js"(exports2) {
     "use strict";
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
       if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
         desc = { enumerable: true, get: function() {
@@ -18533,8 +18476,7 @@ var require_utils3 = __commonJS({
       }
       Object.defineProperty(o, k2, desc);
     } : function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       o[k2] = m[k];
     });
     var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
@@ -18543,24 +18485,21 @@ var require_utils3 = __commonJS({
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
-      if (mod && mod.__esModule)
-        return mod;
+      if (mod && mod.__esModule) return mod;
       var result = {};
       if (mod != null) {
-        for (var k in mod)
-          if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k))
-            __createBinding(result, mod, k);
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
       }
       __setModuleDefault(result, mod);
       return result;
     };
     var __awaiter = exports2 && exports2.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -18576,7 +18515,7 @@ var require_utils3 = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -18790,14 +18729,11 @@ var require_is_plain_object = __commonJS({
     }
     function isPlainObject(o) {
       var ctor, prot;
-      if (isObject(o) === false)
-        return false;
+      if (isObject(o) === false) return false;
       ctor = o.constructor;
-      if (ctor === void 0)
-        return true;
+      if (ctor === void 0) return true;
       prot = ctor.prototype;
-      if (isObject(prot) === false)
-        return false;
+      if (isObject(prot) === false) return false;
       if (prot.hasOwnProperty("isPrototypeOf") === false) {
         return false;
       }
@@ -19158,8 +19094,7 @@ var require_wrappy = __commonJS({
   "node_modules/wrappy/wrappy.js"(exports2, module2) {
     module2.exports = wrappy;
     function wrappy(fn, cb) {
-      if (fn && cb)
-        return wrappy(fn)(cb);
+      if (fn && cb) return wrappy(fn)(cb);
       if (typeof fn !== "function")
         throw new TypeError("need wrapper function");
       Object.keys(fn).forEach(function(k) {
@@ -19206,8 +19141,7 @@ var require_once = __commonJS({
     });
     function once(fn) {
       var f = function() {
-        if (f.called)
-          return f.value;
+        if (f.called) return f.value;
         f.called = true;
         return f.value = fn.apply(this, arguments);
       };
@@ -22252,8 +22186,7 @@ var require_utils4 = __commonJS({
   "node_modules/@actions/github/lib/utils.js"(exports2) {
     "use strict";
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
       if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
         desc = { enumerable: true, get: function() {
@@ -22262,8 +22195,7 @@ var require_utils4 = __commonJS({
       }
       Object.defineProperty(o, k2, desc);
     } : function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       o[k2] = m[k];
     });
     var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
@@ -22272,13 +22204,10 @@ var require_utils4 = __commonJS({
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
-      if (mod && mod.__esModule)
-        return mod;
+      if (mod && mod.__esModule) return mod;
       var result = {};
       if (mod != null) {
-        for (var k in mod)
-          if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k))
-            __createBinding(result, mod, k);
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
       }
       __setModuleDefault(result, mod);
       return result;
@@ -22317,8 +22246,7 @@ var require_github = __commonJS({
   "node_modules/@actions/github/lib/github.js"(exports2) {
     "use strict";
     var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
       if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
         desc = { enumerable: true, get: function() {
@@ -22327,8 +22255,7 @@ var require_github = __commonJS({
       }
       Object.defineProperty(o, k2, desc);
     } : function(o, m, k, k2) {
-      if (k2 === void 0)
-        k2 = k;
+      if (k2 === void 0) k2 = k;
       o[k2] = m[k];
     });
     var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
@@ -22337,13 +22264,10 @@ var require_github = __commonJS({
       o["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
-      if (mod && mod.__esModule)
-        return mod;
+      if (mod && mod.__esModule) return mod;
       var result = {};
       if (mod != null) {
-        for (var k in mod)
-          if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k))
-            __createBinding(result, mod, k);
+        for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
       }
       __setModuleDefault(result, mod);
       return result;
@@ -22361,550 +22285,173 @@ var require_github = __commonJS({
   }
 });
 
-// node_modules/conventional-commits-filter/index.js
-var require_conventional_commits_filter = __commonJS({
-  "node_modules/conventional-commits-filter/index.js"(exports2, module2) {
+// node_modules/array-ify/index.js
+var require_array_ify = __commonJS({
+  "node_modules/array-ify/index.js"(exports2, module2) {
     "use strict";
-    function isMatch(object, source) {
-      let aValue;
-      let bValue;
-      return Object.keys(source).every((key) => {
-        aValue = object[key];
-        bValue = source[key];
-        if (typeof aValue === "string") {
-          aValue = aValue.trim();
-        }
-        if (typeof bValue === "string") {
-          bValue = bValue.trim();
-        }
-        return aValue === bValue;
-      });
-    }
-    function findRevertCommit(commit, reverts) {
-      if (!reverts.size) {
-        return null;
-      }
-      const rawCommit = commit.raw || commit;
-      for (const revertCommit of reverts) {
-        if (revertCommit.revert && isMatch(rawCommit, revertCommit.revert)) {
-          return revertCommit;
-        }
-      }
-      return null;
-    }
-    function conventionalCommitsFilter(commits) {
-      if (!Array.isArray(commits)) {
-        throw new TypeError("Expected an array");
-      }
-      const result = [];
-      const hold = /* @__PURE__ */ new Set();
-      let holdRevertsCount = 0;
-      let revertCommit;
-      for (const commit of commits) {
-        revertCommit = findRevertCommit(commit, hold);
-        if (revertCommit) {
-          hold.delete(revertCommit);
-          holdRevertsCount--;
-          continue;
-        }
-        if (commit.revert) {
-          hold.add(commit);
-          holdRevertsCount++;
-          continue;
-        }
-        if (holdRevertsCount > 0) {
-          hold.add(commit);
-        } else {
-          result.push(commit);
-        }
-      }
-      if (hold.size) {
-        for (const commit of hold) {
-          result.push(commit);
-        }
-      }
-      return result;
-    }
-    module2.exports = conventionalCommitsFilter;
-  }
-});
-
-// node_modules/conventional-commits-parser/lib/parser.js
-var require_parser = __commonJS({
-  "node_modules/conventional-commits-parser/lib/parser.js"(exports2, module2) {
-    "use strict";
-    var CATCH_ALL = /()(.+)/gi;
-    var SCISSOR = "# ------------------------ >8 ------------------------";
-    function trimOffNewlines(input) {
-      const result = input.match(/[^\r\n]/);
-      if (!result) {
-        return "";
-      }
-      const firstIndex = result.index;
-      let lastIndex = input.length - 1;
-      while (input[lastIndex] === "\r" || input[lastIndex] === "\n") {
-        lastIndex--;
-      }
-      return input.substring(firstIndex, lastIndex + 1);
-    }
-    function append(src, line) {
-      if (src) {
-        src += "\n" + line;
-      } else {
-        src = line;
-      }
-      return src;
-    }
-    function getCommentFilter(char) {
-      return function(line) {
-        return line.charAt(0) !== char;
-      };
-    }
-    function truncateToScissor(lines) {
-      const scissorIndex = lines.indexOf(SCISSOR);
-      if (scissorIndex === -1) {
-        return lines;
-      }
-      return lines.slice(0, scissorIndex);
-    }
-    function getReferences(input, regex) {
-      const references = [];
-      let referenceSentences;
-      let referenceMatch;
-      const reApplicable = input.match(regex.references) !== null ? regex.references : CATCH_ALL;
-      while (referenceSentences = reApplicable.exec(input)) {
-        const action = referenceSentences[1] || null;
-        const sentence = referenceSentences[2];
-        while (referenceMatch = regex.referenceParts.exec(sentence)) {
-          let owner = null;
-          let repository = referenceMatch[1] || "";
-          const ownerRepo = repository.split("/");
-          if (ownerRepo.length > 1) {
-            owner = ownerRepo.shift();
-            repository = ownerRepo.join("/");
-          }
-          const reference = {
-            action,
-            owner,
-            repository: repository || null,
-            issue: referenceMatch[3],
-            raw: referenceMatch[0],
-            prefix: referenceMatch[2]
-          };
-          references.push(reference);
-        }
-      }
-      return references;
-    }
-    function passTrough() {
-      return true;
-    }
-    function parser(raw, options, regex) {
-      if (!raw || !raw.trim()) {
-        throw new TypeError("Expected a raw commit");
-      }
-      if (!options || typeof options === "object" && !Object.keys(options).length) {
-        throw new TypeError("Expected options");
-      }
-      if (!regex) {
-        throw new TypeError("Expected regex");
-      }
-      let currentProcessedField;
-      let mentionsMatch;
-      const otherFields = {};
-      const commentFilter = typeof options.commentChar === "string" ? getCommentFilter(options.commentChar) : passTrough;
-      const gpgFilter = (line) => !line.match(/^\s*gpg:/);
-      const rawLines = trimOffNewlines(raw).split(/\r?\n/);
-      const lines = truncateToScissor(rawLines).filter(commentFilter).filter(gpgFilter);
-      let continueNote = false;
-      let isBody = true;
-      const headerCorrespondence = options.headerCorrespondence?.map(function(part) {
-        return part.trim();
-      }) || [];
-      const revertCorrespondence = options.revertCorrespondence?.map(function(field) {
-        return field.trim();
-      }) || [];
-      const mergeCorrespondence = options.mergeCorrespondence?.map(function(field) {
-        return field.trim();
-      }) || [];
-      let body = null;
-      let footer = null;
-      let header = null;
-      const mentions = [];
-      let merge = null;
-      const notes = [];
-      const references = [];
-      let revert = null;
-      if (lines.length === 0) {
-        return {
-          body,
-          footer,
-          header,
-          mentions,
-          merge,
-          notes,
-          references,
-          revert,
-          scope: null,
-          subject: null,
-          type: null
-        };
-      }
-      merge = lines.shift();
-      const mergeParts = {};
-      const headerParts = {};
-      body = "";
-      footer = "";
-      const mergeMatch = merge.match(options.mergePattern);
-      if (mergeMatch && options.mergePattern) {
-        merge = mergeMatch[0];
-        header = lines.shift();
-        while (header !== void 0 && !header.trim()) {
-          header = lines.shift();
-        }
-        if (!header) {
-          header = "";
-        }
-        mergeCorrespondence.forEach(function(partName, index) {
-          const partValue = mergeMatch[index + 1] || null;
-          mergeParts[partName] = partValue;
-        });
-      } else {
-        header = merge;
-        merge = null;
-        mergeCorrespondence.forEach(function(partName) {
-          mergeParts[partName] = null;
-        });
-      }
-      const headerMatch = header.match(options.headerPattern);
-      if (headerMatch) {
-        headerCorrespondence.forEach(function(partName, index) {
-          const partValue = headerMatch[index + 1] || null;
-          headerParts[partName] = partValue;
-        });
-      } else {
-        headerCorrespondence.forEach(function(partName) {
-          headerParts[partName] = null;
-        });
-      }
-      references.push(...getReferences(header, {
-        references: regex.references,
-        referenceParts: regex.referenceParts
-      }));
-      lines.forEach(function(line) {
-        if (options.fieldPattern) {
-          const fieldMatch = options.fieldPattern.exec(line);
-          if (fieldMatch) {
-            currentProcessedField = fieldMatch[1];
-            return;
-          }
-          if (currentProcessedField) {
-            otherFields[currentProcessedField] = append(otherFields[currentProcessedField], line);
-            return;
-          }
-        }
-        let referenceMatched;
-        const notesMatch = line.match(regex.notes);
-        if (notesMatch) {
-          continueNote = true;
-          isBody = false;
-          footer = append(footer, line);
-          const note = {
-            title: notesMatch[1],
-            text: notesMatch[2]
-          };
-          notes.push(note);
-          return;
-        }
-        const lineReferences = getReferences(line, {
-          references: regex.references,
-          referenceParts: regex.referenceParts
-        });
-        if (lineReferences.length > 0) {
-          isBody = false;
-          referenceMatched = true;
-          continueNote = false;
-        }
-        Array.prototype.push.apply(references, lineReferences);
-        if (referenceMatched) {
-          footer = append(footer, line);
-          return;
-        }
-        if (continueNote) {
-          notes[notes.length - 1].text = append(notes[notes.length - 1].text, line);
-          footer = append(footer, line);
-          return;
-        }
-        if (isBody) {
-          body = append(body, line);
-        } else {
-          footer = append(footer, line);
-        }
-      });
-      if (options.breakingHeaderPattern && notes.length === 0) {
-        const breakingHeader = header.match(options.breakingHeaderPattern);
-        if (breakingHeader) {
-          const noteText = breakingHeader[3];
-          notes.push({
-            title: "BREAKING CHANGE",
-            text: noteText
-          });
-        }
-      }
-      while (mentionsMatch = regex.mentions.exec(raw)) {
-        mentions.push(mentionsMatch[1]);
-      }
-      const revertMatch = raw.match(options.revertPattern);
-      if (revertMatch) {
-        revert = {};
-        revertCorrespondence.forEach(function(partName, index) {
-          const partValue = revertMatch[index + 1] || null;
-          revert[partName] = partValue;
-        });
-      } else {
-        revert = null;
-      }
-      notes.forEach(function(note) {
-        note.text = trimOffNewlines(note.text);
-      });
-      const msg = {
-        ...headerParts,
-        ...mergeParts,
-        merge,
-        header,
-        body: body ? trimOffNewlines(body) : null,
-        footer: footer ? trimOffNewlines(footer) : null,
-        notes,
-        references,
-        mentions,
-        revert,
-        ...otherFields
-      };
-      return msg;
-    }
-    module2.exports = parser;
-  }
-});
-
-// node_modules/conventional-commits-parser/lib/regex.js
-var require_regex = __commonJS({
-  "node_modules/conventional-commits-parser/lib/regex.js"(exports2, module2) {
-    "use strict";
-    var reNomatch = /(?!.*)/;
-    function join(array, joiner) {
-      return array.map(function(val) {
-        return val.trim();
-      }).filter(function(val) {
-        return val.length;
-      }).join(joiner);
-    }
-    function getNotesRegex(noteKeywords, notesPattern) {
-      if (!noteKeywords) {
-        return reNomatch;
-      }
-      const noteKeywordsSelection = join(noteKeywords, "|");
-      if (!notesPattern) {
-        return new RegExp("^[\\s|*]*(" + noteKeywordsSelection + ")[:\\s]+(.*)", "i");
-      }
-      return notesPattern(noteKeywordsSelection);
-    }
-    function getReferencePartsRegex(issuePrefixes, issuePrefixesCaseSensitive) {
-      if (!issuePrefixes) {
-        return reNomatch;
-      }
-      const flags = issuePrefixesCaseSensitive ? "g" : "gi";
-      return new RegExp("(?:.*?)??\\s*([\\w-\\.\\/]*?)??(" + join(issuePrefixes, "|") + ")([\\w-]*\\d+)", flags);
-    }
-    function getReferencesRegex(referenceActions) {
-      if (!referenceActions) {
-        return /()(.+)/gi;
-      }
-      const joinedKeywords = join(referenceActions, "|");
-      return new RegExp("(" + joinedKeywords + ")(?:\\s+(.*?))(?=(?:" + joinedKeywords + ")|$)", "gi");
-    }
-    module2.exports = function(options) {
-      options = options || {};
-      const reNotes = getNotesRegex(options.noteKeywords, options.notesPattern);
-      const reReferenceParts = getReferencePartsRegex(options.issuePrefixes, options.issuePrefixesCaseSensitive);
-      const reReferences = getReferencesRegex(options.referenceActions);
-      return {
-        notes: reNotes,
-        referenceParts: reReferenceParts,
-        references: reReferences,
-        mentions: /@([\w-]+)/g
-      };
+    module2.exports = function(val) {
+      return Array.isArray(val) ? val : [val];
     };
   }
 });
 
-// node_modules/conventional-commits-parser/index.js
-var require_conventional_commits_parser = __commonJS({
-  "node_modules/conventional-commits-parser/index.js"(exports2, module2) {
+// node_modules/is-obj/index.js
+var require_is_obj = __commonJS({
+  "node_modules/is-obj/index.js"(exports2, module2) {
     "use strict";
-    var { Transform } = require("stream");
-    var parser = require_parser();
-    var regex = require_regex();
-    function assignOpts(options) {
-      options = {
-        headerPattern: /^(\w*)(?:\(([\w$.\-*/ ]*)\))?: (.*)$/,
-        headerCorrespondence: ["type", "scope", "subject"],
-        referenceActions: [
-          "close",
-          "closes",
-          "closed",
-          "fix",
-          "fixes",
-          "fixed",
-          "resolve",
-          "resolves",
-          "resolved"
-        ],
-        issuePrefixes: ["#"],
-        noteKeywords: ["BREAKING CHANGE", "BREAKING-CHANGE"],
-        fieldPattern: /^-(.*?)-$/,
-        revertPattern: /^Revert\s"([\s\S]*)"\s*This reverts commit (\w*)\./,
-        revertCorrespondence: ["header", "hash"],
-        warn: function() {
-        },
-        mergePattern: null,
-        mergeCorrespondence: null,
-        ...options
-      };
-      if (typeof options.headerPattern === "string") {
-        options.headerPattern = new RegExp(options.headerPattern);
-      }
-      if (typeof options.headerCorrespondence === "string") {
-        options.headerCorrespondence = options.headerCorrespondence.split(",");
-      }
-      if (typeof options.referenceActions === "string") {
-        options.referenceActions = options.referenceActions.split(",");
-      }
-      if (typeof options.issuePrefixes === "string") {
-        options.issuePrefixes = options.issuePrefixes.split(",");
-      }
-      if (typeof options.noteKeywords === "string") {
-        options.noteKeywords = options.noteKeywords.split(",");
-      }
-      if (typeof options.fieldPattern === "string") {
-        options.fieldPattern = new RegExp(options.fieldPattern);
-      }
-      if (typeof options.revertPattern === "string") {
-        options.revertPattern = new RegExp(options.revertPattern);
-      }
-      if (typeof options.revertCorrespondence === "string") {
-        options.revertCorrespondence = options.revertCorrespondence.split(",");
-      }
-      if (typeof options.mergePattern === "string") {
-        options.mergePattern = new RegExp(options.mergePattern);
-      }
-      return options;
-    }
-    function conventionalCommitsParser(options) {
-      options = assignOpts(options);
-      const reg = regex(options);
-      return new Transform({
-        objectMode: true,
-        highWaterMark: 16,
-        transform(data, enc, cb) {
-          let commit;
-          try {
-            commit = parser(data.toString(), options, reg);
-            cb(null, commit);
-          } catch (err) {
-            if (options.warn === true) {
-              cb(err);
-            } else {
-              options.warn(err.toString());
-              cb(null, "");
-            }
-          }
-        }
-      });
-    }
-    function sync(commit, options) {
-      options = assignOpts(options);
-      const reg = regex(options);
-      return parser(commit, options, reg);
-    }
-    module2.exports = conventionalCommitsParser;
-    module2.exports.sync = sync;
+    module2.exports = (value) => {
+      const type = typeof value;
+      return value !== null && (type === "object" || type === "function");
+    };
   }
 });
 
-// node_modules/conventional-changelog-preset-loader/index.js
-var require_conventional_changelog_preset_loader = __commonJS({
-  "node_modules/conventional-changelog-preset-loader/index.js"(exports2, module2) {
+// node_modules/dot-prop/index.js
+var require_dot_prop = __commonJS({
+  "node_modules/dot-prop/index.js"(exports2, module2) {
     "use strict";
-    var path = require("path");
-    module2.exports.loadPreset = createPresetLoader((preset) => import(preset));
-    module2.exports.createPresetLoader = createPresetLoader;
-    function resolvePresetNameVariants(preset) {
-      if (path.isAbsolute(preset)) {
-        return [preset];
-      }
-      let scope = "";
-      let name = preset.toLocaleLowerCase();
-      if (preset[0] === "@") {
-        const parts = preset.split("/");
-        scope = parts.shift() + "/";
-        if (scope === "@conventional-changelog/") {
-          return [preset];
+    var isObj = require_is_obj();
+    var disallowedKeys = [
+      "__proto__",
+      "prototype",
+      "constructor"
+    ];
+    var isValidPath = (pathSegments) => !pathSegments.some((segment) => disallowedKeys.includes(segment));
+    function getPathSegments(path2) {
+      const pathArray = path2.split(".");
+      const parts = [];
+      for (let i = 0; i < pathArray.length; i++) {
+        let p = pathArray[i];
+        while (p[p.length - 1] === "\\" && pathArray[i + 1] !== void 0) {
+          p = p.slice(0, -1) + ".";
+          p += pathArray[++i];
         }
-        name = parts.join("/");
+        parts.push(p);
       }
-      if (!name.startsWith("conventional-changelog-")) {
-        name = `conventional-changelog-${name}`;
+      if (!isValidPath(parts)) {
+        return [];
       }
-      const altPreset = `${scope}${name}`;
-      if (altPreset !== preset) {
-        return [altPreset, preset];
-      }
-      return [preset];
+      return parts;
     }
-    async function loadWithFallbacks(moduleLoader, variants) {
-      let error = null;
-      for (const variant of variants) {
-        try {
-          return await moduleLoader(variant);
-        } catch (err) {
-          if (!error) {
-            error = err;
+    module2.exports = {
+      get(object, path2, value) {
+        if (!isObj(object) || typeof path2 !== "string") {
+          return value === void 0 ? object : value;
+        }
+        const pathArray = getPathSegments(path2);
+        if (pathArray.length === 0) {
+          return;
+        }
+        for (let i = 0; i < pathArray.length; i++) {
+          if (!Object.prototype.propertyIsEnumerable.call(object, pathArray[i])) {
+            return value;
+          }
+          object = object[pathArray[i]];
+          if (object === void 0 || object === null) {
+            if (i !== pathArray.length - 1) {
+              return value;
+            }
+            break;
           }
         }
+        return object;
+      },
+      set(object, path2, value) {
+        if (!isObj(object) || typeof path2 !== "string") {
+          return object;
+        }
+        const root = object;
+        const pathArray = getPathSegments(path2);
+        for (let i = 0; i < pathArray.length; i++) {
+          const p = pathArray[i];
+          if (!isObj(object[p])) {
+            object[p] = {};
+          }
+          if (i === pathArray.length - 1) {
+            object[p] = value;
+          }
+          object = object[p];
+        }
+        return root;
+      },
+      delete(object, path2) {
+        if (!isObj(object) || typeof path2 !== "string") {
+          return false;
+        }
+        const pathArray = getPathSegments(path2);
+        for (let i = 0; i < pathArray.length; i++) {
+          const p = pathArray[i];
+          if (i === pathArray.length - 1) {
+            delete object[p];
+            return true;
+          }
+          object = object[p];
+          if (!isObj(object)) {
+            return false;
+          }
+        }
+      },
+      has(object, path2) {
+        if (!isObj(object) || typeof path2 !== "string") {
+          return false;
+        }
+        const pathArray = getPathSegments(path2);
+        if (pathArray.length === 0) {
+          return false;
+        }
+        for (let i = 0; i < pathArray.length; i++) {
+          if (isObj(object)) {
+            if (!(pathArray[i] in object)) {
+              return false;
+            }
+            object = object[pathArray[i]];
+          } else {
+            return false;
+          }
+        }
+        return true;
       }
-      throw error;
-    }
-    function getModuleDefaultExport(module3) {
-      if ((module3.__esModule || Object.getPrototypeOf(module3) === null) && module3.default) {
-        return module3.default;
-      }
-      return module3;
-    }
-    function createPresetLoader(moduleLoader) {
-      return async function loadPreset(presetOrParams) {
-        let preset = "";
-        let params = null;
-        if (typeof presetOrParams === "string") {
-          preset = presetOrParams;
-        } else if (typeof presetOrParams === "object" && typeof presetOrParams.name === "string") {
-          preset = presetOrParams.name;
-          params = presetOrParams;
-        } else {
-          throw Error("Preset must be string or object with property `name`");
-        }
-        const presetNameVariants = resolvePresetNameVariants(preset);
-        let createPreset = null;
-        try {
-          createPreset = getModuleDefaultExport(await loadWithFallbacks(moduleLoader, presetNameVariants));
-        } catch (err) {
-          throw Error(`Unable to load the "${preset}" preset. Please make sure it's installed.`, { cause: err });
-        }
-        if (typeof createPreset !== "function") {
-          throw Error(`The "${preset}" preset does not export a function. Maybe you are using an old version of the preset. Please upgrade.`);
-        }
-        return params ? await createPreset(params) : await createPreset();
+    };
+  }
+});
+
+// node_modules/compare-func/index.js
+var require_compare_func = __commonJS({
+  "node_modules/compare-func/index.js"(exports2, module2) {
+    "use strict";
+    var arrayify = require_array_ify();
+    var dotPropGet = require_dot_prop().get;
+    function compareFunc2(prop) {
+      return function(a, b) {
+        var ret = 0;
+        arrayify(prop).some(function(el) {
+          var x;
+          var y;
+          if (typeof el === "function") {
+            x = el(a);
+            y = el(b);
+          } else if (typeof el === "string") {
+            x = dotPropGet(a, el);
+            y = dotPropGet(b, el);
+          } else {
+            x = a;
+            y = b;
+          }
+          if (x === y) {
+            ret = 0;
+            return;
+          }
+          if (typeof x === "string" && typeof y === "string") {
+            ret = x.localeCompare(y);
+            return ret !== 0;
+          }
+          ret = x < y ? -1 : 1;
+          return true;
+        });
+        return ret;
       };
     }
+    module2.exports = compareFunc2;
   }
 });
 
@@ -23200,7 +22747,7 @@ var require_semver = __commonJS({
         do {
           const a = this.build[i];
           const b = other.build[i];
-          debug("prerelease compare", i, a, b);
+          debug("build compare", i, a, b);
           if (a === void 0 && b === void 0) {
             return 0;
           } else if (b === void 0) {
@@ -23643,682 +23190,66 @@ var require_coerce = __commonJS({
         return null;
       }
       options = options || {};
-      let match2 = null;
+      let match = null;
       if (!options.rtl) {
-        match2 = version2.match(options.includePrerelease ? re[t.COERCEFULL] : re[t.COERCE]);
+        match = version2.match(options.includePrerelease ? re[t.COERCEFULL] : re[t.COERCE]);
       } else {
         const coerceRtlRegex = options.includePrerelease ? re[t.COERCERTLFULL] : re[t.COERCERTL];
         let next;
-        while ((next = coerceRtlRegex.exec(version2)) && (!match2 || match2.index + match2[0].length !== version2.length)) {
-          if (!match2 || next.index + next[0].length !== match2.index + match2[0].length) {
-            match2 = next;
+        while ((next = coerceRtlRegex.exec(version2)) && (!match || match.index + match[0].length !== version2.length)) {
+          if (!match || next.index + next[0].length !== match.index + match[0].length) {
+            match = next;
           }
           coerceRtlRegex.lastIndex = next.index + next[1].length + next[2].length;
         }
         coerceRtlRegex.lastIndex = -1;
       }
-      if (match2 === null) {
+      if (match === null) {
         return null;
       }
-      const major = match2[2];
-      const minor = match2[3] || "0";
-      const patch = match2[4] || "0";
-      const prerelease = options.includePrerelease && match2[5] ? `-${match2[5]}` : "";
-      const build = options.includePrerelease && match2[6] ? `+${match2[6]}` : "";
+      const major = match[2];
+      const minor = match[3] || "0";
+      const patch = match[4] || "0";
+      const prerelease = options.includePrerelease && match[5] ? `-${match[5]}` : "";
+      const build = options.includePrerelease && match[6] ? `+${match[6]}` : "";
       return parse2(`${major}.${minor}.${patch}${prerelease}${build}`, options);
     };
     module2.exports = coerce;
   }
 });
 
-// node_modules/yallist/iterator.js
-var require_iterator = __commonJS({
-  "node_modules/yallist/iterator.js"(exports2, module2) {
-    "use strict";
-    module2.exports = function(Yallist) {
-      Yallist.prototype[Symbol.iterator] = function* () {
-        for (let walker = this.head; walker; walker = walker.next) {
-          yield walker.value;
-        }
-      };
-    };
-  }
-});
-
-// node_modules/yallist/yallist.js
-var require_yallist = __commonJS({
-  "node_modules/yallist/yallist.js"(exports2, module2) {
-    "use strict";
-    module2.exports = Yallist;
-    Yallist.Node = Node;
-    Yallist.create = Yallist;
-    function Yallist(list) {
-      var self = this;
-      if (!(self instanceof Yallist)) {
-        self = new Yallist();
-      }
-      self.tail = null;
-      self.head = null;
-      self.length = 0;
-      if (list && typeof list.forEach === "function") {
-        list.forEach(function(item) {
-          self.push(item);
-        });
-      } else if (arguments.length > 0) {
-        for (var i = 0, l = arguments.length; i < l; i++) {
-          self.push(arguments[i]);
-        }
-      }
-      return self;
-    }
-    Yallist.prototype.removeNode = function(node) {
-      if (node.list !== this) {
-        throw new Error("removing node which does not belong to this list");
-      }
-      var next = node.next;
-      var prev = node.prev;
-      if (next) {
-        next.prev = prev;
-      }
-      if (prev) {
-        prev.next = next;
-      }
-      if (node === this.head) {
-        this.head = next;
-      }
-      if (node === this.tail) {
-        this.tail = prev;
-      }
-      node.list.length--;
-      node.next = null;
-      node.prev = null;
-      node.list = null;
-      return next;
-    };
-    Yallist.prototype.unshiftNode = function(node) {
-      if (node === this.head) {
-        return;
-      }
-      if (node.list) {
-        node.list.removeNode(node);
-      }
-      var head = this.head;
-      node.list = this;
-      node.next = head;
-      if (head) {
-        head.prev = node;
-      }
-      this.head = node;
-      if (!this.tail) {
-        this.tail = node;
-      }
-      this.length++;
-    };
-    Yallist.prototype.pushNode = function(node) {
-      if (node === this.tail) {
-        return;
-      }
-      if (node.list) {
-        node.list.removeNode(node);
-      }
-      var tail = this.tail;
-      node.list = this;
-      node.prev = tail;
-      if (tail) {
-        tail.next = node;
-      }
-      this.tail = node;
-      if (!this.head) {
-        this.head = node;
-      }
-      this.length++;
-    };
-    Yallist.prototype.push = function() {
-      for (var i = 0, l = arguments.length; i < l; i++) {
-        push(this, arguments[i]);
-      }
-      return this.length;
-    };
-    Yallist.prototype.unshift = function() {
-      for (var i = 0, l = arguments.length; i < l; i++) {
-        unshift(this, arguments[i]);
-      }
-      return this.length;
-    };
-    Yallist.prototype.pop = function() {
-      if (!this.tail) {
-        return void 0;
-      }
-      var res = this.tail.value;
-      this.tail = this.tail.prev;
-      if (this.tail) {
-        this.tail.next = null;
-      } else {
-        this.head = null;
-      }
-      this.length--;
-      return res;
-    };
-    Yallist.prototype.shift = function() {
-      if (!this.head) {
-        return void 0;
-      }
-      var res = this.head.value;
-      this.head = this.head.next;
-      if (this.head) {
-        this.head.prev = null;
-      } else {
-        this.tail = null;
-      }
-      this.length--;
-      return res;
-    };
-    Yallist.prototype.forEach = function(fn, thisp) {
-      thisp = thisp || this;
-      for (var walker = this.head, i = 0; walker !== null; i++) {
-        fn.call(thisp, walker.value, i, this);
-        walker = walker.next;
-      }
-    };
-    Yallist.prototype.forEachReverse = function(fn, thisp) {
-      thisp = thisp || this;
-      for (var walker = this.tail, i = this.length - 1; walker !== null; i--) {
-        fn.call(thisp, walker.value, i, this);
-        walker = walker.prev;
-      }
-    };
-    Yallist.prototype.get = function(n) {
-      for (var i = 0, walker = this.head; walker !== null && i < n; i++) {
-        walker = walker.next;
-      }
-      if (i === n && walker !== null) {
-        return walker.value;
-      }
-    };
-    Yallist.prototype.getReverse = function(n) {
-      for (var i = 0, walker = this.tail; walker !== null && i < n; i++) {
-        walker = walker.prev;
-      }
-      if (i === n && walker !== null) {
-        return walker.value;
-      }
-    };
-    Yallist.prototype.map = function(fn, thisp) {
-      thisp = thisp || this;
-      var res = new Yallist();
-      for (var walker = this.head; walker !== null; ) {
-        res.push(fn.call(thisp, walker.value, this));
-        walker = walker.next;
-      }
-      return res;
-    };
-    Yallist.prototype.mapReverse = function(fn, thisp) {
-      thisp = thisp || this;
-      var res = new Yallist();
-      for (var walker = this.tail; walker !== null; ) {
-        res.push(fn.call(thisp, walker.value, this));
-        walker = walker.prev;
-      }
-      return res;
-    };
-    Yallist.prototype.reduce = function(fn, initial) {
-      var acc;
-      var walker = this.head;
-      if (arguments.length > 1) {
-        acc = initial;
-      } else if (this.head) {
-        walker = this.head.next;
-        acc = this.head.value;
-      } else {
-        throw new TypeError("Reduce of empty list with no initial value");
-      }
-      for (var i = 0; walker !== null; i++) {
-        acc = fn(acc, walker.value, i);
-        walker = walker.next;
-      }
-      return acc;
-    };
-    Yallist.prototype.reduceReverse = function(fn, initial) {
-      var acc;
-      var walker = this.tail;
-      if (arguments.length > 1) {
-        acc = initial;
-      } else if (this.tail) {
-        walker = this.tail.prev;
-        acc = this.tail.value;
-      } else {
-        throw new TypeError("Reduce of empty list with no initial value");
-      }
-      for (var i = this.length - 1; walker !== null; i--) {
-        acc = fn(acc, walker.value, i);
-        walker = walker.prev;
-      }
-      return acc;
-    };
-    Yallist.prototype.toArray = function() {
-      var arr = new Array(this.length);
-      for (var i = 0, walker = this.head; walker !== null; i++) {
-        arr[i] = walker.value;
-        walker = walker.next;
-      }
-      return arr;
-    };
-    Yallist.prototype.toArrayReverse = function() {
-      var arr = new Array(this.length);
-      for (var i = 0, walker = this.tail; walker !== null; i++) {
-        arr[i] = walker.value;
-        walker = walker.prev;
-      }
-      return arr;
-    };
-    Yallist.prototype.slice = function(from, to) {
-      to = to || this.length;
-      if (to < 0) {
-        to += this.length;
-      }
-      from = from || 0;
-      if (from < 0) {
-        from += this.length;
-      }
-      var ret = new Yallist();
-      if (to < from || to < 0) {
-        return ret;
-      }
-      if (from < 0) {
-        from = 0;
-      }
-      if (to > this.length) {
-        to = this.length;
-      }
-      for (var i = 0, walker = this.head; walker !== null && i < from; i++) {
-        walker = walker.next;
-      }
-      for (; walker !== null && i < to; i++, walker = walker.next) {
-        ret.push(walker.value);
-      }
-      return ret;
-    };
-    Yallist.prototype.sliceReverse = function(from, to) {
-      to = to || this.length;
-      if (to < 0) {
-        to += this.length;
-      }
-      from = from || 0;
-      if (from < 0) {
-        from += this.length;
-      }
-      var ret = new Yallist();
-      if (to < from || to < 0) {
-        return ret;
-      }
-      if (from < 0) {
-        from = 0;
-      }
-      if (to > this.length) {
-        to = this.length;
-      }
-      for (var i = this.length, walker = this.tail; walker !== null && i > to; i--) {
-        walker = walker.prev;
-      }
-      for (; walker !== null && i > from; i--, walker = walker.prev) {
-        ret.push(walker.value);
-      }
-      return ret;
-    };
-    Yallist.prototype.splice = function(start, deleteCount, ...nodes) {
-      if (start > this.length) {
-        start = this.length - 1;
-      }
-      if (start < 0) {
-        start = this.length + start;
-      }
-      for (var i = 0, walker = this.head; walker !== null && i < start; i++) {
-        walker = walker.next;
-      }
-      var ret = [];
-      for (var i = 0; walker && i < deleteCount; i++) {
-        ret.push(walker.value);
-        walker = this.removeNode(walker);
-      }
-      if (walker === null) {
-        walker = this.tail;
-      }
-      if (walker !== this.head && walker !== this.tail) {
-        walker = walker.prev;
-      }
-      for (var i = 0; i < nodes.length; i++) {
-        walker = insert(this, walker, nodes[i]);
-      }
-      return ret;
-    };
-    Yallist.prototype.reverse = function() {
-      var head = this.head;
-      var tail = this.tail;
-      for (var walker = head; walker !== null; walker = walker.prev) {
-        var p = walker.prev;
-        walker.prev = walker.next;
-        walker.next = p;
-      }
-      this.head = tail;
-      this.tail = head;
-      return this;
-    };
-    function insert(self, node, value) {
-      var inserted = node === self.head ? new Node(value, null, node, self) : new Node(value, node, node.next, self);
-      if (inserted.next === null) {
-        self.tail = inserted;
-      }
-      if (inserted.prev === null) {
-        self.head = inserted;
-      }
-      self.length++;
-      return inserted;
-    }
-    function push(self, item) {
-      self.tail = new Node(item, self.tail, null, self);
-      if (!self.head) {
-        self.head = self.tail;
-      }
-      self.length++;
-    }
-    function unshift(self, item) {
-      self.head = new Node(item, null, self.head, self);
-      if (!self.tail) {
-        self.tail = self.head;
-      }
-      self.length++;
-    }
-    function Node(value, prev, next, list) {
-      if (!(this instanceof Node)) {
-        return new Node(value, prev, next, list);
-      }
-      this.list = list;
-      this.value = value;
-      if (prev) {
-        prev.next = this;
-        this.prev = prev;
-      } else {
-        this.prev = null;
-      }
-      if (next) {
-        next.prev = this;
-        this.next = next;
-      } else {
-        this.next = null;
-      }
-    }
-    try {
-      require_iterator()(Yallist);
-    } catch (er) {
-    }
-  }
-});
-
-// node_modules/lru-cache/index.js
-var require_lru_cache = __commonJS({
-  "node_modules/lru-cache/index.js"(exports2, module2) {
-    "use strict";
-    var Yallist = require_yallist();
-    var MAX = Symbol("max");
-    var LENGTH = Symbol("length");
-    var LENGTH_CALCULATOR = Symbol("lengthCalculator");
-    var ALLOW_STALE = Symbol("allowStale");
-    var MAX_AGE = Symbol("maxAge");
-    var DISPOSE = Symbol("dispose");
-    var NO_DISPOSE_ON_SET = Symbol("noDisposeOnSet");
-    var LRU_LIST = Symbol("lruList");
-    var CACHE = Symbol("cache");
-    var UPDATE_AGE_ON_GET = Symbol("updateAgeOnGet");
-    var naiveLength = () => 1;
+// node_modules/semver/internal/lrucache.js
+var require_lrucache = __commonJS({
+  "node_modules/semver/internal/lrucache.js"(exports2, module2) {
     var LRUCache = class {
-      constructor(options) {
-        if (typeof options === "number")
-          options = { max: options };
-        if (!options)
-          options = {};
-        if (options.max && (typeof options.max !== "number" || options.max < 0))
-          throw new TypeError("max must be a non-negative number");
-        const max = this[MAX] = options.max || Infinity;
-        const lc = options.length || naiveLength;
-        this[LENGTH_CALCULATOR] = typeof lc !== "function" ? naiveLength : lc;
-        this[ALLOW_STALE] = options.stale || false;
-        if (options.maxAge && typeof options.maxAge !== "number")
-          throw new TypeError("maxAge must be a number");
-        this[MAX_AGE] = options.maxAge || 0;
-        this[DISPOSE] = options.dispose;
-        this[NO_DISPOSE_ON_SET] = options.noDisposeOnSet || false;
-        this[UPDATE_AGE_ON_GET] = options.updateAgeOnGet || false;
-        this.reset();
-      }
-      // resize the cache when the max changes.
-      set max(mL) {
-        if (typeof mL !== "number" || mL < 0)
-          throw new TypeError("max must be a non-negative number");
-        this[MAX] = mL || Infinity;
-        trim(this);
-      }
-      get max() {
-        return this[MAX];
-      }
-      set allowStale(allowStale) {
-        this[ALLOW_STALE] = !!allowStale;
-      }
-      get allowStale() {
-        return this[ALLOW_STALE];
-      }
-      set maxAge(mA) {
-        if (typeof mA !== "number")
-          throw new TypeError("maxAge must be a non-negative number");
-        this[MAX_AGE] = mA;
-        trim(this);
-      }
-      get maxAge() {
-        return this[MAX_AGE];
-      }
-      // resize the cache when the lengthCalculator changes.
-      set lengthCalculator(lC) {
-        if (typeof lC !== "function")
-          lC = naiveLength;
-        if (lC !== this[LENGTH_CALCULATOR]) {
-          this[LENGTH_CALCULATOR] = lC;
-          this[LENGTH] = 0;
-          this[LRU_LIST].forEach((hit) => {
-            hit.length = this[LENGTH_CALCULATOR](hit.value, hit.key);
-            this[LENGTH] += hit.length;
-          });
-        }
-        trim(this);
-      }
-      get lengthCalculator() {
-        return this[LENGTH_CALCULATOR];
-      }
-      get length() {
-        return this[LENGTH];
-      }
-      get itemCount() {
-        return this[LRU_LIST].length;
-      }
-      rforEach(fn, thisp) {
-        thisp = thisp || this;
-        for (let walker = this[LRU_LIST].tail; walker !== null; ) {
-          const prev = walker.prev;
-          forEachStep(this, fn, walker, thisp);
-          walker = prev;
-        }
-      }
-      forEach(fn, thisp) {
-        thisp = thisp || this;
-        for (let walker = this[LRU_LIST].head; walker !== null; ) {
-          const next = walker.next;
-          forEachStep(this, fn, walker, thisp);
-          walker = next;
-        }
-      }
-      keys() {
-        return this[LRU_LIST].toArray().map((k) => k.key);
-      }
-      values() {
-        return this[LRU_LIST].toArray().map((k) => k.value);
-      }
-      reset() {
-        if (this[DISPOSE] && this[LRU_LIST] && this[LRU_LIST].length) {
-          this[LRU_LIST].forEach((hit) => this[DISPOSE](hit.key, hit.value));
-        }
-        this[CACHE] = /* @__PURE__ */ new Map();
-        this[LRU_LIST] = new Yallist();
-        this[LENGTH] = 0;
-      }
-      dump() {
-        return this[LRU_LIST].map((hit) => isStale(this, hit) ? false : {
-          k: hit.key,
-          v: hit.value,
-          e: hit.now + (hit.maxAge || 0)
-        }).toArray().filter((h) => h);
-      }
-      dumpLru() {
-        return this[LRU_LIST];
-      }
-      set(key, value, maxAge) {
-        maxAge = maxAge || this[MAX_AGE];
-        if (maxAge && typeof maxAge !== "number")
-          throw new TypeError("maxAge must be a number");
-        const now = maxAge ? Date.now() : 0;
-        const len = this[LENGTH_CALCULATOR](value, key);
-        if (this[CACHE].has(key)) {
-          if (len > this[MAX]) {
-            del(this, this[CACHE].get(key));
-            return false;
-          }
-          const node = this[CACHE].get(key);
-          const item = node.value;
-          if (this[DISPOSE]) {
-            if (!this[NO_DISPOSE_ON_SET])
-              this[DISPOSE](key, item.value);
-          }
-          item.now = now;
-          item.maxAge = maxAge;
-          item.value = value;
-          this[LENGTH] += len - item.length;
-          item.length = len;
-          this.get(key);
-          trim(this);
-          return true;
-        }
-        const hit = new Entry(key, value, len, now, maxAge);
-        if (hit.length > this[MAX]) {
-          if (this[DISPOSE])
-            this[DISPOSE](key, value);
-          return false;
-        }
-        this[LENGTH] += hit.length;
-        this[LRU_LIST].unshift(hit);
-        this[CACHE].set(key, this[LRU_LIST].head);
-        trim(this);
-        return true;
-      }
-      has(key) {
-        if (!this[CACHE].has(key))
-          return false;
-        const hit = this[CACHE].get(key).value;
-        return !isStale(this, hit);
+      constructor() {
+        this.max = 1e3;
+        this.map = /* @__PURE__ */ new Map();
       }
       get(key) {
-        return get(this, key, true);
-      }
-      peek(key) {
-        return get(this, key, false);
-      }
-      pop() {
-        const node = this[LRU_LIST].tail;
-        if (!node)
-          return null;
-        del(this, node);
-        return node.value;
-      }
-      del(key) {
-        del(this, this[CACHE].get(key));
-      }
-      load(arr) {
-        this.reset();
-        const now = Date.now();
-        for (let l = arr.length - 1; l >= 0; l--) {
-          const hit = arr[l];
-          const expiresAt = hit.e || 0;
-          if (expiresAt === 0)
-            this.set(hit.k, hit.v);
-          else {
-            const maxAge = expiresAt - now;
-            if (maxAge > 0) {
-              this.set(hit.k, hit.v, maxAge);
-            }
-          }
-        }
-      }
-      prune() {
-        this[CACHE].forEach((value, key) => get(this, key, false));
-      }
-    };
-    var get = (self, key, doUse) => {
-      const node = self[CACHE].get(key);
-      if (node) {
-        const hit = node.value;
-        if (isStale(self, hit)) {
-          del(self, node);
-          if (!self[ALLOW_STALE])
-            return void 0;
+        const value = this.map.get(key);
+        if (value === void 0) {
+          return void 0;
         } else {
-          if (doUse) {
-            if (self[UPDATE_AGE_ON_GET])
-              node.value.now = Date.now();
-            self[LRU_LIST].unshiftNode(node);
+          this.map.delete(key);
+          this.map.set(key, value);
+          return value;
+        }
+      }
+      delete(key) {
+        return this.map.delete(key);
+      }
+      set(key, value) {
+        const deleted = this.delete(key);
+        if (!deleted && value !== void 0) {
+          if (this.map.size >= this.max) {
+            const firstKey = this.map.keys().next().value;
+            this.delete(firstKey);
           }
+          this.map.set(key, value);
         }
-        return hit.value;
+        return this;
       }
-    };
-    var isStale = (self, hit) => {
-      if (!hit || !hit.maxAge && !self[MAX_AGE])
-        return false;
-      const diff = Date.now() - hit.now;
-      return hit.maxAge ? diff > hit.maxAge : self[MAX_AGE] && diff > self[MAX_AGE];
-    };
-    var trim = (self) => {
-      if (self[LENGTH] > self[MAX]) {
-        for (let walker = self[LRU_LIST].tail; self[LENGTH] > self[MAX] && walker !== null; ) {
-          const prev = walker.prev;
-          del(self, walker);
-          walker = prev;
-        }
-      }
-    };
-    var del = (self, node) => {
-      if (node) {
-        const hit = node.value;
-        if (self[DISPOSE])
-          self[DISPOSE](hit.key, hit.value);
-        self[LENGTH] -= hit.length;
-        self[CACHE].delete(hit.key);
-        self[LRU_LIST].removeNode(node);
-      }
-    };
-    var Entry = class {
-      constructor(key, value, length, now, maxAge) {
-        this.key = key;
-        this.value = value;
-        this.length = length;
-        this.now = now;
-        this.maxAge = maxAge || 0;
-      }
-    };
-    var forEachStep = (self, fn, node, thisp) => {
-      let hit = node.value;
-      if (isStale(self, hit)) {
-        del(self, node);
-        if (!self[ALLOW_STALE])
-          hit = void 0;
-      }
-      if (hit)
-        fn.call(thisp, hit.value, hit.key, self);
     };
     module2.exports = LRUCache;
   }
@@ -24449,8 +23380,8 @@ var require_range = __commonJS({
       }
     };
     module2.exports = Range;
-    var LRU = require_lru_cache();
-    var cache = new LRU({ max: 1e3 });
+    var LRU = require_lrucache();
+    var cache = new LRU();
     var parseOptions = require_parse_options();
     var Comparator = require_comparator();
     var debug = require_debug();
@@ -24628,7 +23559,7 @@ var require_range = __commonJS({
       debug("replaceGTE0", comp, options);
       return comp.trim().replace(re[options.includePrerelease ? t.GTE0PRE : t.GTE0], "");
     };
-    var hyphenReplace = (incPr) => ($0, from, fM, fm, fp, fpr, fb, to, tM, tm, tp, tpr, tb) => {
+    var hyphenReplace = (incPr) => ($0, from, fM, fm, fp, fpr, fb, to, tM, tm, tp, tpr) => {
       if (isX(fM)) {
         from = "";
       } else if (isX(fm)) {
@@ -25108,19 +24039,18 @@ var require_subset = __commonJS({
       sub = new Range(sub, options);
       dom = new Range(dom, options);
       let sawNonNull = false;
-      OUTER:
-        for (const simpleSub of sub.set) {
-          for (const simpleDom of dom.set) {
-            const isSub = simpleSubset(simpleSub, simpleDom, options);
-            sawNonNull = sawNonNull || isSub !== null;
-            if (isSub) {
-              continue OUTER;
-            }
-          }
-          if (sawNonNull) {
-            return false;
+      OUTER: for (const simpleSub of sub.set) {
+        for (const simpleDom of dom.set) {
+          const isSub = simpleSubset(simpleSub, simpleDom, options);
+          sawNonNull = sawNonNull || isSub !== null;
+          if (isSub) {
+            continue OUTER;
           }
         }
+        if (sawNonNull) {
+          return false;
+        }
+      }
       return true;
     };
     var minimumVersionWithPreRelease = [new Comparator(">=0.0.0-0")];
@@ -25349,850 +24279,1336 @@ var require_semver2 = __commonJS({
   }
 });
 
-// node_modules/git-semver-tags/index.js
-var require_git_semver_tags = __commonJS({
-  "node_modules/git-semver-tags/index.js"(exports2, module2) {
-    var { exec } = require("child_process");
-    var { valid: semverValid } = require_semver2();
-    var regex = /tag:\s*(.+?)[,)]/gi;
-    var cmd = "git log --decorate --no-color --date-order";
-    var unstableTagTest = /.+-\w+\.\d+$/;
-    function lernaTag(tag, pkg) {
-      if (pkg && !tag.startsWith(`${pkg}@`)) {
+// node_modules/conventional-commits-parser/dist/types.js
+var init_types = __esm({
+  "node_modules/conventional-commits-parser/dist/types.js"() {
+  }
+});
+
+// node_modules/conventional-commits-parser/dist/regex.js
+function join(parts, joiner) {
+  return parts.map((val) => val.trim()).filter(Boolean).join(joiner);
+}
+function getNotesRegex(noteKeywords, notesPattern) {
+  if (!noteKeywords) {
+    return nomatchRegex;
+  }
+  const noteKeywordsSelection = join(noteKeywords, "|");
+  if (!notesPattern) {
+    return new RegExp(`^[\\s|*]*(${noteKeywordsSelection})[:\\s]+(.*)`, "i");
+  }
+  return notesPattern(noteKeywordsSelection);
+}
+function getReferencePartsRegex(issuePrefixes, issuePrefixesCaseSensitive) {
+  if (!issuePrefixes) {
+    return nomatchRegex;
+  }
+  const flags = issuePrefixesCaseSensitive ? "g" : "gi";
+  return new RegExp(`(?:.*?)??\\s*([\\w-\\.\\/]*?)??(${join(issuePrefixes, "|")})([\\w-]*\\d+)`, flags);
+}
+function getReferencesRegex(referenceActions) {
+  if (!referenceActions) {
+    return /()(.+)/gi;
+  }
+  const joinedKeywords = join(referenceActions, "|");
+  return new RegExp(`(${joinedKeywords})(?:\\s+(.*?))(?=(?:${joinedKeywords})|$)`, "gi");
+}
+function getParserRegexes(options = {}) {
+  const notes = getNotesRegex(options.noteKeywords, options.notesPattern);
+  const referenceParts = getReferencePartsRegex(options.issuePrefixes, options.issuePrefixesCaseSensitive);
+  const references = getReferencesRegex(options.referenceActions);
+  return {
+    notes,
+    referenceParts,
+    references,
+    mentions: /@([\w-]+)/g
+  };
+}
+var nomatchRegex;
+var init_regex2 = __esm({
+  "node_modules/conventional-commits-parser/dist/regex.js"() {
+    nomatchRegex = /(?!.*)/;
+  }
+});
+
+// node_modules/conventional-commits-parser/dist/utils.js
+function trimNewLines(input) {
+  const matches = input.match(/[^\r\n]/);
+  if (typeof matches?.index !== "number") {
+    return "";
+  }
+  const firstIndex = matches.index;
+  let lastIndex = input.length - 1;
+  while (input[lastIndex] === "\r" || input[lastIndex] === "\n") {
+    lastIndex--;
+  }
+  return input.substring(firstIndex, lastIndex + 1);
+}
+function appendLine(src, line) {
+  return src ? `${src}
+${line || ""}` : line || "";
+}
+function getCommentFilter(char) {
+  return char ? (line) => !line.startsWith(char) : () => true;
+}
+function truncateToScissor(lines) {
+  const scissorIndex = lines.indexOf(SCISSOR2);
+  if (scissorIndex === -1) {
+    return lines;
+  }
+  return lines.slice(0, scissorIndex);
+}
+function gpgFilter(line) {
+  return !line.match(/^\s*gpg:/);
+}
+var SCISSOR2;
+var init_utils = __esm({
+  "node_modules/conventional-commits-parser/dist/utils.js"() {
+    SCISSOR2 = "# ------------------------ >8 ------------------------";
+  }
+});
+
+// node_modules/conventional-commits-parser/dist/options.js
+var defaultOptions;
+var init_options = __esm({
+  "node_modules/conventional-commits-parser/dist/options.js"() {
+    defaultOptions = {
+      noteKeywords: ["BREAKING CHANGE", "BREAKING-CHANGE"],
+      issuePrefixes: ["#"],
+      referenceActions: [
+        "close",
+        "closes",
+        "closed",
+        "fix",
+        "fixes",
+        "fixed",
+        "resolve",
+        "resolves",
+        "resolved"
+      ],
+      headerPattern: /^(\w*)(?:\(([\w$.\-*/ ]*)\))?: (.*)$/,
+      headerCorrespondence: [
+        "type",
+        "scope",
+        "subject"
+      ],
+      revertPattern: /^Revert\s"([\s\S]*)"\s*This reverts commit (\w*)\./,
+      revertCorrespondence: ["header", "hash"],
+      fieldPattern: /^-(.*?)-$/
+    };
+  }
+});
+
+// node_modules/conventional-commits-parser/dist/CommitParser.js
+function createCommitObject(initialData = {}) {
+  return {
+    merge: null,
+    revert: null,
+    header: null,
+    body: null,
+    footer: null,
+    notes: [],
+    mentions: [],
+    references: [],
+    ...initialData
+  };
+}
+var CommitParser;
+var init_CommitParser = __esm({
+  "node_modules/conventional-commits-parser/dist/CommitParser.js"() {
+    init_regex2();
+    init_utils();
+    init_options();
+    CommitParser = class {
+      options;
+      regexes;
+      lines = [];
+      lineIndex = 0;
+      commit = createCommitObject();
+      constructor(options = {}) {
+        this.options = {
+          ...defaultOptions,
+          ...options
+        };
+        this.regexes = getParserRegexes(this.options);
+      }
+      currentLine() {
+        return this.lines[this.lineIndex];
+      }
+      nextLine() {
+        return this.lines[this.lineIndex++];
+      }
+      isLineAvailable() {
+        return this.lineIndex < this.lines.length;
+      }
+      parseReference(input, action) {
+        const { regexes } = this;
+        const matches = regexes.referenceParts.exec(input);
+        if (!matches) {
+          return null;
+        }
+        let [raw, repository = null, prefix, issue] = matches;
+        let owner = null;
+        if (repository) {
+          const slashIndex = repository.indexOf("/");
+          if (slashIndex !== -1) {
+            owner = repository.slice(0, slashIndex);
+            repository = repository.slice(slashIndex + 1);
+          }
+        }
+        return {
+          raw,
+          action,
+          owner,
+          repository,
+          prefix,
+          issue
+        };
+      }
+      parseReferences(input) {
+        const { regexes } = this;
+        const regex = input.match(regexes.references) ? regexes.references : /()(.+)/gi;
+        const references = [];
+        let matches;
+        let action;
+        let sentence;
+        let reference;
+        while (true) {
+          matches = regex.exec(input);
+          if (!matches) {
+            break;
+          }
+          action = matches[1] || null;
+          sentence = matches[2] || "";
+          while (true) {
+            reference = this.parseReference(sentence, action);
+            if (!reference) {
+              break;
+            }
+            references.push(reference);
+          }
+        }
+        return references;
+      }
+      skipEmptyLines() {
+        let line = this.currentLine();
+        while (line !== void 0 && !line.trim()) {
+          this.nextLine();
+          line = this.currentLine();
+        }
+      }
+      parseMerge() {
+        const { commit, options } = this;
+        const correspondence = options.mergeCorrespondence || [];
+        const merge = this.currentLine();
+        const matches = merge && options.mergePattern ? merge.match(options.mergePattern) : null;
+        if (matches) {
+          this.nextLine();
+          commit.merge = matches[0] || null;
+          correspondence.forEach((key, index) => {
+            commit[key] = matches[index + 1] || null;
+          });
+          return true;
+        }
         return false;
       }
-      return /^.+@[0-9]+\.[0-9]+\.[0-9]+(-.+)?$/.test(tag);
-    }
-    function gitSemverTags(opts = {}) {
-      return new Promise((resolve, reject) => {
-        const options = {
-          maxBuffer: Infinity,
-          cwd: process.cwd(),
-          ...opts
-        };
-        if (options.package && !options.lernaTags) {
-          throw new Error("opts.package should only be used when running in lerna mode");
+      parseHeader(isMergeCommit) {
+        if (isMergeCommit) {
+          this.skipEmptyLines();
         }
-        exec(cmd, options, (err, data) => {
-          if (err) {
-            reject(err);
-            return;
+        const { commit, options } = this;
+        const correspondence = options.headerCorrespondence || [];
+        const header = this.nextLine();
+        let matches = null;
+        if (header) {
+          if (options.breakingHeaderPattern) {
+            matches = header.match(options.breakingHeaderPattern);
           }
-          const tags = [];
-          let match2;
-          let tag;
-          let unprefixedTag;
-          data.split("\n").forEach((decorations) => {
-            while (match2 = regex.exec(decorations)) {
-              tag = match2[1];
-              if (options.skipUnstable && unstableTagTest.test(tag)) {
-                continue;
-              }
-              if (options.lernaTags) {
-                if (lernaTag(tag, options.package)) {
-                  tags.push(tag);
-                }
-              } else if (options.tagPrefix) {
-                if (tag.startsWith(options.tagPrefix)) {
-                  unprefixedTag = tag.replace(options.tagPrefix, "");
-                  if (semverValid(unprefixedTag)) {
-                    tags.push(tag);
-                  }
-                }
-              } else if (semverValid(tag)) {
-                tags.push(tag);
-              }
-            }
+          if (!matches && options.headerPattern) {
+            matches = header.match(options.headerPattern);
+          }
+        }
+        if (header) {
+          commit.header = header;
+        }
+        if (matches) {
+          correspondence.forEach((key, index) => {
+            commit[key] = matches[index + 1] || null;
           });
-          resolve(tags);
-        });
-      });
-    }
-    module2.exports = gitSemverTags;
-  }
-});
-
-// node_modules/split2/index.js
-var require_split2 = __commonJS({
-  "node_modules/split2/index.js"(exports2, module2) {
-    "use strict";
-    var { Transform } = require("stream");
-    var { StringDecoder } = require("string_decoder");
-    var kLast = Symbol("last");
-    var kDecoder = Symbol("decoder");
-    function transform(chunk, enc, cb) {
-      let list;
-      if (this.overflow) {
-        const buf = this[kDecoder].write(chunk);
-        list = buf.split(this.matcher);
-        if (list.length === 1)
-          return cb();
-        list.shift();
-        this.overflow = false;
-      } else {
-        this[kLast] += this[kDecoder].write(chunk);
-        list = this[kLast].split(this.matcher);
-      }
-      this[kLast] = list.pop();
-      for (let i = 0; i < list.length; i++) {
-        try {
-          push(this, this.mapper(list[i]));
-        } catch (error) {
-          return cb(error);
         }
       }
-      this.overflow = this[kLast].length > this.maxLength;
-      if (this.overflow && !this.skipOverflow) {
-        cb(new Error("maximum buffer reached"));
-        return;
-      }
-      cb();
-    }
-    function flush(cb) {
-      this[kLast] += this[kDecoder].end();
-      if (this[kLast]) {
-        try {
-          push(this, this.mapper(this[kLast]));
-        } catch (error) {
-          return cb(error);
+      parseMeta() {
+        const { options, commit } = this;
+        if (!options.fieldPattern || !this.isLineAvailable()) {
+          return false;
         }
-      }
-      cb();
-    }
-    function push(self, val) {
-      if (val !== void 0) {
-        self.push(val);
-      }
-    }
-    function noop(incoming) {
-      return incoming;
-    }
-    function split(matcher, mapper, options) {
-      matcher = matcher || /\r?\n/;
-      mapper = mapper || noop;
-      options = options || {};
-      switch (arguments.length) {
-        case 1:
-          if (typeof matcher === "function") {
-            mapper = matcher;
-            matcher = /\r?\n/;
-          } else if (typeof matcher === "object" && !(matcher instanceof RegExp) && !matcher[Symbol.split]) {
-            options = matcher;
-            matcher = /\r?\n/;
+        let matches;
+        let field = null;
+        let parsed = false;
+        while (this.isLineAvailable()) {
+          matches = this.currentLine().match(options.fieldPattern);
+          if (matches) {
+            field = matches[1] || null;
+            this.nextLine();
+            continue;
           }
-          break;
-        case 2:
-          if (typeof matcher === "function") {
-            options = mapper;
-            mapper = matcher;
-            matcher = /\r?\n/;
-          } else if (typeof mapper === "object") {
-            options = mapper;
-            mapper = noop;
-          }
-      }
-      options = Object.assign({}, options);
-      options.autoDestroy = true;
-      options.transform = transform;
-      options.flush = flush;
-      options.readableObjectMode = true;
-      const stream = new Transform(options);
-      stream[kLast] = "";
-      stream[kDecoder] = new StringDecoder("utf8");
-      stream.matcher = matcher;
-      stream.mapper = mapper;
-      stream.maxLength = options.maxLength;
-      stream.skipOverflow = options.skipOverflow || false;
-      stream.overflow = false;
-      stream._destroy = function(err, cb) {
-        this._writableState.errorEmitted = false;
-        cb(err);
-      };
-      return stream;
-    }
-    module2.exports = split;
-  }
-});
-
-// node_modules/dargs/index.js
-var dargs_exports = {};
-__export(dargs_exports, {
-  default: () => dargs
-});
-function dargs(object, options) {
-  const arguments_ = [];
-  let extraArguments = [];
-  let separatedArguments = [];
-  options = {
-    useEquals: true,
-    shortFlag: true,
-    ...options
-  };
-  const makeArguments = (key, value) => {
-    const prefix = options.shortFlag && key.length === 1 ? "-" : "--";
-    const theKey = options.allowCamelCase ? key : key.replace(/[A-Z]/g, "-$&").toLowerCase();
-    key = prefix + theKey;
-    if (options.useEquals) {
-      arguments_.push(key + (value ? `=${value}` : ""));
-    } else {
-      arguments_.push(key);
-      if (value) {
-        arguments_.push(value);
-      }
-    }
-  };
-  const makeAliasArg = (key, value) => {
-    arguments_.push(`-${key}`);
-    if (value) {
-      arguments_.push(value);
-    }
-  };
-  for (let [key, value] of Object.entries(object)) {
-    let pushArguments = makeArguments;
-    if (Array.isArray(options.excludes) && match(options.excludes, key)) {
-      continue;
-    }
-    if (Array.isArray(options.includes) && !match(options.includes, key)) {
-      continue;
-    }
-    if (typeof options.aliases === "object" && options.aliases[key]) {
-      key = options.aliases[key];
-      pushArguments = makeAliasArg;
-    }
-    if (key === "--") {
-      if (!Array.isArray(value)) {
-        throw new TypeError(
-          `Expected key \`--\` to be Array, got ${typeof value}`
-        );
-      }
-      separatedArguments = value;
-      continue;
-    }
-    if (key === "_") {
-      if (!Array.isArray(value)) {
-        throw new TypeError(
-          `Expected key \`_\` to be Array, got ${typeof value}`
-        );
-      }
-      extraArguments = value;
-      continue;
-    }
-    if (value === true && !options.ignoreTrue) {
-      pushArguments(key, "");
-    }
-    if (value === false && !options.ignoreFalse) {
-      pushArguments(`no-${key}`);
-    }
-    if (typeof value === "string") {
-      pushArguments(key, value);
-    }
-    if (typeof value === "number" && !Number.isNaN(value)) {
-      pushArguments(key, String(value));
-    }
-    if (Array.isArray(value)) {
-      for (const arrayValue of value) {
-        pushArguments(key, arrayValue);
-      }
-    }
-  }
-  for (const argument of extraArguments) {
-    arguments_.push(String(argument));
-  }
-  if (separatedArguments.length > 0) {
-    arguments_.push("--");
-  }
-  for (const argument of separatedArguments) {
-    arguments_.push(String(argument));
-  }
-  return arguments_;
-}
-var match;
-var init_dargs = __esm({
-  "node_modules/dargs/index.js"() {
-    match = (array, value) => array.some((element) => element instanceof RegExp ? element.test(value) : element === value);
-  }
-});
-
-// node_modules/git-raw-commits/index.js
-var require_git_raw_commits = __commonJS({
-  "node_modules/git-raw-commits/index.js"(exports2, module2) {
-    var { Readable, Transform } = require("stream");
-    var { execFile } = require("child_process");
-    var split = require_split2();
-    var DELIMITER = "------------------------ >8 ------------------------";
-    function normalizeExecOpts(execOpts) {
-      execOpts = execOpts || {};
-      execOpts.cwd = execOpts.cwd || process.cwd();
-      return execOpts;
-    }
-    function normalizeGitOpts(gitOpts) {
-      gitOpts = gitOpts || {};
-      gitOpts.format = gitOpts.format || "%B";
-      gitOpts.from = gitOpts.from || "";
-      gitOpts.to = gitOpts.to || "HEAD";
-      return gitOpts;
-    }
-    async function getGitArgs(gitOpts) {
-      const { default: dargs2 } = await Promise.resolve().then(() => (init_dargs(), dargs_exports));
-      const gitFormat = `--format=${gitOpts.format || ""}%n${DELIMITER}`;
-      const gitFromTo = [gitOpts.from, gitOpts.to].filter(Boolean).join("..");
-      const gitArgs = ["log", gitFormat, gitFromTo].concat(dargs2(gitOpts, {
-        excludes: ["debug", "from", "to", "format", "path", "ignore"]
-      }));
-      if (gitOpts.path) {
-        gitArgs.push("--", ...Array.isArray(gitOpts.path) ? gitOpts.path : [gitOpts.path]);
-      }
-      return gitArgs;
-    }
-    function gitRawCommits(rawGitOpts, rawExecOpts) {
-      const readable = new Readable();
-      readable._read = () => {
-      };
-      const gitOpts = normalizeGitOpts(rawGitOpts);
-      const execOpts = normalizeExecOpts(rawExecOpts);
-      let isError = false;
-      getGitArgs(gitOpts).then((args) => {
-        if (gitOpts.debug) {
-          gitOpts.debug("Your git-log command is:\ngit " + args.join(" "));
-        }
-        const ignoreRegex = typeof gitOpts.ignore === "string" ? new RegExp(gitOpts.ignore) : gitOpts.ignore;
-        const shouldNotIgnore = ignoreRegex ? (chunk) => !ignoreRegex.test(chunk.toString()) : () => true;
-        const child = execFile("git", args, {
-          cwd: execOpts.cwd,
-          maxBuffer: Infinity
-        });
-        child.stdout.pipe(split(DELIMITER + "\n")).pipe(
-          new Transform({
-            transform(chunk, enc, cb) {
-              isError = false;
-              setImmediate(() => {
-                if (shouldNotIgnore(chunk)) {
-                  readable.push(chunk);
-                }
-                cb();
-              });
-            },
-            flush(cb) {
-              setImmediate(() => {
-                if (!isError) {
-                  readable.push(null);
-                  readable.emit("close");
-                }
-                cb();
-              });
-            }
-          })
-        );
-        child.stderr.pipe(
-          new Transform({
-            objectMode: true,
-            highWaterMark: 16,
-            transform(chunk) {
-              isError = true;
-              readable.emit("error", new Error(chunk));
-              readable.emit("close");
-            }
-          })
-        );
-      });
-      return readable;
-    }
-    module2.exports = gitRawCommits;
-  }
-});
-
-// node_modules/conventional-recommended-bump/index.js
-var require_conventional_recommended_bump = __commonJS({
-  "node_modules/conventional-recommended-bump/index.js"(exports2, module2) {
-    "use strict";
-    var conventionalCommitsFilter = require_conventional_commits_filter();
-    var conventionalCommitsParser = require_conventional_commits_parser();
-    var { loadPreset } = require_conventional_changelog_preset_loader();
-    var gitSemverTags = require_git_semver_tags();
-    var gitRawCommits = require_git_raw_commits();
-    var VERSIONS = ["major", "minor", "patch"];
-    function noop() {
-    }
-    async function conventionalRecommendedBump2(optionsArgument, parserOptsArgument) {
-      if (typeof optionsArgument !== "object") {
-        throw new Error("The 'options' argument must be an object.");
-      }
-      const options = Object.assign({
-        ignoreReverted: true,
-        gitRawCommitsOpts: {}
-      }, optionsArgument);
-      let config = options.config || {};
-      if (options.preset) {
-        config = await loadPreset(options.preset);
-      }
-      const whatBump = options.whatBump || (config.recommendedBumpOpts && config.recommendedBumpOpts.whatBump ? config.recommendedBumpOpts.whatBump : noop);
-      if (typeof whatBump !== "function") {
-        throw Error("whatBump must be a function");
-      }
-      const parserOpts = Object.assign(
-        {},
-        config.recommendedBumpOpts && config.recommendedBumpOpts.parserOpts ? config.recommendedBumpOpts.parserOpts : config.parserOpts,
-        parserOptsArgument
-      );
-      const warn = typeof parserOpts.warn === "function" ? parserOpts.warn : noop;
-      const tags = await gitSemverTags({
-        lernaTags: !!options.lernaPackage,
-        package: options.lernaPackage,
-        tagPrefix: options.tagPrefix,
-        skipUnstable: options.skipUnstable,
-        cwd: options.cwd
-      });
-      const commitsStream = gitRawCommits({
-        format: "%B%n-hash-%n%H",
-        from: tags[0] || "",
-        path: options.path,
-        ...options.gitRawCommitsOpts
-      }, {
-        cwd: options.cwd
-      }).pipe(conventionalCommitsParser(parserOpts));
-      let commits = [];
-      for await (const commit of commitsStream) {
-        commits.push(commit);
-      }
-      commits = options.ignoreReverted ? conventionalCommitsFilter(commits) : commits;
-      if (!commits || !commits.length) {
-        warn("No commits since last release");
-      }
-      let result = whatBump(commits, options);
-      if (result && result.level != null) {
-        result.releaseType = VERSIONS[result.level];
-      } else if (result == null) {
-        result = {};
-      }
-      return result;
-    }
-    module2.exports = conventionalRecommendedBump2;
-  }
-});
-
-// node_modules/conventional-changelog-angular/parserOpts.js
-var require_parserOpts = __commonJS({
-  "node_modules/conventional-changelog-angular/parserOpts.js"(exports2, module2) {
-    "use strict";
-    function createParserOpts() {
-      return {
-        headerPattern: /^(\w*)(?:\((.*)\))?: (.*)$/,
-        headerCorrespondence: [
-          "type",
-          "scope",
-          "subject"
-        ],
-        noteKeywords: ["BREAKING CHANGE"],
-        revertPattern: /^(?:Revert|revert:)\s"?([\s\S]+?)"?\s*This reverts commit (\w*)\./i,
-        revertCorrespondence: ["header", "hash"]
-      };
-    }
-    module2.exports.createParserOpts = createParserOpts;
-  }
-});
-
-// node_modules/array-ify/index.js
-var require_array_ify = __commonJS({
-  "node_modules/array-ify/index.js"(exports2, module2) {
-    "use strict";
-    module2.exports = function(val) {
-      return Array.isArray(val) ? val : [val];
-    };
-  }
-});
-
-// node_modules/is-obj/index.js
-var require_is_obj = __commonJS({
-  "node_modules/is-obj/index.js"(exports2, module2) {
-    "use strict";
-    module2.exports = (value) => {
-      const type = typeof value;
-      return value !== null && (type === "object" || type === "function");
-    };
-  }
-});
-
-// node_modules/dot-prop/index.js
-var require_dot_prop = __commonJS({
-  "node_modules/dot-prop/index.js"(exports2, module2) {
-    "use strict";
-    var isObj = require_is_obj();
-    var disallowedKeys = [
-      "__proto__",
-      "prototype",
-      "constructor"
-    ];
-    var isValidPath = (pathSegments) => !pathSegments.some((segment) => disallowedKeys.includes(segment));
-    function getPathSegments(path) {
-      const pathArray = path.split(".");
-      const parts = [];
-      for (let i = 0; i < pathArray.length; i++) {
-        let p = pathArray[i];
-        while (p[p.length - 1] === "\\" && pathArray[i + 1] !== void 0) {
-          p = p.slice(0, -1) + ".";
-          p += pathArray[++i];
-        }
-        parts.push(p);
-      }
-      if (!isValidPath(parts)) {
-        return [];
-      }
-      return parts;
-    }
-    module2.exports = {
-      get(object, path, value) {
-        if (!isObj(object) || typeof path !== "string") {
-          return value === void 0 ? object : value;
-        }
-        const pathArray = getPathSegments(path);
-        if (pathArray.length === 0) {
-          return;
-        }
-        for (let i = 0; i < pathArray.length; i++) {
-          if (!Object.prototype.propertyIsEnumerable.call(object, pathArray[i])) {
-            return value;
-          }
-          object = object[pathArray[i]];
-          if (object === void 0 || object === null) {
-            if (i !== pathArray.length - 1) {
-              return value;
-            }
+          if (field) {
+            parsed = true;
+            commit[field] = appendLine(commit[field], this.currentLine());
+            this.nextLine();
+          } else {
             break;
           }
         }
-        return object;
-      },
-      set(object, path, value) {
-        if (!isObj(object) || typeof path !== "string") {
-          return object;
-        }
-        const root = object;
-        const pathArray = getPathSegments(path);
-        for (let i = 0; i < pathArray.length; i++) {
-          const p = pathArray[i];
-          if (!isObj(object[p])) {
-            object[p] = {};
-          }
-          if (i === pathArray.length - 1) {
-            object[p] = value;
-          }
-          object = object[p];
-        }
-        return root;
-      },
-      delete(object, path) {
-        if (!isObj(object) || typeof path !== "string") {
-          return false;
-        }
-        const pathArray = getPathSegments(path);
-        for (let i = 0; i < pathArray.length; i++) {
-          const p = pathArray[i];
-          if (i === pathArray.length - 1) {
-            delete object[p];
-            return true;
-          }
-          object = object[p];
-          if (!isObj(object)) {
-            return false;
-          }
-        }
-      },
-      has(object, path) {
-        if (!isObj(object) || typeof path !== "string") {
-          return false;
-        }
-        const pathArray = getPathSegments(path);
-        if (pathArray.length === 0) {
-          return false;
-        }
-        for (let i = 0; i < pathArray.length; i++) {
-          if (isObj(object)) {
-            if (!(pathArray[i] in object)) {
-              return false;
-            }
-            object = object[pathArray[i]];
-          } else {
-            return false;
-          }
-        }
-        return true;
+        return parsed;
       }
-    };
-  }
-});
-
-// node_modules/compare-func/index.js
-var require_compare_func = __commonJS({
-  "node_modules/compare-func/index.js"(exports2, module2) {
-    "use strict";
-    var arrayify = require_array_ify();
-    var dotPropGet = require_dot_prop().get;
-    function compareFunc(prop) {
-      return function(a, b) {
-        var ret = 0;
-        arrayify(prop).some(function(el) {
-          var x;
-          var y;
-          if (typeof el === "function") {
-            x = el(a);
-            y = el(b);
-          } else if (typeof el === "string") {
-            x = dotPropGet(a, el);
-            y = dotPropGet(b, el);
-          } else {
-            x = a;
-            y = b;
-          }
-          if (x === y) {
-            ret = 0;
-            return;
-          }
-          if (typeof x === "string" && typeof y === "string") {
-            ret = x.localeCompare(y);
-            return ret !== 0;
-          }
-          ret = x < y ? -1 : 1;
-          return true;
-        });
-        return ret;
-      };
-    }
-    module2.exports = compareFunc;
-  }
-});
-
-// node_modules/conventional-changelog-angular/writerOpts.js
-var require_writerOpts = __commonJS({
-  "node_modules/conventional-changelog-angular/writerOpts.js"(exports2, module2) {
-    "use strict";
-    var compareFunc = require_compare_func();
-    var { readFile } = require("fs").promises;
-    var { resolve } = require("path");
-    async function createWriterOpts() {
-      const [template, header, commit, footer] = await Promise.all([
-        readFile(resolve(__dirname, "./templates/template.hbs"), "utf-8"),
-        readFile(resolve(__dirname, "./templates/header.hbs"), "utf-8"),
-        readFile(resolve(__dirname, "./templates/commit.hbs"), "utf-8"),
-        readFile(resolve(__dirname, "./templates/footer.hbs"), "utf-8")
-      ]);
-      const writerOpts = getWriterOpts();
-      writerOpts.mainTemplate = template;
-      writerOpts.headerPartial = header;
-      writerOpts.commitPartial = commit;
-      writerOpts.footerPartial = footer;
-      return writerOpts;
-    }
-    module2.exports.createWriterOpts = createWriterOpts;
-    function getWriterOpts() {
-      return {
-        transform: (commit, context) => {
-          let discard = true;
-          const issues = [];
-          commit.notes.forEach((note) => {
-            note.title = "BREAKING CHANGES";
-            discard = false;
-          });
-          if (commit.type === "feat") {
-            commit.type = "Features";
-          } else if (commit.type === "fix") {
-            commit.type = "Bug Fixes";
-          } else if (commit.type === "perf") {
-            commit.type = "Performance Improvements";
-          } else if (commit.type === "revert" || commit.revert) {
-            commit.type = "Reverts";
-          } else if (discard) {
-            return;
-          } else if (commit.type === "docs") {
-            commit.type = "Documentation";
-          } else if (commit.type === "style") {
-            commit.type = "Styles";
-          } else if (commit.type === "refactor") {
-            commit.type = "Code Refactoring";
-          } else if (commit.type === "test") {
-            commit.type = "Tests";
-          } else if (commit.type === "build") {
-            commit.type = "Build System";
-          } else if (commit.type === "ci") {
-            commit.type = "Continuous Integration";
-          }
-          if (commit.scope === "*") {
-            commit.scope = "";
-          }
-          if (typeof commit.hash === "string") {
-            commit.shortHash = commit.hash.substring(0, 7);
-          }
-          if (typeof commit.subject === "string") {
-            let url = context.repository ? `${context.host}/${context.owner}/${context.repository}` : context.repoUrl;
-            if (url) {
-              url = `${url}/issues/`;
-              commit.subject = commit.subject.replace(/#([0-9]+)/g, (_, issue) => {
-                issues.push(issue);
-                return `[#${issue}](${url}${issue})`;
-              });
-            }
-            if (context.host) {
-              commit.subject = commit.subject.replace(/\B@([a-z0-9](?:-?[a-z0-9/]){0,38})/g, (_, username) => {
-                if (username.includes("/")) {
-                  return `@${username}`;
-                }
-                return `[@${username}](${context.host}/${username})`;
-              });
-            }
-          }
-          commit.references = commit.references.filter((reference) => {
-            if (issues.indexOf(reference.issue) === -1) {
+      parseNotes() {
+        const { regexes, commit } = this;
+        if (!this.isLineAvailable()) {
+          return false;
+        }
+        const matches = this.currentLine().match(regexes.notes);
+        let references = [];
+        if (matches) {
+          const note = {
+            title: matches[1],
+            text: matches[2]
+          };
+          commit.notes.push(note);
+          commit.footer = appendLine(commit.footer, this.currentLine());
+          this.nextLine();
+          while (this.isLineAvailable()) {
+            if (this.parseMeta()) {
               return true;
             }
-            return false;
-          });
-          return commit;
-        },
-        groupBy: "type",
-        commitGroupsSort: "title",
-        commitsSort: ["scope", "subject"],
-        noteGroupsSort: "title",
-        notesSort: compareFunc
-      };
-    }
-  }
-});
-
-// node_modules/conventional-changelog-angular/conventionalChangelog.js
-var require_conventionalChangelog = __commonJS({
-  "node_modules/conventional-changelog-angular/conventionalChangelog.js"(exports2, module2) {
-    "use strict";
-    function createConventionalChangelogOpts(parserOpts, writerOpts) {
-      return {
-        parserOpts,
-        writerOpts
-      };
-    }
-    module2.exports.createConventionalChangelogOpts = createConventionalChangelogOpts;
-  }
-});
-
-// node_modules/conventional-changelog-angular/conventionalRecommendedBump.js
-var require_conventionalRecommendedBump = __commonJS({
-  "node_modules/conventional-changelog-angular/conventionalRecommendedBump.js"(exports2, module2) {
-    "use strict";
-    function createConventionalRecommendedBumpOpts(parserOpts) {
-      return {
-        parserOpts,
-        whatBump(commits) {
-          let level = 2;
-          let breakings = 0;
-          let features = 0;
-          commits.forEach((commit) => {
-            if (commit.notes.length > 0) {
-              breakings += commit.notes.length;
-              level = 0;
-            } else if (commit.type === "feat") {
-              features += 1;
-              if (level === 2) {
-                level = 1;
-              }
+            if (this.parseNotes()) {
+              return true;
             }
-          });
-          return {
-            level,
-            reason: breakings === 1 ? `There is ${breakings} BREAKING CHANGE and ${features} features` : `There are ${breakings} BREAKING CHANGES and ${features} features`
-          };
+            references = this.parseReferences(this.currentLine());
+            if (references.length) {
+              commit.references.push(...references);
+            } else {
+              note.text = appendLine(note.text, this.currentLine());
+            }
+            commit.footer = appendLine(commit.footer, this.currentLine());
+            this.nextLine();
+            if (references.length) {
+              break;
+            }
+          }
+          return true;
         }
-      };
-    }
-    module2.exports.createConventionalRecommendedBumpOpts = createConventionalRecommendedBumpOpts;
-  }
-});
-
-// node_modules/conventional-changelog-angular/index.js
-var require_conventional_changelog_angular = __commonJS({
-  "node_modules/conventional-changelog-angular/index.js"(exports2, module2) {
-    "use strict";
-    var { createParserOpts } = require_parserOpts();
-    var { createWriterOpts } = require_writerOpts();
-    var { createConventionalChangelogOpts } = require_conventionalChangelog();
-    var { createConventionalRecommendedBumpOpts } = require_conventionalRecommendedBump();
-    async function createPreset() {
-      const parserOpts = createParserOpts();
-      const writerOpts = await createWriterOpts();
-      const recommendedBumpOpts = createConventionalRecommendedBumpOpts(parserOpts);
-      const conventionalChangelog = createConventionalChangelogOpts(parserOpts, writerOpts);
-      return {
-        parserOpts,
-        writerOpts,
-        recommendedBumpOpts,
-        conventionalChangelog
-      };
-    }
-    module2.exports = createPreset;
-  }
-});
-
-// utils.js
-var require_utils5 = __commonJS({
-  "utils.js"(exports2, module2) {
-    var semver = require_semver2();
-    function isPrerelease(version2) {
-      return version2.includes("-");
-    }
-    function isPreMajor(version2) {
-      return semver.minor(version2) === 0 && semver.patch(version2) === 0 && semver.prerelease(version2);
-    }
-    function getNewVersion2(lastTag, conventionalReleaseType, prerelease) {
-      if (!lastTag) {
-        return prerelease ? "1.0.0-0" : "1.0.0";
+        return false;
       }
-      if (isPreMajor(lastTag) && prerelease) {
-        return semver.inc(lastTag, "prerelease", prerelease);
-      }
-      const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease);
-      return semver.inc(lastTag, releaseType, prerelease);
-    }
-    function getReleaseType(lastTag, conventionalReleaseType, prerelease) {
-      if (prerelease) {
-        if (isPrerelease(lastTag) && conventionalReleaseType === "patch") {
-          return "prerelease";
+      parseBodyAndFooter(isBody) {
+        const { commit } = this;
+        if (!this.isLineAvailable()) {
+          return isBody;
+        }
+        const references = this.parseReferences(this.currentLine());
+        const isStillBody = !references.length && isBody;
+        if (isStillBody) {
+          commit.body = appendLine(commit.body, this.currentLine());
         } else {
-          return `pre${conventionalReleaseType}`;
+          commit.references.push(...references);
+          commit.footer = appendLine(commit.footer, this.currentLine());
         }
-      } else {
-        return conventionalReleaseType;
+        this.nextLine();
+        return isStillBody;
       }
-    }
-    function getLatestRelease2(releasesQueryResponse) {
-      if (releasesQueryResponse.length === 0) {
-        return null;
+      parseBreakingHeader() {
+        const { commit, options } = this;
+        if (!options.breakingHeaderPattern || commit.notes.length || !commit.header) {
+          return;
+        }
+        const matches = commit.header.match(options.breakingHeaderPattern);
+        if (matches) {
+          commit.notes.push({
+            title: "BREAKING CHANGE",
+            text: matches[3]
+          });
+        }
       }
-      const releases = releasesQueryResponse.map((release) => release.node.tag.name);
-      releases.sort((x, y) => semver.gt(x, y) ? -1 : 1);
-      return releases[0];
-    }
-    module2.exports = {
-      isPrerelease,
-      getNewVersion: getNewVersion2,
-      getLatestRelease: getLatestRelease2
+      parseMentions(input) {
+        const { commit, regexes } = this;
+        let matches;
+        for (; ; ) {
+          matches = regexes.mentions.exec(input);
+          if (!matches) {
+            break;
+          }
+          commit.mentions.push(matches[1]);
+        }
+      }
+      parseRevert(input) {
+        const { commit, options } = this;
+        const correspondence = options.revertCorrespondence || [];
+        const matches = options.revertPattern ? input.match(options.revertPattern) : null;
+        if (matches) {
+          commit.revert = correspondence.reduce((meta, key, index) => {
+            meta[key] = matches[index + 1] || null;
+            return meta;
+          }, {});
+        }
+      }
+      cleanupCommit() {
+        const { commit } = this;
+        if (commit.body) {
+          commit.body = trimNewLines(commit.body);
+        }
+        if (commit.footer) {
+          commit.footer = trimNewLines(commit.footer);
+        }
+        commit.notes.forEach((note) => {
+          note.text = trimNewLines(note.text);
+        });
+      }
+      /**
+       * Parse commit message string into an object.
+       * @param input - Commit message string.
+       * @returns Commit object.
+       */
+      parse(input) {
+        if (!input.trim()) {
+          throw new TypeError("Expected a raw commit");
+        }
+        const commentFilter = getCommentFilter(this.options.commentChar);
+        const rawLines = trimNewLines(input).split(/\r?\n/);
+        const lines = truncateToScissor(rawLines).filter((line) => commentFilter(line) && gpgFilter(line));
+        const commit = createCommitObject();
+        this.lines = lines;
+        this.lineIndex = 0;
+        this.commit = commit;
+        const isMergeCommit = this.parseMerge();
+        this.parseHeader(isMergeCommit);
+        if (commit.header) {
+          commit.references = this.parseReferences(commit.header);
+        }
+        let isBody = true;
+        while (this.isLineAvailable()) {
+          this.parseMeta();
+          if (this.parseNotes()) {
+            isBody = false;
+          }
+          if (!this.parseBodyAndFooter(isBody)) {
+            isBody = false;
+          }
+        }
+        this.parseBreakingHeader();
+        this.parseMentions(input);
+        this.parseRevert(input);
+        this.cleanupCommit();
+        return commit;
+      }
     };
+  }
+});
+
+// node_modules/conventional-commits-parser/dist/stream.js
+function parseCommits(options = {}) {
+  const warnOption = options.warn;
+  const warn = warnOption === true ? (err) => {
+    throw err;
+  } : warnOption ? (err) => warnOption(err.toString()) : () => {
+  };
+  return async function* parse2(rawCommits) {
+    const parser = new CommitParser(options);
+    let rawCommit;
+    for await (rawCommit of rawCommits) {
+      try {
+        yield parser.parse(rawCommit.toString());
+      } catch (err) {
+        warn(err);
+      }
+    }
+  };
+}
+function parseCommitsStream(options = {}) {
+  return import_stream.Transform.from(parseCommits(options));
+}
+var import_stream;
+var init_stream = __esm({
+  "node_modules/conventional-commits-parser/dist/stream.js"() {
+    import_stream = require("stream");
+    init_CommitParser();
+  }
+});
+
+// node_modules/conventional-commits-parser/dist/index.js
+var dist_exports = {};
+__export(dist_exports, {
+  CommitParser: () => CommitParser,
+  createCommitObject: () => createCommitObject,
+  parseCommits: () => parseCommits,
+  parseCommitsStream: () => parseCommitsStream
+});
+var init_dist = __esm({
+  "node_modules/conventional-commits-parser/dist/index.js"() {
+    init_types();
+    init_CommitParser();
+    init_stream();
+  }
+});
+
+// node_modules/conventional-commits-filter/dist/utils.js
+function isMatch(object, source) {
+  let aValue;
+  let bValue;
+  for (const key in source) {
+    aValue = object[key];
+    bValue = source[key];
+    if (typeof aValue === "string") {
+      aValue = aValue.trim();
+    }
+    if (typeof bValue === "string") {
+      bValue = bValue.trim();
+    }
+    if (aValue !== bValue) {
+      return false;
+    }
+  }
+  return true;
+}
+function findRevertCommit(commit, reverts) {
+  if (!reverts.size) {
+    return null;
+  }
+  const rawCommit = commit.raw || commit;
+  for (const revertCommit of reverts) {
+    if (revertCommit.revert && isMatch(rawCommit, revertCommit.revert)) {
+      return revertCommit;
+    }
+  }
+  return null;
+}
+var init_utils2 = __esm({
+  "node_modules/conventional-commits-filter/dist/utils.js"() {
+  }
+});
+
+// node_modules/conventional-commits-filter/dist/RevertedCommitsFilter.js
+var RevertedCommitsFilter;
+var init_RevertedCommitsFilter = __esm({
+  "node_modules/conventional-commits-filter/dist/RevertedCommitsFilter.js"() {
+    init_utils2();
+    RevertedCommitsFilter = class {
+      hold = /* @__PURE__ */ new Set();
+      holdRevertsCount = 0;
+      /**
+       * Process commit to filter reverted commits
+       * @param commit
+       * @yields Commit
+       */
+      *process(commit) {
+        const { hold } = this;
+        const revertCommit = findRevertCommit(commit, hold);
+        if (revertCommit) {
+          hold.delete(revertCommit);
+          this.holdRevertsCount--;
+          return;
+        }
+        if (commit.revert) {
+          hold.add(commit);
+          this.holdRevertsCount++;
+          return;
+        }
+        if (this.holdRevertsCount > 0) {
+          hold.add(commit);
+        } else {
+          if (hold.size) {
+            yield* hold;
+            hold.clear();
+          }
+          yield commit;
+        }
+      }
+      /**
+       * Flush all held commits
+       * @yields Held commits
+       */
+      *flush() {
+        const { hold } = this;
+        if (hold.size) {
+          yield* hold;
+          hold.clear();
+        }
+      }
+    };
+  }
+});
+
+// node_modules/conventional-commits-filter/dist/filters.js
+async function* filterRevertedCommits(commits) {
+  const filter = new RevertedCommitsFilter();
+  for await (const commit of commits) {
+    yield* filter.process(commit);
+  }
+  yield* filter.flush();
+}
+function* filterRevertedCommitsSync(commits) {
+  const filter = new RevertedCommitsFilter();
+  for (const commit of commits) {
+    yield* filter.process(commit);
+  }
+  yield* filter.flush();
+}
+function filterRevertedCommitsStream() {
+  return import_stream2.Transform.from(filterRevertedCommits);
+}
+var import_stream2;
+var init_filters = __esm({
+  "node_modules/conventional-commits-filter/dist/filters.js"() {
+    import_stream2 = require("stream");
+    init_RevertedCommitsFilter();
+  }
+});
+
+// node_modules/conventional-commits-filter/dist/index.js
+var dist_exports2 = {};
+__export(dist_exports2, {
+  RevertedCommitsFilter: () => RevertedCommitsFilter,
+  filterRevertedCommits: () => filterRevertedCommits,
+  filterRevertedCommitsStream: () => filterRevertedCommitsStream,
+  filterRevertedCommitsSync: () => filterRevertedCommitsSync
+});
+var init_dist2 = __esm({
+  "node_modules/conventional-commits-filter/dist/index.js"() {
+    init_RevertedCommitsFilter();
+    init_filters();
   }
 });
 
 // index.js
-var core = require_core();
-var github = require_github();
-var conventionalRecommendedBump = require_conventional_recommended_bump();
-var angularPreset = require_conventional_changelog_angular();
-var { getNewVersion, getLatestRelease } = require_utils5();
+var import_core = __toESM(require_core(), 1);
+var import_github = __toESM(require_github(), 1);
+
+// node_modules/conventional-changelog-angular/src/parser.js
+function createParserOpts() {
+  return {
+    headerPattern: /^(\w*)(?:\((.*)\))?: (.*)$/,
+    headerCorrespondence: [
+      "type",
+      "scope",
+      "subject"
+    ],
+    noteKeywords: ["BREAKING CHANGE"],
+    revertPattern: /^(?:Revert|revert:)\s"?([\s\S]+?)"?\s*This reverts commit (\w{7,40})\b/i,
+    revertCorrespondence: ["header", "hash"]
+  };
+}
+
+// node_modules/conventional-changelog-angular/src/writer.js
+var import_promises = require("fs/promises");
+var import_path = require("path");
+var import_url = require("url");
+var import_compare_func = __toESM(require_compare_func(), 1);
+var import_meta = {};
+var dirname = (0, import_url.fileURLToPath)(new URL(".", import_meta.url));
+async function createWriterOpts() {
+  const [template, header, commit, footer] = await Promise.all([
+    (0, import_promises.readFile)((0, import_path.resolve)(dirname, "./templates/template.hbs"), "utf-8"),
+    (0, import_promises.readFile)((0, import_path.resolve)(dirname, "./templates/header.hbs"), "utf-8"),
+    (0, import_promises.readFile)((0, import_path.resolve)(dirname, "./templates/commit.hbs"), "utf-8"),
+    (0, import_promises.readFile)((0, import_path.resolve)(dirname, "./templates/footer.hbs"), "utf-8")
+  ]);
+  const writerOpts = getWriterOpts();
+  writerOpts.mainTemplate = template;
+  writerOpts.headerPartial = header;
+  writerOpts.commitPartial = commit;
+  writerOpts.footerPartial = footer;
+  return writerOpts;
+}
+function getWriterOpts() {
+  return {
+    transform: (commit, context) => {
+      let discard = true;
+      const notes = commit.notes.map((note) => {
+        discard = false;
+        return {
+          ...note,
+          title: "BREAKING CHANGES"
+        };
+      });
+      let type = commit.type;
+      if (commit.type === "feat") {
+        type = "Features";
+      } else if (commit.type === "fix") {
+        type = "Bug Fixes";
+      } else if (commit.type === "perf") {
+        type = "Performance Improvements";
+      } else if (commit.type === "revert" || commit.revert) {
+        type = "Reverts";
+      } else if (discard) {
+        return;
+      } else if (commit.type === "docs") {
+        type = "Documentation";
+      } else if (commit.type === "style") {
+        type = "Styles";
+      } else if (commit.type === "refactor") {
+        type = "Code Refactoring";
+      } else if (commit.type === "test") {
+        type = "Tests";
+      } else if (commit.type === "build") {
+        type = "Build System";
+      } else if (commit.type === "ci") {
+        type = "Continuous Integration";
+      }
+      const scope = commit.scope === "*" ? "" : commit.scope;
+      const shortHash = typeof commit.hash === "string" ? commit.hash.substring(0, 7) : commit.shortHash;
+      const issues = [];
+      let subject = commit.subject;
+      if (typeof subject === "string") {
+        let url = context.repository ? `${context.host}/${context.owner}/${context.repository}` : context.repoUrl;
+        if (url) {
+          url = `${url}/issues/`;
+          subject = subject.replace(/#([0-9]+)/g, (_, issue) => {
+            issues.push(issue);
+            return `[#${issue}](${url}${issue})`;
+          });
+        }
+        if (context.host) {
+          subject = subject.replace(/\B@([a-z0-9](?:-?[a-z0-9/]){0,38})/g, (_, username) => {
+            if (username.includes("/")) {
+              return `@${username}`;
+            }
+            return `[@${username}](${context.host}/${username})`;
+          });
+        }
+      }
+      const references = commit.references.filter((reference) => !issues.includes(reference.issue));
+      return {
+        notes,
+        type,
+        scope,
+        shortHash,
+        subject,
+        references
+      };
+    },
+    groupBy: "type",
+    commitGroupsSort: "title",
+    commitsSort: ["scope", "subject"],
+    noteGroupsSort: "title",
+    notesSort: import_compare_func.default
+  };
+}
+
+// node_modules/conventional-changelog-angular/src/whatBump.js
+function whatBump(commits) {
+  let level = 2;
+  let breakings = 0;
+  let features = 0;
+  commits.forEach((commit) => {
+    if (commit.notes.length > 0) {
+      breakings += commit.notes.length;
+      level = 0;
+    } else if (commit.type === "feat") {
+      features += 1;
+      if (level === 2) {
+        level = 1;
+      }
+    }
+  });
+  return {
+    level,
+    reason: breakings === 1 ? `There is ${breakings} BREAKING CHANGE and ${features} features` : `There are ${breakings} BREAKING CHANGES and ${features} features`
+  };
+}
+
+// node_modules/conventional-changelog-angular/src/index.js
+async function createPreset() {
+  return {
+    parser: createParserOpts(),
+    writer: await createWriterOpts(),
+    whatBump
+  };
+}
+
+// node_modules/@conventional-changelog/git-client/dist/utils.js
+var import_child_process = require("child_process");
+function catchProcessError(child) {
+  return new Promise((resolve2) => {
+    let stderr = "";
+    let error = null;
+    child.stderr.on("data", (chunk) => {
+      stderr += chunk.toString();
+    });
+    child.on("error", (err) => {
+      error = err;
+    });
+    child.on("close", () => {
+      if (stderr) {
+        error = new Error(stderr);
+      }
+      resolve2(error);
+    });
+  });
+}
+async function* stdoutSpawn(cmd, args, options) {
+  const child = (0, import_child_process.spawn)(cmd, args, options);
+  const errorPromise = catchProcessError(child);
+  yield* child.stdout;
+  const error = await errorPromise;
+  if (error) {
+    throw error;
+  }
+}
+async function spawn(cmd, args, options) {
+  const stdout = stdoutSpawn(cmd, args, options);
+  let chunk;
+  const output = [];
+  for await (chunk of stdout) {
+    output.push(chunk);
+  }
+  return Buffer.concat(output);
+}
+async function* splitStream(stream, separator) {
+  let chunk;
+  let payload;
+  let buffer = "";
+  for await (chunk of stream) {
+    buffer += chunk.toString();
+    if (buffer.includes(separator)) {
+      payload = buffer.split(separator);
+      buffer = payload.pop() || "";
+      yield* payload;
+    }
+  }
+  if (buffer) {
+    yield buffer;
+  }
+}
+function formatKeyValue(key, value) {
+  return `${key.length === 1 ? "-" : "--"}${key.replace(/[A-Z]/g, "-$&").toLowerCase()}${value ? `=${value}` : ""}`;
+}
+function formatParams(params) {
+  const args = [];
+  let key;
+  let value;
+  let arrayValue;
+  for (key in params) {
+    value = params[key];
+    if (value === true) {
+      args.push(formatKeyValue(key));
+    } else if (value === false) {
+      args.push(formatKeyValue(`no-${key}`));
+    } else if (Array.isArray(value)) {
+      for (arrayValue of value) {
+        args.push(formatKeyValue(key, arrayValue));
+      }
+    } else if (value) {
+      args.push(formatKeyValue(key, value));
+    }
+  }
+  return args;
+}
+function formatArgs(...args) {
+  const finalArgs = [];
+  for (const arg of args) {
+    if (!arg) {
+      continue;
+    }
+    if (Array.isArray(arg)) {
+      finalArgs.push(...formatArgs(...arg));
+    } else if (typeof arg === "object" && !(arg instanceof RegExp)) {
+      finalArgs.push(...formatParams(arg));
+    } else {
+      finalArgs.push(String(arg));
+    }
+  }
+  return finalArgs;
+}
+
+// node_modules/@conventional-changelog/git-client/dist/GitClient.js
+var SCISSOR = "------------------------ >8 ------------------------";
+var GitClient = class {
+  cwd;
+  debug;
+  constructor(cwd, debug = false) {
+    this.cwd = cwd;
+    this.debug = debug;
+  }
+  formatArgs(...args) {
+    const finalArgs = formatArgs(...args);
+    if (this.debug) {
+      this.debug(finalArgs);
+    }
+    return finalArgs;
+  }
+  /**
+   * Get raw commits stream.
+   * @param params
+   * @param params.path - Read commits from specific path.
+   * @param params.from - Start commits range.
+   * @param params.to - End commits range.
+   * @param params.format - Commits format.
+   * @yields Raw commits data.
+   */
+  async *getRawCommits(params = {}) {
+    const { path: path2, from = "", to = "HEAD", format = "%B", ignore, ...restParams } = params;
+    const shouldNotIgnore = ignore ? (chunk2) => !ignore.test(chunk2) : () => true;
+    const args = this.formatArgs("log", `--format=${format}%n${SCISSOR}`, [from, to].filter(Boolean).join(".."), restParams, path2 && ["--", path2]);
+    const stdout = stdoutSpawn("git", args, {
+      cwd: this.cwd
+    });
+    const commitsStream = splitStream(stdout, `${SCISSOR}
+`);
+    let chunk;
+    for await (chunk of commitsStream) {
+      if (shouldNotIgnore(chunk)) {
+        yield chunk;
+      }
+    }
+  }
+  /**
+   * Get tags stream.
+   * @param params - Additional git params.
+   * @yields Tags
+   */
+  async *getTags(params = {}) {
+    const tagRegex = /tag:\s*(.+?)[,)]/gi;
+    const args = this.formatArgs("log", "--decorate", "--no-color", "--date-order", params);
+    const stdout = stdoutSpawn("git", args, {
+      cwd: this.cwd
+    });
+    let chunk;
+    let matches;
+    let tag;
+    for await (chunk of stdout) {
+      matches = chunk.toString().trim().matchAll(tagRegex);
+      for ([, tag] of matches) {
+        yield tag;
+      }
+    }
+  }
+  /**
+   * Get last tag.
+   * @param params - Additional git params.
+   * @returns Last tag, `null` if not found.
+   */
+  async getLastTag(params = {}) {
+    return (await this.getTags(params).next()).value || null;
+  }
+  /**
+   * Check file is ignored via .gitignore.
+   * @param file - Path to target file.
+   * @param params - Additional git params.
+   * @returns Boolean value.
+   */
+  async checkIgnore(file, params = {}) {
+    const args = this.formatArgs("check-ignore", file, params);
+    try {
+      await spawn("git", args, {
+        cwd: this.cwd
+      });
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+  /**
+   * Add files to git index.
+   * @param files - Files to stage.
+   * @param params - Additional git params.
+   */
+  async add(files, params = {}) {
+    const args = this.formatArgs("add", files, params);
+    await spawn("git", args, {
+      cwd: this.cwd
+    });
+  }
+  /**
+   * Commit changes.
+   * @param params
+   * @param params.verify
+   * @param params.sign
+   * @param params.files
+   * @param params.message
+   */
+  async commit(params) {
+    const { verify = true, sign = false, files = [], message, ...restParams } = params;
+    const args = this.formatArgs("commit", !verify && "--no-verify", sign && "-S", files, "-m", message, restParams);
+    await spawn("git", args, {
+      cwd: this.cwd
+    });
+  }
+  /**
+   * Create a tag for the current commit.
+   * @param params
+   * @param params.sign
+   * @param params.name
+   * @param params.message
+   */
+  async tag(params) {
+    let { sign = false, name, message, ...restParams } = params;
+    if (sign) {
+      message = "";
+    }
+    const args = this.formatArgs("tag", sign && "-s", message && "-a", name, message && ["-m", message], restParams);
+    await spawn("git", args, {
+      cwd: this.cwd
+    });
+  }
+  /**
+   * Get current branch name.
+   * @param params - Additional git params.
+   * @returns Current branch name.
+   */
+  async getCurrentBranch(params = {}) {
+    const args = this.formatArgs("rev-parse", "--abbrev-ref", "HEAD", params);
+    const branch = (await spawn("git", args, {
+      cwd: this.cwd
+    })).toString().trim();
+    return branch;
+  }
+  /**
+   * Push changes to remote.
+   * @param branch
+   * @param params - Additional git params.
+   */
+  async push(branch, params = {}) {
+    const args = this.formatArgs("push", "--follow-tags", "origin", branch, params);
+    await spawn("git", args, {
+      cwd: this.cwd
+    });
+  }
+};
+
+// node_modules/@conventional-changelog/git-client/dist/ConventionalGitClient.js
+var import_semver = __toESM(require_semver2(), 1);
+var ConventionalGitClient = class extends GitClient {
+  deps = null;
+  loadDeps() {
+    if (this.deps) {
+      return this.deps;
+    }
+    this.deps = Promise.all([
+      Promise.resolve().then(() => (init_dist(), dist_exports)).then(({ parseCommits: parseCommits2 }) => parseCommits2),
+      Promise.resolve().then(() => (init_dist2(), dist_exports2)).then(({ filterRevertedCommits: filterRevertedCommits2 }) => filterRevertedCommits2)
+    ]);
+    return this.deps;
+  }
+  /**
+   * Get parsed commits stream.
+   * @param params
+   * @param params.path - Read commits from specific path.
+   * @param params.from - Start commits range.
+   * @param params.to - End commits range.
+   * @param params.format - Commits format.
+   * @param parserOptions - Commit parser options.
+   * @yields Raw commits data.
+   */
+  async *getCommits(params = {}, parserOptions = {}) {
+    const { filterReverts, ...gitLogParams } = params;
+    const [parseCommits2, filterRevertedCommits2] = await this.loadDeps();
+    if (filterReverts) {
+      yield* filterRevertedCommits2(this.getCommits(gitLogParams, parserOptions));
+      return;
+    }
+    const parse2 = parseCommits2(parserOptions);
+    const commitsStream = this.getRawCommits(gitLogParams);
+    yield* parse2(commitsStream);
+  }
+  /**
+   * Get semver tags stream.
+   * @param params
+   * @param params.prefix - Get semver tags with specific prefix.
+   * @param params.skipUnstable - Skip semver tags with unstable versions.
+   * @param params.clean - Clean version from prefix and trash.
+   * @yields Semver tags.
+   */
+  async *getSemverTags(params = {}) {
+    const { prefix, skipUnstable, clean, ...restParams } = params;
+    const tagsStream = this.getTags(restParams);
+    const unstableTagRegex = /.+-\w+\.\d+$/;
+    const cleanTag = clean ? (tag2, unprefixed2) => import_semver.default.clean(unprefixed2 || tag2) : (tag2) => tag2;
+    let unprefixed;
+    let tag;
+    for await (tag of tagsStream) {
+      if (skipUnstable && unstableTagRegex.test(tag)) {
+        continue;
+      }
+      if (prefix) {
+        const isPrefixed = typeof prefix === "string" ? tag.startsWith(prefix) : prefix.test(tag);
+        if (isPrefixed) {
+          unprefixed = tag.replace(prefix, "");
+          if (import_semver.default.valid(unprefixed)) {
+            tag = cleanTag(tag, unprefixed);
+            if (tag) {
+              yield tag;
+            }
+          }
+        }
+      } else if (import_semver.default.valid(tag)) {
+        tag = cleanTag(tag);
+        if (tag) {
+          yield tag;
+        }
+      }
+    }
+  }
+  /**
+   * Get last semver tag.
+   * @param params - getSemverTags params.
+   * @returns Last semver tag, `null` if not found.
+   */
+  async getLastSemverTag(params = {}) {
+    return (await this.getSemverTags(params).next()).value || null;
+  }
+  /**
+   * Get current sematic version from git tags.
+   * @param params - Additional git params.
+   * @returns Current sematic version, `null` if not found.
+   */
+  async getVersionFromTags(params = {}) {
+    const semverTagsStream = this.getSemverTags({
+      clean: true,
+      ...params
+    });
+    const semverTags = [];
+    for await (const tag of semverTagsStream) {
+      semverTags.push(tag);
+    }
+    if (!semverTags.length) {
+      return null;
+    }
+    return semverTags.sort(import_semver.default.rcompare)[0] || null;
+  }
+};
+
+// node_modules/conventional-changelog-preset-loader/dist/presetLoader.js
+var import_path2 = __toESM(require("path"), 1);
+function resolvePresetNameVariants(preset) {
+  if (import_path2.default.isAbsolute(preset)) {
+    return [preset];
+  }
+  let scope = "";
+  let name = preset.toLocaleLowerCase();
+  if (preset.startsWith("@")) {
+    const parts = preset.split("/");
+    scope = `${parts.shift()}/`;
+    if (scope === "@conventional-changelog/") {
+      return [preset];
+    }
+    name = parts.join("/");
+  }
+  if (!name.startsWith("conventional-changelog-")) {
+    name = `conventional-changelog-${name}`;
+  }
+  const altPreset = `${scope}${name}`;
+  if (altPreset !== preset) {
+    return [altPreset, preset];
+  }
+  return [preset];
+}
+function getModuleDefaultExport(module2) {
+  if (("__esModule" in module2 || Object.getPrototypeOf(module2) === null) && "default" in module2) {
+    return module2.default;
+  }
+  return module2;
+}
+async function loadWithFallbacks(moduleLoader, variants) {
+  let error = null;
+  for (const variant of variants) {
+    try {
+      return getModuleDefaultExport(await moduleLoader(variant));
+    } catch (err) {
+      if (!error) {
+        error = err;
+      }
+    }
+  }
+  throw error;
+}
+function createPresetLoader(moduleLoader) {
+  return async function loadPreset2(presetOrParams) {
+    let preset = "";
+    let params = null;
+    if (typeof presetOrParams === "string") {
+      preset = presetOrParams;
+    } else if (typeof presetOrParams === "object" && typeof presetOrParams.name === "string") {
+      preset = presetOrParams.name;
+      params = presetOrParams;
+    } else {
+      throw Error("Preset must be string or object with property `name`");
+    }
+    const presetNameVariants = resolvePresetNameVariants(preset);
+    let createPreset2 = null;
+    try {
+      createPreset2 = await loadWithFallbacks(moduleLoader, presetNameVariants);
+    } catch (err) {
+      throw new Error(`Unable to load the "${preset}" preset. Please make sure it's installed.`, {
+        cause: err
+      });
+    }
+    if (typeof createPreset2 !== "function") {
+      throw new Error(`The "${preset}" preset does not export a function. Maybe you are using an old version of the preset. Please upgrade.`);
+    }
+    return params ? await createPreset2(params) : await createPreset2();
+  };
+}
+var loadPreset = createPresetLoader((preset) => import(preset));
+
+// node_modules/conventional-recommended-bump/dist/utils.js
+function isIterable(value) {
+  return value !== null && (typeof value[Symbol.iterator] === "function" || typeof value[Symbol.asyncIterator] === "function");
+}
+
+// node_modules/conventional-recommended-bump/dist/bumper.js
+var VERSIONS = [
+  "major",
+  "minor",
+  "patch"
+];
+var Bumper = class {
+  gitClient;
+  preset;
+  whatBump;
+  tagGetter;
+  commitsGetter;
+  constructor(cwdOrGitClient = process.cwd()) {
+    this.gitClient = typeof cwdOrGitClient === "string" ? new ConventionalGitClient(cwdOrGitClient) : cwdOrGitClient;
+    this.preset = null;
+    this.whatBump = null;
+    this.tagGetter = () => this.getLastSemverTag();
+    this.commitsGetter = () => this.getCommits();
+  }
+  getLastSemverTag(params) {
+    return this.gitClient.getLastSemverTag(params);
+  }
+  async *getCommits(params, parserOptions) {
+    yield* this.gitClient.getCommits({
+      format: "%B%n-hash-%n%H",
+      from: await this.tagGetter() || "",
+      filterReverts: true,
+      ...params
+    }, parserOptions);
+  }
+  async getPreset() {
+    const result = await this.preset;
+    if (!result) {
+      throw Error("Preset is not loaded or have incorrect exports");
+    }
+    return result;
+  }
+  /**
+   * Load configs from a preset
+   * @param preset
+   * @returns this
+   */
+  loadPreset(preset) {
+    this.preset = loadPreset(preset);
+    this.whatBump = async (commits) => {
+      const { whatBump: whatBump2 } = await this.getPreset();
+      return whatBump2(commits);
+    };
+    this.tagGetter = async () => {
+      const { tags } = await this.getPreset();
+      return this.getLastSemverTag(tags);
+    };
+    this.commitsGetter = async function* commitsGetter() {
+      const { commits, parser } = await this.getPreset();
+      yield* this.getCommits(commits, parser);
+    };
+    return this;
+  }
+  /**
+   * Set params to get the last semver tag
+   * @param paramsOrTag - Params to get the last semver tag or a tag name
+   * @returns this
+   */
+  tag(paramsOrTag) {
+    if (typeof paramsOrTag === "string") {
+      this.tagGetter = () => paramsOrTag;
+    } else {
+      this.tagGetter = () => this.getLastSemverTag(paramsOrTag);
+    }
+    return this;
+  }
+  commits(paramsOrCommits, parserOptions) {
+    if (isIterable(paramsOrCommits)) {
+      this.commitsGetter = () => paramsOrCommits;
+    } else {
+      this.commitsGetter = () => this.getCommits(paramsOrCommits, parserOptions);
+    }
+    return this;
+  }
+  /**
+   * Recommend a bump by `whatBump` function
+   * @param whatBump - Function to recommend a bump from commits
+   * @returns Bump recommendation
+   */
+  async bump(whatBump2 = this.whatBump) {
+    if (typeof whatBump2 !== "function") {
+      throw Error("`whatBump` must be a function");
+    }
+    const commitsStream = this.commitsGetter();
+    const commits = [];
+    let commit;
+    for await (commit of commitsStream) {
+      commits.push(commit);
+    }
+    let result = await whatBump2(commits);
+    if (result && typeof result.level === "number") {
+      result.releaseType = VERSIONS[result.level];
+    } else if (!result) {
+      result = {};
+    }
+    return result;
+  }
+};
+
+// utils.js
+var import_semver2 = __toESM(require_semver2(), 1);
+function isPrerelease(version2) {
+  return version2.includes("-");
+}
+function isPreMajor(version2) {
+  return import_semver2.default.minor(version2) === 0 && import_semver2.default.patch(version2) === 0 && import_semver2.default.prerelease(version2);
+}
+function getNewVersion(lastTag, conventionalReleaseType, prerelease) {
+  if (!lastTag) {
+    return prerelease ? "1.0.0-0" : "1.0.0";
+  }
+  if (isPreMajor(lastTag) && prerelease) {
+    return import_semver2.default.inc(lastTag, "prerelease", prerelease);
+  }
+  const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease);
+  return import_semver2.default.inc(lastTag, releaseType, prerelease);
+}
+function getReleaseType(lastTag, conventionalReleaseType, prerelease) {
+  if (prerelease) {
+    if (isPrerelease(lastTag) && conventionalReleaseType === "patch") {
+      return "prerelease";
+    } else {
+      return `pre${conventionalReleaseType}`;
+    }
+  } else {
+    return conventionalReleaseType;
+  }
+}
+function getLatestRelease(releasesQueryResponse) {
+  if (releasesQueryResponse.length === 0) {
+    return null;
+  }
+  const releases = releasesQueryResponse.map((release) => release.node.tag.name);
+  releases.sort((x, y) => import_semver2.default.gt(x, y) ? -1 : 1);
+  return releases[0];
+}
+
+// index.js
 async function run() {
   try {
-    core.startGroup("Finding last tag...");
-    const octokit = github.getOctokit(core.getInput("repo-token"));
+    import_core.default.startGroup("Finding last tag...");
+    const octokit = import_github.default.getOctokit(import_core.default.getInput("repo-token"));
     const repo = {
-      owner: github.context.payload.repository.owner.login,
-      repo: github.context.payload.repository.name
+      owner: import_github.default.context.payload.repository.owner.login,
+      repo: import_github.default.context.payload.repository.name
       // for testing locally with act
       // owner: 'agrc',
       // repo: 'get-next-version-action'
     };
-    core.info(`querying tags for ${JSON.stringify(repo)}`);
+    import_core.default.info(`querying tags for ${JSON.stringify(repo)}`);
     const data = await octokit.graphql(
       `
       query lastTags($owner: String!, $repo: String!) {
@@ -26212,24 +25628,25 @@ async function run() {
       `,
       repo
     );
-    core.debug(`graphql response: ${JSON.stringify(data, null, 2)}`);
+    import_core.default.debug(`graphql response: ${JSON.stringify(data, null, 2)}`);
     const latestRelease = getLatestRelease(data.repository.releases.edges);
     const currentVersion = latestRelease?.slice(1);
-    core.setOutput("current-version-number", currentVersion);
-    core.info(`latest release ${latestRelease ?? "first release"}`);
-    core.endGroup();
-    const recommendation = await conventionalRecommendedBump({
+    import_core.default.setOutput("current-version-number", currentVersion);
+    import_core.default.info(`latest release ${latestRelease ?? "first release"}`);
+    import_core.default.endGroup();
+    const bumper = new Bumper({
       // pass an object rather than a string to make sure that it gets included in the build
-      config: await angularPreset()
+      config: await createPreset()
     });
-    core.info(`conventional release type ${recommendation.releaseType}`);
-    const prerelease = core.getBooleanInput("prerelease");
+    const recommendation = await bumper.bump();
+    import_core.default.info(`conventional release type ${recommendation.releaseType}`);
+    const prerelease = import_core.default.getBooleanInput("prerelease");
     const newVersion = getNewVersion(latestRelease, recommendation.releaseType, prerelease);
-    core.info(`prerelease: ${prerelease}`);
-    core.info(`next version: ${newVersion}`);
-    core.setOutput("version", newVersion);
+    import_core.default.info(`prerelease: ${prerelease}`);
+    import_core.default.info(`next version: ${newVersion}`);
+    import_core.default.setOutput("version", newVersion);
   } catch (error) {
-    core.setFailed(error.message);
+    import_core.default.setFailed(error.message);
   }
 }
 run();
