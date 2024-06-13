@@ -8,7 +8,7 @@ function isPreMajor(version) {
   return semver.minor(version) === 0 && semver.patch(version) === 0 && semver.prerelease(version);
 }
 
-export function getNewVersion(lastTag, conventionalReleaseType, prerelease) {
+export function getNewVersion(lastTag, conventionalReleaseType, prerelease, lastProdTag) {
   if (!lastTag) {
     return prerelease ? '1.0.0-0' : '1.0.0';
   }
@@ -17,14 +17,15 @@ export function getNewVersion(lastTag, conventionalReleaseType, prerelease) {
     return semver.inc(lastTag, 'prerelease', prerelease);
   }
 
-  const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease);
+  const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag);
 
   return semver.inc(lastTag, releaseType, prerelease);
 }
 
-function getReleaseType(lastTag, conventionalReleaseType, prerelease) {
+function getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag) {
   if (prerelease) {
-    if (isPrerelease(lastTag) && conventionalReleaseType === 'patch') {
+    const prodBump = semver.inc(lastProdTag, conventionalReleaseType);
+    if (semver.gte(lastTag.split('-')[0], prodBump) || (isPrerelease(lastTag) && conventionalReleaseType === 'patch')) {
       return 'prerelease';
     } else {
       return `pre${conventionalReleaseType}`;

@@ -28,6 +28,7 @@ async function run() {
             edges {
               node {
                 id
+                isPrerelease
                 tag {
                   name
                 }
@@ -43,6 +44,9 @@ async function run() {
     core.debug(`graphql response: ${JSON.stringify(data, null, 2)}`);
 
     const latestRelease = getLatestRelease(data.repository.releases.edges);
+    const latestProdRelease = getLatestRelease(
+      data.repository.releases.edges.filter((release) => !release.node.isPrerelease),
+    );
     const currentVersion = latestRelease?.slice(1);
 
     core.setOutput('current-version-number', currentVersion);
@@ -59,7 +63,7 @@ async function run() {
     core.info(`conventional release type ${recommendation.releaseType}`);
 
     const prerelease = core.getBooleanInput('prerelease');
-    const newVersion = getNewVersion(latestRelease, recommendation.releaseType, prerelease);
+    const newVersion = getNewVersion(latestRelease, recommendation.releaseType, prerelease, latestProdRelease);
 
     core.info(`prerelease: ${prerelease}`);
     core.info(`next version: ${newVersion}`);
