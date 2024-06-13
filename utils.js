@@ -1,6 +1,6 @@
-const semver = require('semver');
+import semver from 'semver';
 
-function isPrerelease(version) {
+export function isPrerelease(version) {
   return version.includes('-');
 }
 
@@ -8,7 +8,7 @@ function isPreMajor(version) {
   return semver.minor(version) === 0 && semver.patch(version) === 0 && semver.prerelease(version);
 }
 
-function getNewVersion(lastTag, conventionalReleaseType, prerelease) {
+export function getNewVersion(lastTag, conventionalReleaseType, prerelease) {
   if (!lastTag) {
     return prerelease ? '1.0.0-0' : '1.0.0';
   }
@@ -34,7 +34,7 @@ function getReleaseType(lastTag, conventionalReleaseType, prerelease) {
   }
 }
 
-function getLatestRelease(releasesQueryResponse) {
+export function getLatestRelease(releasesQueryResponse) {
   if (releasesQueryResponse.length === 0) {
     return null;
   }
@@ -45,9 +45,3 @@ function getLatestRelease(releasesQueryResponse) {
 
   return releases[0];
 }
-
-module.exports = {
-  isPrerelease,
-  getNewVersion,
-  getLatestRelease,
-};

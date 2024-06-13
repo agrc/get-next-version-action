@@ -16,7 +16,8 @@
     "url": "git+https://github.com/ugrc/get-next-version-action.git"
   },
   "license": "MIT",
-  "author": "",
+  "author": "ugrc-developers@utah.gov",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "all": "npm run lint && npm run prepare && npm run test",
@@ -33,41 +34,23 @@
     "printWidth": 120,
     "singleQuote": true
   },
-  "eslintConfig": {
-    "env": {
-      "commonjs": true,
-      "es2022": true,
-      "jest": true,
-      "node": true
-    },
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
-    },
-    "extends": [
-      "eslint:recommended",
-      "prettier"
-    ],
-    "rules": {},
-    "globals": {
-      "Atomics": "readonly",
-      "SharedArrayBuffer": "readonly"
-    }
-  },
   "dependencies": {
     "@actions/core": "^1.10.1",
     "@actions/github": "^6.0.0",
     "@vitest/coverage-v8": "^1.6.0",
-    "conventional-changelog-angular": "^7.0.0",
-    "conventional-recommended-bump": "^9.0.0",
+    "conventional-changelog-angular": "^8.0.0",
+    "conventional-recommended-bump": "^10.0.0",
     "semver": "^7.6.2"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.4.0",
     "cpy-cli": "^5.0.0",
     "esbuild": "^0.21.5",
-    "eslint": "^8.57.0",
+    "eslint": "^9.4.0",
     "eslint-config-plugin": "^1.0.11",
     "eslint-plugin-pretty": "^0.0.0",
+    "globals": "^15.4.0",
     "prettier": "^3.3.2",
     "prettier-plugin-organize-imports": "^3.2.4",
     "prettier-plugin-packagejson": "^2.5.0",
