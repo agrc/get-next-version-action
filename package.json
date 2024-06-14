@@ -23,7 +23,7 @@
     "all": "npm run lint && npm run prepare && npm run test",
     "format": "prettier . --write",
     "lint": "eslint . && tsc",
-    "prepare": "bash setup-dist.sh && esbuild index.ts --bundle --platform=node --format=esm --target=es2022 --inject:./cjs-shim.ts --outfile=dist/index.js && cpy \"./node_modules/conventional-changelog-angular/src/templates/**\" ./dist/templates",
+    "prepare": "bash support/setup-dist.sh && esbuild src/index.ts --bundle --platform=node --format=esm --target=es2022 --inject:./src/cjs-shim.ts --outfile=dist/index.js && cpy \"./node_modules/conventional-changelog-angular/src/templates/**\" ./dist/templates",
     "test": "vitest --reporter verbose --coverage"
   },
   "prettier": {
