@@ -1,3 +1,5 @@
+# this is the only way that I could get the angular preset to load correctly
+# bundling it with esbuild or ncc did not work
 rm -rf dist
 mkdir dist
 cd dist
