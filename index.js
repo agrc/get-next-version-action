@@ -11,13 +11,16 @@ async function run() {
     // get the last tag
     const octokit = github.getOctokit(core.getInput('repo-token'));
 
-    const repo = {
-      owner: github.context.payload.repository.owner.login,
-      repo: github.context.payload.repository.name,
-      // for testing locally with act
-      // owner: 'agrc',
-      // repo: 'get-next-version-action'
-    };
+    const repo = process.env.ACT
+      ? {
+          // for testing locally with act
+          owner: 'agrc',
+          repo: 'get-next-version-action',
+        }
+      : {
+          owner: github.context.payload.repository.owner.login,
+          repo: github.context.payload.repository.name,
+        };
     core.info(`querying tags for ${JSON.stringify(repo)}`);
 
     const data = await octokit.graphql(
