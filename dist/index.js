@@ -25890,10 +25890,7 @@ async function run() {
     import_core.default.info(`latest release ${latestRelease ?? "first release"}`);
     import_core.default.endGroup();
     const preset = await createPreset();
-    const bumper = new Bumper(process.cwd()).loadPreset({
-      ...preset,
-      name: "angular"
-    });
+    const bumper = new Bumper(process.cwd()).loadPreset("angular");
     const recommendation = await bumper.bump();
     import_core.default.info(`conventional release type ${recommendation.releaseType}`);
     const prerelease = import_core.default.getBooleanInput("prerelease");

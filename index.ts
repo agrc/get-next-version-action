@@ -75,10 +75,7 @@ async function run() {
 
     // pass an object rather than a string to make sure that it gets included in the build
     const preset = await angularPreset();
-    const bumper = new Bumper(process.cwd()).loadPreset({
-      ...preset,
-      name: 'angular',
-    });
+    const bumper = new Bumper(process.cwd()).loadPreset('angular');
     const recommendation = await bumper.bump();
     core.info(`conventional release type ${recommendation.releaseType}`);
 
