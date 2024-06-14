@@ -57,10 +57,11 @@ async function run() {
     core.info(`latest release ${latestRelease ?? 'first release'}`);
     core.endGroup();
 
-    // get release type recommendation based on conventional commits
-    const bumper = new Bumper({
-      // pass an object rather than a string to make sure that it gets included in the build
-      config: await angularPreset(),
+    // pass an object rather than a string to make sure that it gets included in the build
+    const preset = await angularPreset();
+    const bumper = new Bumper(process.cwd()).loadPreset({
+      ...preset,
+      name: 'angular',
     });
     const recommendation = await bumper.bump();
     core.info(`conventional release type ${recommendation.releaseType}`);
