@@ -38,12 +38,12 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// cjs-shim.ts
+// support/cjs-shim.ts
 import { createRequire } from "module";
 import path from "path";
 import url from "url";
 var init_cjs_shim = __esm({
-  "cjs-shim.ts"() {
+  "support/cjs-shim.ts"() {
     "use strict";
     globalThis.require = createRequire(import.meta.url);
     globalThis.__filename = url.fileURLToPath(import.meta.url);
@@ -24921,7 +24921,7 @@ var init_dist2 = __esm({
   }
 });
 
-// index.ts
+// src/index.ts
 init_cjs_shim();
 var import_core = __toESM(require_core(), 1);
 var import_github = __toESM(require_github(), 1);
@@ -25485,7 +25485,7 @@ var Bumper = class {
   }
 };
 
-// utils.ts
+// src/utils.ts
 init_cjs_shim();
 var import_semver2 = __toESM(require_semver2(), 1);
 function isPrerelease(version2) {
@@ -25525,7 +25525,7 @@ function getLatestRelease(releasesQueryResponse) {
   return releases[0];
 }
 
-// index.ts
+// src/index.ts
 async function run() {
   try {
     import_core.default.startGroup("Finding last tag...");
