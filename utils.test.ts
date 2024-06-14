@@ -2,12 +2,12 @@ import { describe, expect, test } from 'vitest';
 import { getLatestRelease, getNewVersion, isPrerelease } from './utils.js';
 
 describe('isPrerelease', () => {
-  const cases = [
+  const cases: [string, boolean][] = [
     ['1.0.0', false],
     ['1.0.0-0', true],
   ];
 
-  test.each(cases)('when tag is %s', (tag, expectation) => {
+  test.each(cases)('when tag is %s', (tag: string, expectation: boolean) => {
     expect(isPrerelease(tag)).toBe(expectation);
   });
 });
@@ -18,7 +18,7 @@ describe('getNewVersion', () => {
   // 2: prerelease
   // 3: last prod tag
   // 4: expected release type
-  const cases = [
+  const cases: [string | null, string, boolean, string | null, string][] = [
     ['1.0.0', 'patch', false, '1.0.0', '1.0.1'],
     ['1.0.0', 'patch', true, '1.0.0', '1.0.1-0'],
     ['1.0.1-0', 'patch', true, '1.0.1', '1.0.1-1'],
@@ -42,7 +42,7 @@ describe('getNewVersion', () => {
 });
 
 describe('getLatestRelease', () => {
-  const cases = [
+  const cases: [string[], string | null][] = [
     [[], null],
     [
       [
