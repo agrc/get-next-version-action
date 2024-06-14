@@ -18,12 +18,28 @@ async function run() {
           repo: 'get-next-version-action',
         }
       : {
-          owner: github.context.payload.repository.owner.login,
-          repo: github.context.payload.repository.name,
+          owner: github.context.payload.repository?.owner.login,
+          repo: github.context.payload.repository?.name,
         };
     core.info(`querying tags for ${JSON.stringify(repo)}`);
 
-    const data = await octokit.graphql(
+    type GraphQLResponse = {
+      repository: {
+        releases: {
+          edges: {
+            node: {
+              id: string;
+              isPrerelease: boolean;
+              tag: {
+                name: string;
+              };
+            };
+          }[];
+        };
+      };
+    };
+
+    const data: GraphQLResponse = await octokit.graphql(
       `
       query lastTags($owner: String!, $repo: String!) {
         repository(owner: $owner, name: $repo) {
@@ -67,13 +83,15 @@ async function run() {
     core.info(`conventional release type ${recommendation.releaseType}`);
 
     const prerelease = core.getBooleanInput('prerelease');
-    const newVersion = getNewVersion(latestRelease, recommendation.releaseType, prerelease, latestProdRelease);
+    const newVersion = latestRelease
+      ? getNewVersion(latestRelease, recommendation.releaseType as string, prerelease, latestProdRelease as string)
+      : '1.0.0';
 
     core.info(`prerelease: ${prerelease}`);
     core.info(`next version: ${newVersion}`);
 
     core.setOutput('version', newVersion);
-  } catch (error) {
+  } catch (error: any) {
     core.setFailed(error.message);
   }
 }
