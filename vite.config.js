@@ -6,7 +6,7 @@ export default defineConfig({
       cleanOnRerun: true,
       provider: 'v8',
       reporter: ['text', 'lcov'],
-      exclude: ['index.ts', 'cjs-shim.ts', 'dist/*'],
+      exclude: ['src/index.ts', 'support/cjs-shim.ts', 'dist/*'],
     },
   },
 });
