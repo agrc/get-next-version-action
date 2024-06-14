@@ -1,6 +1,5 @@
 import core from '@actions/core';
 import github from '@actions/github';
-import angularPreset from 'conventional-changelog-angular';
 import { Bumper } from 'conventional-recommended-bump';
 import { getLatestRelease, getNewVersion } from './utils.js';
 
@@ -74,7 +73,6 @@ async function run() {
     core.endGroup();
 
     // pass an object rather than a string to make sure that it gets included in the build
-    const preset = await angularPreset();
     const bumper = new Bumper(process.cwd()).loadPreset('angular');
     const recommendation = await bumper.bump();
     core.info(`conventional release type ${recommendation.releaseType}`);

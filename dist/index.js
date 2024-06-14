@@ -3816,8 +3816,8 @@ var require_util2 = __commonJS({
     function createDeferredPromise() {
       let res;
       let rej;
-      const promise = new Promise((resolve2, reject) => {
-        res = resolve2;
+      const promise = new Promise((resolve, reject) => {
+        res = resolve;
         rej = reject;
       });
       return { promise, resolve: res, reject: rej };
@@ -5320,8 +5320,8 @@ Content-Type: ${value.type || "application/octet-stream"}\r
                 });
               }
             });
-            const busboyResolve = new Promise((resolve2, reject) => {
-              busboy.on("finish", resolve2);
+            const busboyResolve = new Promise((resolve, reject) => {
+              busboy.on("finish", resolve);
               busboy.on("error", (err) => reject(new TypeError(err)));
             });
             if (this.body !== null) for await (const chunk of consumeBody(this[kState].body)) busboy.write(chunk);
@@ -5858,9 +5858,9 @@ var require_dispatcher_base = __commonJS({
       }
       close(callback) {
         if (callback === void 0) {
-          return new Promise((resolve2, reject) => {
+          return new Promise((resolve, reject) => {
             this.close((err, data) => {
-              return err ? reject(err) : resolve2(data);
+              return err ? reject(err) : resolve(data);
             });
           });
         }
@@ -5898,12 +5898,12 @@ var require_dispatcher_base = __commonJS({
           err = null;
         }
         if (callback === void 0) {
-          return new Promise((resolve2, reject) => {
+          return new Promise((resolve, reject) => {
             this.destroy(err, (err2, data) => {
               return err2 ? (
                 /* istanbul ignore next: should never error */
                 reject(err2)
-              ) : resolve2(data);
+              ) : resolve(data);
             });
           });
         }
@@ -6971,16 +6971,16 @@ var require_client = __commonJS({
         return this[kNeedDrain] < 2;
       }
       async [kClose]() {
-        return new Promise((resolve2) => {
+        return new Promise((resolve) => {
           if (!this[kSize]) {
-            resolve2(null);
+            resolve(null);
           } else {
-            this[kClosedResolve] = resolve2;
+            this[kClosedResolve] = resolve;
           }
         });
       }
       async [kDestroy](err) {
-        return new Promise((resolve2) => {
+        return new Promise((resolve) => {
           const requests = this[kQueue].splice(this[kPendingIdx]);
           for (let i = 0; i < requests.length; i++) {
             const request = requests[i];
@@ -6991,7 +6991,7 @@ var require_client = __commonJS({
               this[kClosedResolve]();
               this[kClosedResolve] = null;
             }
-            resolve2();
+            resolve();
           };
           if (this[kHTTP2Session] != null) {
             util.destroy(this[kHTTP2Session], err);
@@ -7571,7 +7571,7 @@ var require_client = __commonJS({
         });
       }
       try {
-        const socket = await new Promise((resolve2, reject) => {
+        const socket = await new Promise((resolve, reject) => {
           client[kConnector]({
             host,
             hostname,
@@ -7583,7 +7583,7 @@ var require_client = __commonJS({
             if (err) {
               reject(err);
             } else {
-              resolve2(socket2);
+              resolve(socket2);
             }
           });
         });
@@ -8207,12 +8207,12 @@ upgrade: ${upgrade}\r
           cb();
         }
       }
-      const waitForDrain = () => new Promise((resolve2, reject) => {
+      const waitForDrain = () => new Promise((resolve, reject) => {
         assert(callback === null);
         if (socket[kError]) {
           reject(socket[kError]);
         } else {
-          callback = resolve2;
+          callback = resolve;
         }
       });
       if (client[kHTTPConnVersion] === "h2") {
@@ -8560,8 +8560,8 @@ var require_pool_base = __commonJS({
         if (this[kQueue].isEmpty()) {
           return Promise.all(this[kClients].map((c) => c.close()));
         } else {
-          return new Promise((resolve2) => {
-            this[kClosedResolve] = resolve2;
+          return new Promise((resolve) => {
+            this[kClosedResolve] = resolve;
           });
         }
       }
@@ -9136,7 +9136,7 @@ var require_readable = __commonJS({
         if (this.closed) {
           return Promise.resolve(null);
         }
-        return new Promise((resolve2, reject) => {
+        return new Promise((resolve, reject) => {
           const signalListenerCleanup = signal ? util.addAbortListener(signal, () => {
             this.destroy();
           }) : noop;
@@ -9145,7 +9145,7 @@ var require_readable = __commonJS({
             if (signal && signal.aborted) {
               reject(signal.reason || Object.assign(new Error("The operation was aborted"), { name: "AbortError" }));
             } else {
-              resolve2(null);
+              resolve(null);
             }
           }).on("error", noop).on("data", function(chunk) {
             limit -= chunk.length;
@@ -9167,11 +9167,11 @@ var require_readable = __commonJS({
         throw new TypeError("unusable");
       }
       assert(!stream[kConsume]);
-      return new Promise((resolve2, reject) => {
+      return new Promise((resolve, reject) => {
         stream[kConsume] = {
           type,
           stream,
-          resolve: resolve2,
+          resolve,
           reject,
           length: 0,
           body: []
@@ -9206,12 +9206,12 @@ var require_readable = __commonJS({
       }
     }
     function consumeEnd(consume2) {
-      const { type, body, resolve: resolve2, stream, length } = consume2;
+      const { type, body, resolve, stream, length } = consume2;
       try {
         if (type === "text") {
-          resolve2(toUSVString(Buffer.concat(body)));
+          resolve(toUSVString(Buffer.concat(body)));
         } else if (type === "json") {
-          resolve2(JSON.parse(Buffer.concat(body)));
+          resolve(JSON.parse(Buffer.concat(body)));
         } else if (type === "arrayBuffer") {
           const dst = new Uint8Array(length);
           let pos = 0;
@@ -9219,12 +9219,12 @@ var require_readable = __commonJS({
             dst.set(buf, pos);
             pos += buf.byteLength;
           }
-          resolve2(dst.buffer);
+          resolve(dst.buffer);
         } else if (type === "blob") {
           if (!Blob2) {
             Blob2 = __require("buffer").Blob;
           }
-          resolve2(new Blob2(body, { type: stream[kContentType] }));
+          resolve(new Blob2(body, { type: stream[kContentType] }));
         }
         consumeFinish(consume2);
       } catch (err) {
@@ -9482,9 +9482,9 @@ var require_api_request = __commonJS({
     };
     function request(opts, callback) {
       if (callback === void 0) {
-        return new Promise((resolve2, reject) => {
+        return new Promise((resolve, reject) => {
           request.call(this, opts, (err, data) => {
-            return err ? reject(err) : resolve2(data);
+            return err ? reject(err) : resolve(data);
           });
         });
       }
@@ -9658,9 +9658,9 @@ var require_api_stream = __commonJS({
     };
     function stream(opts, factory, callback) {
       if (callback === void 0) {
-        return new Promise((resolve2, reject) => {
+        return new Promise((resolve, reject) => {
           stream.call(this, opts, factory, (err, data) => {
-            return err ? reject(err) : resolve2(data);
+            return err ? reject(err) : resolve(data);
           });
         });
       }
@@ -9943,9 +9943,9 @@ var require_api_upgrade = __commonJS({
     };
     function upgrade(opts, callback) {
       if (callback === void 0) {
-        return new Promise((resolve2, reject) => {
+        return new Promise((resolve, reject) => {
           upgrade.call(this, opts, (err, data) => {
-            return err ? reject(err) : resolve2(data);
+            return err ? reject(err) : resolve(data);
           });
         });
       }
@@ -10035,9 +10035,9 @@ var require_api_connect = __commonJS({
     };
     function connect(opts, callback) {
       if (callback === void 0) {
-        return new Promise((resolve2, reject) => {
+        return new Promise((resolve, reject) => {
           connect.call(this, opts, (err, data) => {
-            return err ? reject(err) : resolve2(data);
+            return err ? reject(err) : resolve(data);
           });
         });
       }
@@ -13673,7 +13673,7 @@ var require_fetch = __commonJS({
       async function dispatch({ body }) {
         const url2 = requestCurrentURL(request);
         const agent = fetchParams.controller.dispatcher;
-        return new Promise((resolve2, reject) => agent.dispatch(
+        return new Promise((resolve, reject) => agent.dispatch(
           {
             path: url2.pathname + url2.search,
             origin: url2.origin,
@@ -13749,7 +13749,7 @@ var require_fetch = __commonJS({
                   }
                 }
               }
-              resolve2({
+              resolve({
                 status,
                 statusText,
                 headersList: headers[kHeadersList],
@@ -13792,7 +13792,7 @@ var require_fetch = __commonJS({
                 const val = headersList[n + 1].toString("latin1");
                 headers[kHeadersList].append(key, val);
               }
-              resolve2({
+              resolve({
                 status,
                 statusText: STATUS_CODES[status],
                 headersList: headers[kHeadersList],
@@ -17183,11 +17183,11 @@ var require_lib = __commonJS({
     };
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve2) {
-          resolve2(value);
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve2, reject) {
+      return new (P || (P = Promise))(function(resolve, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -17203,7 +17203,7 @@ var require_lib = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -17289,26 +17289,26 @@ var require_lib = __commonJS({
       }
       readBody() {
         return __awaiter(this, void 0, void 0, function* () {
-          return new Promise((resolve2) => __awaiter(this, void 0, void 0, function* () {
+          return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
             let output = Buffer.alloc(0);
             this.message.on("data", (chunk) => {
               output = Buffer.concat([output, chunk]);
             });
             this.message.on("end", () => {
-              resolve2(output.toString());
+              resolve(output.toString());
             });
           }));
         });
       }
       readBodyBuffer() {
         return __awaiter(this, void 0, void 0, function* () {
-          return new Promise((resolve2) => __awaiter(this, void 0, void 0, function* () {
+          return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
             const chunks = [];
             this.message.on("data", (chunk) => {
               chunks.push(chunk);
             });
             this.message.on("end", () => {
-              resolve2(Buffer.concat(chunks));
+              resolve(Buffer.concat(chunks));
             });
           }));
         });
@@ -17517,14 +17517,14 @@ var require_lib = __commonJS({
        */
       requestRaw(info, data) {
         return __awaiter(this, void 0, void 0, function* () {
-          return new Promise((resolve2, reject) => {
+          return new Promise((resolve, reject) => {
             function callbackForResult(err, res) {
               if (err) {
                 reject(err);
               } else if (!res) {
                 reject(new Error("Unknown error"));
               } else {
-                resolve2(res);
+                resolve(res);
               }
             }
             this.requestRawWithCallback(info, data, callbackForResult);
@@ -17709,12 +17709,12 @@ var require_lib = __commonJS({
         return __awaiter(this, void 0, void 0, function* () {
           retryNumber = Math.min(ExponentialBackoffCeiling, retryNumber);
           const ms = ExponentialBackoffTimeSlice * Math.pow(2, retryNumber);
-          return new Promise((resolve2) => setTimeout(() => resolve2(), ms));
+          return new Promise((resolve) => setTimeout(() => resolve(), ms));
         });
       }
       _processResponse(res, options) {
         return __awaiter(this, void 0, void 0, function* () {
-          return new Promise((resolve2, reject) => __awaiter(this, void 0, void 0, function* () {
+          return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
             const statusCode = res.message.statusCode || 0;
             const response = {
               statusCode,
@@ -17722,7 +17722,7 @@ var require_lib = __commonJS({
               headers: {}
             };
             if (statusCode === HttpCodes.NotFound) {
-              resolve2(response);
+              resolve(response);
             }
             function dateTimeDeserializer(key, value) {
               if (typeof value === "string") {
@@ -17761,7 +17761,7 @@ var require_lib = __commonJS({
               err.result = response.result;
               reject(err);
             } else {
-              resolve2(response);
+              resolve(response);
             }
           }));
         });
@@ -17779,11 +17779,11 @@ var require_auth = __commonJS({
     init_cjs_shim();
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve2) {
-          resolve2(value);
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve2, reject) {
+      return new (P || (P = Promise))(function(resolve, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -17799,7 +17799,7 @@ var require_auth = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -17884,11 +17884,11 @@ var require_oidc_utils = __commonJS({
     init_cjs_shim();
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve2) {
-          resolve2(value);
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve2, reject) {
+      return new (P || (P = Promise))(function(resolve, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -17904,7 +17904,7 @@ var require_oidc_utils = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -17983,11 +17983,11 @@ var require_summary = __commonJS({
     init_cjs_shim();
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve2) {
-          resolve2(value);
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve2, reject) {
+      return new (P || (P = Promise))(function(resolve, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -18003,7 +18003,7 @@ var require_summary = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -18347,11 +18347,11 @@ var require_core = __commonJS({
     };
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve2) {
-          resolve2(value);
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve2, reject) {
+      return new (P || (P = Promise))(function(resolve, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -18367,7 +18367,7 @@ var require_core = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -18635,11 +18635,11 @@ var require_utils3 = __commonJS({
     };
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve2) {
-          resolve2(value);
+        return value instanceof P ? value : new P(function(resolve) {
+          resolve(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve2, reject) {
+      return new (P || (P = Promise))(function(resolve, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -18655,7 +18655,7 @@ var require_utils3 = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -22444,180 +22444,6 @@ var require_github = __commonJS({
   }
 });
 
-// node_modules/array-ify/index.js
-var require_array_ify = __commonJS({
-  "node_modules/array-ify/index.js"(exports, module) {
-    "use strict";
-    init_cjs_shim();
-    module.exports = function(val) {
-      return Array.isArray(val) ? val : [val];
-    };
-  }
-});
-
-// node_modules/is-obj/index.js
-var require_is_obj = __commonJS({
-  "node_modules/is-obj/index.js"(exports, module) {
-    "use strict";
-    init_cjs_shim();
-    module.exports = (value) => {
-      const type = typeof value;
-      return value !== null && (type === "object" || type === "function");
-    };
-  }
-});
-
-// node_modules/dot-prop/index.js
-var require_dot_prop = __commonJS({
-  "node_modules/dot-prop/index.js"(exports, module) {
-    "use strict";
-    init_cjs_shim();
-    var isObj = require_is_obj();
-    var disallowedKeys = [
-      "__proto__",
-      "prototype",
-      "constructor"
-    ];
-    var isValidPath = (pathSegments) => !pathSegments.some((segment) => disallowedKeys.includes(segment));
-    function getPathSegments(path3) {
-      const pathArray = path3.split(".");
-      const parts = [];
-      for (let i = 0; i < pathArray.length; i++) {
-        let p = pathArray[i];
-        while (p[p.length - 1] === "\\" && pathArray[i + 1] !== void 0) {
-          p = p.slice(0, -1) + ".";
-          p += pathArray[++i];
-        }
-        parts.push(p);
-      }
-      if (!isValidPath(parts)) {
-        return [];
-      }
-      return parts;
-    }
-    module.exports = {
-      get(object, path3, value) {
-        if (!isObj(object) || typeof path3 !== "string") {
-          return value === void 0 ? object : value;
-        }
-        const pathArray = getPathSegments(path3);
-        if (pathArray.length === 0) {
-          return;
-        }
-        for (let i = 0; i < pathArray.length; i++) {
-          if (!Object.prototype.propertyIsEnumerable.call(object, pathArray[i])) {
-            return value;
-          }
-          object = object[pathArray[i]];
-          if (object === void 0 || object === null) {
-            if (i !== pathArray.length - 1) {
-              return value;
-            }
-            break;
-          }
-        }
-        return object;
-      },
-      set(object, path3, value) {
-        if (!isObj(object) || typeof path3 !== "string") {
-          return object;
-        }
-        const root = object;
-        const pathArray = getPathSegments(path3);
-        for (let i = 0; i < pathArray.length; i++) {
-          const p = pathArray[i];
-          if (!isObj(object[p])) {
-            object[p] = {};
-          }
-          if (i === pathArray.length - 1) {
-            object[p] = value;
-          }
-          object = object[p];
-        }
-        return root;
-      },
-      delete(object, path3) {
-        if (!isObj(object) || typeof path3 !== "string") {
-          return false;
-        }
-        const pathArray = getPathSegments(path3);
-        for (let i = 0; i < pathArray.length; i++) {
-          const p = pathArray[i];
-          if (i === pathArray.length - 1) {
-            delete object[p];
-            return true;
-          }
-          object = object[p];
-          if (!isObj(object)) {
-            return false;
-          }
-        }
-      },
-      has(object, path3) {
-        if (!isObj(object) || typeof path3 !== "string") {
-          return false;
-        }
-        const pathArray = getPathSegments(path3);
-        if (pathArray.length === 0) {
-          return false;
-        }
-        for (let i = 0; i < pathArray.length; i++) {
-          if (isObj(object)) {
-            if (!(pathArray[i] in object)) {
-              return false;
-            }
-            object = object[pathArray[i]];
-          } else {
-            return false;
-          }
-        }
-        return true;
-      }
-    };
-  }
-});
-
-// node_modules/compare-func/index.js
-var require_compare_func = __commonJS({
-  "node_modules/compare-func/index.js"(exports, module) {
-    "use strict";
-    init_cjs_shim();
-    var arrayify = require_array_ify();
-    var dotPropGet = require_dot_prop().get;
-    function compareFunc2(prop) {
-      return function(a, b) {
-        var ret = 0;
-        arrayify(prop).some(function(el) {
-          var x;
-          var y;
-          if (typeof el === "function") {
-            x = el(a);
-            y = el(b);
-          } else if (typeof el === "string") {
-            x = dotPropGet(a, el);
-            y = dotPropGet(b, el);
-          } else {
-            x = a;
-            y = b;
-          }
-          if (x === y) {
-            ret = 0;
-            return;
-          }
-          if (typeof x === "string" && typeof y === "string") {
-            ret = x.localeCompare(y);
-            return ret !== 0;
-          }
-          ret = x < y ? -1 : 1;
-          return true;
-        });
-        return ret;
-      };
-    }
-    module.exports = compareFunc2;
-  }
-});
-
 // node_modules/semver/internal/constants.js
 var require_constants6 = __commonJS({
   "node_modules/semver/internal/constants.js"(exports, module) {
@@ -25100,153 +24926,6 @@ init_cjs_shim();
 var import_core = __toESM(require_core(), 1);
 var import_github = __toESM(require_github(), 1);
 
-// node_modules/conventional-changelog-angular/src/index.js
-init_cjs_shim();
-
-// node_modules/conventional-changelog-angular/src/parser.js
-init_cjs_shim();
-function createParserOpts() {
-  return {
-    headerPattern: /^(\w*)(?:\((.*)\))?: (.*)$/,
-    headerCorrespondence: [
-      "type",
-      "scope",
-      "subject"
-    ],
-    noteKeywords: ["BREAKING CHANGE"],
-    revertPattern: /^(?:Revert|revert:)\s"?([\s\S]+?)"?\s*This reverts commit (\w{7,40})\b/i,
-    revertCorrespondence: ["header", "hash"]
-  };
-}
-
-// node_modules/conventional-changelog-angular/src/writer.js
-init_cjs_shim();
-var import_compare_func = __toESM(require_compare_func(), 1);
-import { readFile } from "fs/promises";
-import { resolve } from "path";
-import { fileURLToPath } from "url";
-var dirname = fileURLToPath(new URL(".", import.meta.url));
-async function createWriterOpts() {
-  const [template, header, commit, footer] = await Promise.all([
-    readFile(resolve(dirname, "./templates/template.hbs"), "utf-8"),
-    readFile(resolve(dirname, "./templates/header.hbs"), "utf-8"),
-    readFile(resolve(dirname, "./templates/commit.hbs"), "utf-8"),
-    readFile(resolve(dirname, "./templates/footer.hbs"), "utf-8")
-  ]);
-  const writerOpts = getWriterOpts();
-  writerOpts.mainTemplate = template;
-  writerOpts.headerPartial = header;
-  writerOpts.commitPartial = commit;
-  writerOpts.footerPartial = footer;
-  return writerOpts;
-}
-function getWriterOpts() {
-  return {
-    transform: (commit, context) => {
-      let discard = true;
-      const notes = commit.notes.map((note) => {
-        discard = false;
-        return {
-          ...note,
-          title: "BREAKING CHANGES"
-        };
-      });
-      let type = commit.type;
-      if (commit.type === "feat") {
-        type = "Features";
-      } else if (commit.type === "fix") {
-        type = "Bug Fixes";
-      } else if (commit.type === "perf") {
-        type = "Performance Improvements";
-      } else if (commit.type === "revert" || commit.revert) {
-        type = "Reverts";
-      } else if (discard) {
-        return;
-      } else if (commit.type === "docs") {
-        type = "Documentation";
-      } else if (commit.type === "style") {
-        type = "Styles";
-      } else if (commit.type === "refactor") {
-        type = "Code Refactoring";
-      } else if (commit.type === "test") {
-        type = "Tests";
-      } else if (commit.type === "build") {
-        type = "Build System";
-      } else if (commit.type === "ci") {
-        type = "Continuous Integration";
-      }
-      const scope = commit.scope === "*" ? "" : commit.scope;
-      const shortHash = typeof commit.hash === "string" ? commit.hash.substring(0, 7) : commit.shortHash;
-      const issues = [];
-      let subject = commit.subject;
-      if (typeof subject === "string") {
-        let url2 = context.repository ? `${context.host}/${context.owner}/${context.repository}` : context.repoUrl;
-        if (url2) {
-          url2 = `${url2}/issues/`;
-          subject = subject.replace(/#([0-9]+)/g, (_, issue) => {
-            issues.push(issue);
-            return `[#${issue}](${url2}${issue})`;
-          });
-        }
-        if (context.host) {
-          subject = subject.replace(/\B@([a-z0-9](?:-?[a-z0-9/]){0,38})/g, (_, username) => {
-            if (username.includes("/")) {
-              return `@${username}`;
-            }
-            return `[@${username}](${context.host}/${username})`;
-          });
-        }
-      }
-      const references = commit.references.filter((reference) => !issues.includes(reference.issue));
-      return {
-        notes,
-        type,
-        scope,
-        shortHash,
-        subject,
-        references
-      };
-    },
-    groupBy: "type",
-    commitGroupsSort: "title",
-    commitsSort: ["scope", "subject"],
-    noteGroupsSort: "title",
-    notesSort: import_compare_func.default
-  };
-}
-
-// node_modules/conventional-changelog-angular/src/whatBump.js
-init_cjs_shim();
-function whatBump(commits) {
-  let level = 2;
-  let breakings = 0;
-  let features = 0;
-  commits.forEach((commit) => {
-    if (commit.notes.length > 0) {
-      breakings += commit.notes.length;
-      level = 0;
-    } else if (commit.type === "feat") {
-      features += 1;
-      if (level === 2) {
-        level = 1;
-      }
-    }
-  });
-  return {
-    level,
-    reason: breakings === 1 ? `There is ${breakings} BREAKING CHANGE and ${features} features` : `There are ${breakings} BREAKING CHANGES and ${features} features`
-  };
-}
-
-// node_modules/conventional-changelog-angular/src/index.js
-async function createPreset() {
-  return {
-    parser: createParserOpts(),
-    writer: await createWriterOpts(),
-    whatBump
-  };
-}
-
 // node_modules/conventional-recommended-bump/dist/index.js
 init_cjs_shim();
 
@@ -25266,7 +24945,7 @@ init_cjs_shim();
 init_cjs_shim();
 import { spawn as spawnChild } from "child_process";
 function catchProcessError(child) {
-  return new Promise((resolve2) => {
+  return new Promise((resolve) => {
     let stderr = "";
     let error = null;
     child.stderr.on("data", (chunk) => {
@@ -25279,7 +24958,7 @@ function catchProcessError(child) {
       if (stderr) {
         error = new Error(stderr);
       }
-      resolve2(error);
+      resolve(error);
     });
   });
 }
@@ -25680,18 +25359,18 @@ function createPresetLoader(moduleLoader) {
       throw Error("Preset must be string or object with property `name`");
     }
     const presetNameVariants = resolvePresetNameVariants(preset);
-    let createPreset2 = null;
+    let createPreset = null;
     try {
-      createPreset2 = await loadWithFallbacks(moduleLoader, presetNameVariants);
+      createPreset = await loadWithFallbacks(moduleLoader, presetNameVariants);
     } catch (err) {
       throw new Error(`Unable to load the "${preset}" preset. Please make sure it's installed.`, {
         cause: err
       });
     }
-    if (typeof createPreset2 !== "function") {
+    if (typeof createPreset !== "function") {
       throw new Error(`The "${preset}" preset does not export a function. Maybe you are using an old version of the preset. Please upgrade.`);
     }
-    return params ? await createPreset2(params) : await createPreset2();
+    return params ? await createPreset(params) : await createPreset();
   };
 }
 var loadPreset = createPresetLoader((preset) => import(preset));
@@ -25747,8 +25426,8 @@ var Bumper = class {
   loadPreset(preset) {
     this.preset = loadPreset(preset);
     this.whatBump = async (commits) => {
-      const { whatBump: whatBump2 } = await this.getPreset();
-      return whatBump2(commits);
+      const { whatBump } = await this.getPreset();
+      return whatBump(commits);
     };
     this.tagGetter = async () => {
       const { tags } = await this.getPreset();
@@ -25786,8 +25465,8 @@ var Bumper = class {
    * @param whatBump - Function to recommend a bump from commits
    * @returns Bump recommendation
    */
-  async bump(whatBump2 = this.whatBump) {
-    if (typeof whatBump2 !== "function") {
+  async bump(whatBump = this.whatBump) {
+    if (typeof whatBump !== "function") {
       throw Error("`whatBump` must be a function");
     }
     const commitsStream = this.commitsGetter();
@@ -25796,7 +25475,7 @@ var Bumper = class {
     for await (commit of commitsStream) {
       commits.push(commit);
     }
-    let result = await whatBump2(commits);
+    let result = await whatBump(commits);
     if (result && typeof result.level === "number") {
       result.releaseType = VERSIONS[result.level];
     } else if (!result) {
@@ -25889,7 +25568,6 @@ async function run() {
     import_core.default.setOutput("current-version-number", currentVersion);
     import_core.default.info(`latest release ${latestRelease ?? "first release"}`);
     import_core.default.endGroup();
-    const preset = await createPreset();
     const bumper = new Bumper(process.cwd()).loadPreset("angular");
     const recommendation = await bumper.bump();
     import_core.default.info(`conventional release type ${recommendation.releaseType}`);
