@@ -34390,13 +34390,16 @@ async function run() {
     // get the last tag
     const octokit = github.getOctokit(core.getInput('repo-token'));
 
-    const repo = {
-      owner: github.context.payload.repository.owner.login,
-      repo: github.context.payload.repository.name,
-      // for testing locally with act
-      // owner: 'agrc',
-      // repo: 'get-next-version-action'
-    };
+    const repo = process.env.ACT
+      ? {
+          // for testing locally with act
+          owner: 'agrc',
+          repo: 'get-next-version-action',
+        }
+      : {
+          owner: github.context.payload.repository.owner.login,
+          repo: github.context.payload.repository.name,
+        };
     core.info(`querying tags for ${JSON.stringify(repo)}`);
 
     const data = await octokit.graphql(
@@ -34433,10 +34436,11 @@ async function run() {
     core.info(`latest release ${latestRelease ?? 'first release'}`);
     core.endGroup();
 
-    // get release type recommendation based on conventional commits
-    const bumper = new Bumper({
-      // pass an object rather than a string to make sure that it gets included in the build
-      config: await createPreset(),
+    // pass an object rather than a string to make sure that it gets included in the build
+    const preset = await createPreset();
+    const bumper = new Bumper(process.cwd()).loadPreset({
+      ...preset,
+      name: 'angular',
     });
     const recommendation = await bumper.bump();
     core.info(`conventional release type ${recommendation.releaseType}`);
