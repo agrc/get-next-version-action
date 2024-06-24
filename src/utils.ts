@@ -4,21 +4,26 @@ export function isPrerelease(version: string): boolean {
   return version.includes('-');
 }
 
-function isPreMajor(version: string): boolean {
+function isMajorPrerelease(version: string): boolean {
   return !!(semver.minor(version) === 0 && semver.patch(version) === 0 && semver.prerelease(version));
 }
 
 export function getNewVersion(
-  lastTag: string|null,
+  lastTag: string | null,
   conventionalReleaseType: string,
   prerelease: boolean,
-  lastProdTag: string|null,
+  lastProdTag: string | null,
 ): string | null {
   if (!lastTag) {
     return prerelease ? '1.0.0-0' : '1.0.0';
   }
 
-  if (isPreMajor(lastTag) && prerelease) {
+  /* If the last tag was a major prerelease, we shouldn't
+  bump anything but the prerelease number. For example, if the
+  last tag was 2.0.0-0 and this is a minor bump, we should
+  return 2.0.0-1, not 2.1.0-0
+  */
+  if (isMajorPrerelease(lastTag) && prerelease) {
     return semver.inc(lastTag, 'prerelease', prerelease);
   }
 
@@ -31,7 +36,7 @@ function getReleaseType(
   lastTag: string,
   conventionalReleaseType: string,
   prerelease: boolean,
-  lastProdTag: string|null,
+  lastProdTag: string | null,
 ): semver.ReleaseType {
   if (prerelease) {
     const prodBump = semver.inc(lastProdTag ?? '', conventionalReleaseType as semver.ReleaseType);
