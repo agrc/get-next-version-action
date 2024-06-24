@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.3.1-0](https://github.com/agrc/get-next-version-action/compare/v1.3.0...v1.3.1-0) (2024-06-24)
+
+
+### 🐛 Bug Fixes
+
+* esbuild -&gt; ncc to allow for building ESM ([98205e9](https://github.com/agrc/get-next-version-action/commit/98205e9db0074470e069ac2caf3d49a4c36e69c9))
+* more consistent subsequent prerelease versions ([dbef8eb](https://github.com/agrc/get-next-version-action/commit/dbef8eb9ee8643ed253b6719ceac9754c412a7d2)), closes [#106](https://github.com/agrc/get-next-version-action/issues/106)
+* path to shim ([3b26732](https://github.com/agrc/get-next-version-action/commit/3b2673216522b1d889b3fb900a07e7b1d9fef717))
+* setup npm package and check in node modules in built version ([efc2bad](https://github.com/agrc/get-next-version-action/commit/efc2bad0ee0106e4cdb8de493e1b036c1dedb9ea))
+* switch back to esbuild with new parameters to fix build ([8ca02f1](https://github.com/agrc/get-next-version-action/commit/8ca02f17a8aa5ab84707b9b925380579cfee8ca0))
+
+
+### 🌲 Dependencies
+
+* bump deps 🌲 ([d8a9193](https://github.com/agrc/get-next-version-action/commit/d8a91934c0826098f3744d712930ca2b558e01e6))
+* bump the safe-dependencies group across 1 directory with 5 updates ([f66a098](https://github.com/agrc/get-next-version-action/commit/f66a0980d1d5075a68b3d01623fd1207cea70674))
+* **dev:** bump braces from 3.0.2 to 3.0.3 ([37a448c](https://github.com/agrc/get-next-version-action/commit/37a448cb49233a870145e874c2f455a590bf9b9f))
+* q4 package updates ([6839584](https://github.com/agrc/get-next-version-action/commit/6839584c2036b7212b38881e341f946bae953380))
+
 ## [1.3.0](https://github.com/agrc/get-next-version-action/compare/v1.2.0...v1.3.0) (2024-04-04)
 
 
