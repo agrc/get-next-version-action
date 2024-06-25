@@ -25491,14 +25491,14 @@ var import_semver2 = __toESM(require_semver2(), 1);
 function isPrerelease(version2) {
   return version2.includes("-");
 }
-function isPreMajor(version2) {
+function isMajorPrerelease(version2) {
   return !!(import_semver2.default.minor(version2) === 0 && import_semver2.default.patch(version2) === 0 && import_semver2.default.prerelease(version2));
 }
 function getNewVersion(lastTag, conventionalReleaseType, prerelease, lastProdTag) {
   if (!lastTag) {
     return prerelease ? "1.0.0-0" : "1.0.0";
   }
-  if (isPreMajor(lastTag) && prerelease) {
+  if (isMajorPrerelease(lastTag) && prerelease) {
     return import_semver2.default.inc(lastTag, "prerelease", prerelease);
   }
   const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag);
