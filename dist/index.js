@@ -25485,6 +25485,9 @@ var Bumper = class {
   }
 };
 
+// src/index.ts
+var import_semver3 = __toESM(require_semver2(), 1);
+
 // src/utils.ts
 init_cjs_shim();
 var import_semver2 = __toESM(require_semver2(), 1);
@@ -25576,6 +25579,11 @@ async function run() {
     import_core.default.info(`prerelease: ${prerelease}`);
     import_core.default.info(`next version: ${newVersion}`);
     import_core.default.setOutput("version", newVersion);
+    if (newVersion) {
+      import_core.default.setOutput("major", import_semver3.default.major(newVersion));
+      import_core.default.setOutput("minor", import_semver3.default.minor(newVersion));
+      import_core.default.setOutput("patch", import_semver3.default.patch(newVersion));
+    }
   } catch (error) {
     import_core.default.setFailed(error.message);
   }
