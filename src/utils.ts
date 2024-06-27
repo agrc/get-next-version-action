@@ -39,6 +39,9 @@ function getReleaseType(
   lastProdTag: string | null,
 ): semver.ReleaseType {
   if (prerelease) {
+    if (!lastProdTag) {
+      return 'prerelease';
+    }
     const prodBump = semver.inc(lastProdTag ?? '', conventionalReleaseType as semver.ReleaseType);
     if (
       semver.gte(lastTag.split('-')[0], prodBump || '') ||
