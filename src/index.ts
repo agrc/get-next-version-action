@@ -1,6 +1,7 @@
 import core from '@actions/core';
 import github from '@actions/github';
 import { Bumper } from 'conventional-recommended-bump';
+import semver from 'semver';
 import { getLatestRelease, getNewVersion } from './utils.js';
 
 async function run() {
@@ -86,6 +87,11 @@ async function run() {
     core.info(`next version: ${newVersion}`);
 
     core.setOutput('version', newVersion);
+    if (newVersion) {
+      core.setOutput('major', semver.major(newVersion));
+      core.setOutput('minor', semver.minor(newVersion));
+      core.setOutput('patch', semver.patch(newVersion));
+    }
   } catch (error: any) {
     core.setFailed(error.message);
   }
