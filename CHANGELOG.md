@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/agrc/get-next-version-action/compare/v1.3.1...v1.4.0) (2024-06-27)
+
+
+### 🚀 Features
+
+* add major, minor, and patch outputs ([f6b6c5d](https://github.com/agrc/get-next-version-action/commit/f6b6c5d63bc6d23afe7cb3e7efe3ac299d3845db))
+
+
+### 🌲 Dependencies
+
+* bump deps ([d699225](https://github.com/agrc/get-next-version-action/commit/d6992251216bc6ae9b0db1b879a923578a3eaebc))
+
 ## [1.4.0-0](https://github.com/agrc/get-next-version-action/compare/v1.3.1...v1.4.0-0) (2024-06-27)
 
 
