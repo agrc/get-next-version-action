@@ -25509,6 +25509,9 @@ function getNewVersion(lastTag, conventionalReleaseType, prerelease, lastProdTag
 }
 function getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag) {
   if (prerelease) {
+    if (!lastProdTag) {
+      return "prerelease";
+    }
     const prodBump = import_semver2.default.inc(lastProdTag ?? "", conventionalReleaseType);
     if (import_semver2.default.gte(lastTag.split("-")[0], prodBump || "") || isPrerelease(lastTag) && conventionalReleaseType === "patch") {
       return "prerelease";
