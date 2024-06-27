@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/agrc/get-next-version-action/compare/v1.4.0...v1.4.1) (2024-06-27)
+
+
+### Bug Fixes
+
+* handle a project that has prereleases but no production release ([e2e325e](https://github.com/agrc/get-next-version-action/commit/e2e325ef378711613c7e471210e41fd00eb1d15b))
+
 ## [1.4.0](https://github.com/agrc/get-next-version-action/compare/v1.3.1...v1.4.0) (2024-06-27)
 
 
