@@ -1,6 +1,9 @@
 name: 'Get Next Version'
 description: 'Get the next version for a project release based on conventional commits'
 author: UGRC
+branding:
+  icon: 'arrow-right-circle'
+  color: 'purple'
 inputs:
   prerelease:
     description: 'Determines if the proposed version number includes a prerelease tag (e.g. 1.0.0-0)'
