@@ -1,5 +1,86 @@
 # Changelog
 
+## [1.4.1](https://github.com/agrc/get-next-version-action/compare/v1.4.1...v1.4.1) (2024-07-10)
+
+
+### Features
+
+* add current-version output ([4bbe144](https://github.com/agrc/get-next-version-action/commit/4bbe144b3b82a1c63e550089c36058527c005f4f))
+* add major, minor, and patch outputs ([f6b6c5d](https://github.com/agrc/get-next-version-action/commit/f6b6c5d63bc6d23afe7cb3e7efe3ac299d3845db))
+* enable auto-merge on release PRs ([316a257](https://github.com/agrc/get-next-version-action/commit/316a257416ef9787440db449d64fb515405620b6))
+* keep dev in sync with main after release ([ef2f3e5](https://github.com/agrc/get-next-version-action/commit/ef2f3e5ed2505e1ffa943bfd1a90bb6879331abd))
+* update to node20 ([c006898](https://github.com/agrc/get-next-version-action/commit/c0068980a496107217c243c57cc7ca67a188ae40))
+
+
+### Bug Fixes
+
+* :evergreen_tree: november package updates ([d60e264](https://github.com/agrc/get-next-version-action/commit/d60e2649212695273f364c8276c6aae96b733ffd))
+* add git user configs to build commit ([a791844](https://github.com/agrc/get-next-version-action/commit/a791844e04480a72be6c9770c936117ef359b777))
+* add github actions branding ([758811f](https://github.com/agrc/get-next-version-action/commit/758811fe047dadd7abdf869c7cf14771e04ee2a0))
+* add prettier plugins config ([ec66ca9](https://github.com/agrc/get-next-version-action/commit/ec66ca9f056fe10e0395a069fb3e845d04dffaed))
+* better test without node modules ([496f144](https://github.com/agrc/get-next-version-action/commit/496f144af2cd420c93fc1535108f9e11fdc5824d))
+* checkout pr source branch for build commit ([d102113](https://github.com/agrc/get-next-version-action/commit/d1021136da7e4f48d6554eca8ab6537cbcc61add))
+* conventionalRecommendedBump returns a promise now ([7e650de](https://github.com/agrc/get-next-version-action/commit/7e650deb4ab053dc42e749286a4f69593d4def34))
+* correct concurrency ([0a3a947](https://github.com/agrc/get-next-version-action/commit/0a3a9474fb74401eb5130aad15ca50ea00aee80f))
+* correct parameter names ([1104612](https://github.com/agrc/get-next-version-action/commit/110461267133ddcb6ff7929188c91f7c36a52f12))
+* correct secret and parameter names ([28df18a](https://github.com/agrc/get-next-version-action/commit/28df18a9498b57734c2fc1252390b939dab44bae))
+* default values can only be strings ([0a4868e](https://github.com/agrc/get-next-version-action/commit/0a4868efc04822e7a601f9987c82871741766fd4))
+* esbuild -&gt; ncc to allow for building ESM ([c020a2d](https://github.com/agrc/get-next-version-action/commit/c020a2d6b199945c353b4190e49b4e584be499b3))
+* fix build output ([0f6780f](https://github.com/agrc/get-next-version-action/commit/0f6780f01d411c5ebe5c20b542ce5e6e184ed258))
+* fix if expression ([35cc29d](https://github.com/agrc/get-next-version-action/commit/35cc29d70e5111b4a8b6ab8d8e93a3e42c1dee46))
+* fix if statement on auto-merge ([af8c430](https://github.com/agrc/get-next-version-action/commit/af8c43030f82a6021fe22f1e116828a8302e4f12))
+* get correct latest release ([1cf8aa5](https://github.com/agrc/get-next-version-action/commit/1cf8aa538500cb81249a0ebeb21b715c44a00b9b))
+* handle a project that has prereleases but no production release ([e2e325e](https://github.com/agrc/get-next-version-action/commit/e2e325ef378711613c7e471210e41fd00eb1d15b))
+* handle new apis for conventional commit packages ([d6dfd68](https://github.com/agrc/get-next-version-action/commit/d6dfd68aa92b98168405ae5aa1fe539cc63f8d10))
+* handle no existing tags ([2ed9097](https://github.com/agrc/get-next-version-action/commit/2ed90975b905cc5d2091d4381198eff4eae6d4d0))
+* include angular preset in build output ([531d9dd](https://github.com/agrc/get-next-version-action/commit/531d9dd59d5f4ebd746815b42c8f3b58777d1530))
+* log current-version output ([8cf6883](https://github.com/agrc/get-next-version-action/commit/8cf6883f166ee684d985f0ead39d64625ea18315))
+* major/minor tag step if statement ([27742dd](https://github.com/agrc/get-next-version-action/commit/27742dd43e538692080ac55fe9b3a0d7b1458cce))
+* more consistent subsequent prerelease versions ([3824871](https://github.com/agrc/get-next-version-action/commit/38248716344f667e50032306da5a03b016406fec)), closes [#106](https://github.com/agrc/get-next-version-action/issues/106)
+* November dependency bumps 🌲 ([08bca6c](https://github.com/agrc/get-next-version-action/commit/08bca6c98b626c4a0261318c6f324bc39429a921))
+* path to shim ([749eacc](https://github.com/agrc/get-next-version-action/commit/749eaccd31f7212ba947f49ed4a39a8009c9b9dc))
+* point to v1 of release action ([c446cd8](https://github.com/agrc/get-next-version-action/commit/c446cd843098cad40fcd936132df8d24f63b9d30))
+* prevent subsequent prereleases after major from affecting minor ([01a6be5](https://github.com/agrc/get-next-version-action/commit/01a6be5566d484ea88881bb0830a114dc80110f3))
+* Q3 Dependency Bumps 🌲 ([8e73446](https://github.com/agrc/get-next-version-action/commit/8e73446c87f915ad0394a5fe67c65c035fdc1585))
+* refactor actions to eliminate duplicate ([a0a8359](https://github.com/agrc/get-next-version-action/commit/a0a83597420e5a6e6821e3a6e24eec6a3ea4428a))
+* remove watch ([7303a1a](https://github.com/agrc/get-next-version-action/commit/7303a1a3559cc76529ce981a65041c085a63b98a))
+* setup npm package and check in node modules in built version ([b07f42d](https://github.com/agrc/get-next-version-action/commit/b07f42d714837214c478e48406457361c4589957))
+* stringify graphql response debug log ([4215117](https://github.com/agrc/get-next-version-action/commit/42151179d47695cf05120bfe4164b2187b4f1305))
+* strip off "v" from output ([4cab59c](https://github.com/agrc/get-next-version-action/commit/4cab59c866637c642d93f7c72dfad7207f2e3d3a))
+* switch back to esbuild with new parameters to fix build ([96ea0d1](https://github.com/agrc/get-next-version-action/commit/96ea0d1912a46dba5f68f331db9d314aa3aeff62))
+* use better regex's for checking semver ([49b4969](https://github.com/agrc/get-next-version-action/commit/49b496947fefe557755771e445053df07e1c790b))
+
+
+### Dependencies
+
+* add a couple of missing ones ([294d5e4](https://github.com/agrc/get-next-version-action/commit/294d5e4fe5007e9d7fc18abd5b24ac35bc619de1))
+* bump deps ([d699225](https://github.com/agrc/get-next-version-action/commit/d6992251216bc6ae9b0db1b879a923578a3eaebc))
+* bump deps 🌲 ([544df27](https://github.com/agrc/get-next-version-action/commit/544df270258017651175a3ab5998e2f13ca5d65e))
+* bump the major-dependencies group with 4 updates ([d0a4e3a](https://github.com/agrc/get-next-version-action/commit/d0a4e3a9296a630f06ccf75427337df3f6fad988))
+* bump the safe-dependencies group across 1 directory with 5 updates ([f66a098](https://github.com/agrc/get-next-version-action/commit/f66a0980d1d5075a68b3d01623fd1207cea70674))
+* bump undici from 5.25.4 to 5.26.3 ([181ee76](https://github.com/agrc/get-next-version-action/commit/181ee761db3e09912dcdb833e0daddd9cb032013))
+* **dev:** bump braces from 3.0.2 to 3.0.3 ([37a448c](https://github.com/agrc/get-next-version-action/commit/37a448cb49233a870145e874c2f455a590bf9b9f))
+* **dev:** bump the safe-dependencies group across 1 directory with 6 updates ([b5bf8ee](https://github.com/agrc/get-next-version-action/commit/b5bf8ee3d6069b582a58863e77b4b9c847a605fb))
+* **dev:** bump the safe-dependencies group with 2 updates ([f3b26ed](https://github.com/agrc/get-next-version-action/commit/f3b26ed82fdd4121b6e99b2b7a106ced51d3d74b))
+* october dependency updates ([e769b76](https://github.com/agrc/get-next-version-action/commit/e769b763b4b6c4fe997b29ac20be083797b4a33e))
+* q2 package updates ([665fd2c](https://github.com/agrc/get-next-version-action/commit/665fd2c3562aae5e3732c83824aae0541d4b0191))
+* q4 package updates ([6839584](https://github.com/agrc/get-next-version-action/commit/6839584c2036b7212b38881e341f946bae953380))
+* q4 updates ([a2a6fa6](https://github.com/agrc/get-next-version-action/commit/a2a6fa66cfa7d78961428509b57998f37d9dc7df))
+
+
+### Documentation
+
+* add badges ([4616cac](https://github.com/agrc/get-next-version-action/commit/4616caccb9c1add0594ff741a418cb305f75e32c))
+* add note about using the act project ([3407531](https://github.com/agrc/get-next-version-action/commit/34075317d47e445f87507a8bcd0666250d121a33))
+* link to more useful angular docs for commit messages ([e9f047a](https://github.com/agrc/get-next-version-action/commit/e9f047a411d88ecb265d56fa67b7390e34d53c8a))
+* update badges and add code cov ([e0a4d1c](https://github.com/agrc/get-next-version-action/commit/e0a4d1c9a1004073ad4e68309fd4bb2085704c85))
+
+
+### Styles
+
+* fresh prettier run ([01fe57a](https://github.com/agrc/get-next-version-action/commit/01fe57a078fe05cf92089312cc8bcb0d73d8d371))
+* implement prettier ([448811e](https://github.com/agrc/get-next-version-action/commit/448811ef8af6af9be32210b88045ec32c2a04677))
+
 ## [1.4.1](https://github.com/agrc/get-next-version-action/compare/v1.4.0...v1.4.1) (2024-06-27)
 
 
