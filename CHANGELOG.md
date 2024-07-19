@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/agrc/get-next-version-action/compare/v1.4.1...v1.4.2) (2024-07-19)
+
+
+### Bug Fixes
+
+* not all first releases should be a prod release ([3e31a74](https://github.com/agrc/get-next-version-action/commit/3e31a747b72fb8ae602deee53e4ab76341050e2c)), closes [#166](https://github.com/agrc/get-next-version-action/issues/166)
+
 ## [1.4.1](https://github.com/agrc/get-next-version-action/compare/v1.4.1...v1.4.1) (2024-07-10)
 
 
