@@ -79,9 +79,12 @@ async function run() {
     core.info(`conventional release type ${recommendation.releaseType}`);
 
     const prerelease = core.getBooleanInput('prerelease');
-    const newVersion = latestRelease
-      ? getNewVersion(latestRelease, recommendation.releaseType as string, prerelease, latestProdRelease as string)
-      : '1.0.0';
+    const newVersion = getNewVersion(
+      latestRelease,
+      recommendation.releaseType as string,
+      prerelease,
+      latestProdRelease as string,
+    );
 
     core.info(`prerelease: ${prerelease}`);
     core.info(`next version: ${newVersion}`);
