@@ -25578,7 +25578,12 @@ async function run() {
     const recommendation = await bumper.bump();
     import_core.default.info(`conventional release type ${recommendation.releaseType}`);
     const prerelease = import_core.default.getBooleanInput("prerelease");
-    const newVersion = latestRelease ? getNewVersion(latestRelease, recommendation.releaseType, prerelease, latestProdRelease) : "1.0.0";
+    const newVersion = getNewVersion(
+      latestRelease,
+      recommendation.releaseType,
+      prerelease,
+      latestProdRelease
+    );
     import_core.default.info(`prerelease: ${prerelease}`);
     import_core.default.info(`next version: ${newVersion}`);
     import_core.default.setOutput("version", newVersion);
