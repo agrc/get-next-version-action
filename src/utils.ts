@@ -57,11 +57,11 @@ function getReleaseType(
 }
 
 export function getLatestRelease(releasesQueryResponse: any[]): string | null {
-  if (releasesQueryResponse.length === 0) {
+  const releases = releasesQueryResponse.filter((release) => release.node.tag).map((release) => release.node.tag.name);
+
+  if (releases.length === 0) {
     return null;
   }
-
-  const releases = releasesQueryResponse.map((release) => release.node.tag.name);
 
   releases.sort((x, y) => (semver.gt(x, y) ? -1 : 1));
 
