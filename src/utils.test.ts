@@ -74,4 +74,20 @@ describe('getLatestRelease', () => {
 
     expect(getLatestRelease(edges)).toBe(expectation);
   });
+
+  test('should skip null tags', () => {
+    const edges = [
+      { node: { tag: { name: 'v1.0.0' } } },
+      { node: { tag: null } },
+      { node: { tag: { name: 'v2.0.0' } } },
+    ];
+
+    expect(getLatestRelease(edges)).toBe('v2.0.0');
+  });
+
+  test('can handle all null tags', () => {
+    const edges = [{ node: { tag: null } }, { node: { tag: null } }];
+
+    expect(getLatestRelease(edges)).toBe(null);
+  });
 });
