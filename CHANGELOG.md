@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.3](https://github.com/agrc/get-next-version-action/compare/v1.4.2...v1.4.3) (2024-08-15)
+
+
+### Bug Fixes
+
+* ignore releases with null tags ([fd82304](https://github.com/agrc/get-next-version-action/commit/fd8230400823dc2f0951b563b6f684906423ece7))
+
+
+### Dependencies
+
+* bump the major-dependencies group across 1 directory with 4 updates ([f3dd31f](https://github.com/agrc/get-next-version-action/commit/f3dd31f1b6e5dfb70c45e9d08d38d368b734329d))
+
 ## [1.4.2](https://github.com/agrc/get-next-version-action/compare/v1.4.1...v1.4.2) (2024-07-19)
 
 
