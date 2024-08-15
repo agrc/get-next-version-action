@@ -25523,7 +25523,7 @@ function getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTa
   }
 }
 function getLatestRelease(releasesQueryResponse) {
-  const releases = releasesQueryResponse.filter((release) => release.node.tag).map((release) => release.node.tag.name);
+  const releases = releasesQueryResponse.filter((release) => release.node.tag && import_semver2.default.valid(release.node.tag.name)).map((release) => release.node.tag.name);
   if (releases.length === 0) {
     return null;
   }
