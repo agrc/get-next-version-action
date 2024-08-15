@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.4](https://github.com/agrc/get-next-version-action/compare/v1.4.3...v1.4.4) (2024-08-15)
+
+
+### Bug Fixes
+
+* skip release versions that are not valid semver ([cc40bf3](https://github.com/agrc/get-next-version-action/commit/cc40bf30cf08756d3c2ed1bdf65d4f3a7bc87002))
+
 ## [1.4.3](https://github.com/agrc/get-next-version-action/compare/v1.4.2...v1.4.3) (2024-08-15)
 
 
