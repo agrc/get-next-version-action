@@ -46,6 +46,7 @@ describe('getNewVersion', () => {
 describe('getLatestRelease', () => {
   const cases: [string[], string | null][] = [
     [[], null],
+    [['invalid', 'v1.2.1'], 'v1.2.1'],
     [
       [
         'v2.1.0',

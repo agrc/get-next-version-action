@@ -57,7 +57,9 @@ function getReleaseType(
 }
 
 export function getLatestRelease(releasesQueryResponse: any[]): string | null {
-  const releases = releasesQueryResponse.filter((release) => release.node.tag).map((release) => release.node.tag.name);
+  const releases = releasesQueryResponse
+    .filter((release) => release.node.tag && semver.valid(release.node.tag.name))
+    .map((release) => release.node.tag.name);
 
   if (releases.length === 0) {
     return null;
