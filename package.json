@@ -40,22 +40,22 @@
     "@vitest/coverage-v8": "^2.0.5",
     "conventional-changelog-angular": "^8.0.0",
     "conventional-recommended-bump": "^10.0.0",
-    "semver": "^7.6.2"
+    "semver": "^7.6.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^9.6.0",
-    "@types/node": "^22.3.0",
+    "@eslint/js": "^9.9.1",
+    "@types/node": "^22.5.1",
     "cpy-cli": "^5.0.0",
-    "esbuild": "^0.23.0",
-    "eslint": "^9.6.0",
+    "esbuild": "^0.23.1",
+    "eslint": "^9.9.1",
     "eslint-config-plugin": "^1.0.11",
     "eslint-plugin-pretty": "^0.0.0",
-    "globals": "^15.8.0",
-    "prettier": "^3.3.2",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3",
     "prettier-plugin-organize-imports": "^4.0.0",
-    "prettier-plugin-packagejson": "^2.5.0",
-    "typescript": "^5.5.3",
+    "prettier-plugin-packagejson": "^2.5.2",
+    "typescript": "^5.5.4",
     "vitest": "^2.0.5"
   }
 }
