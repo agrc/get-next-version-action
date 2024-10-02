@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.5](https://github.com/agrc/get-next-version-action/compare/v1.4.4...v1.4.5) (2024-10-02)
+
+
+### Dependencies
+
+* FY25 Q2 dependency updates 🌲 ([153b8e8](https://github.com/agrc/get-next-version-action/commit/153b8e81fbc00f6b1d053aa5029c07755c0c1e83))
+
 ## [1.4.4](https://github.com/agrc/get-next-version-action/compare/v1.4.3...v1.4.4) (2024-08-15)
 
 
