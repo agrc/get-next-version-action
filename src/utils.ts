@@ -29,7 +29,7 @@ export function getNewVersion(
 
   const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag);
 
-  return semver.inc(lastTag, releaseType, prerelease);
+  return semver.inc(prerelease ? lastTag : lastProdTag ?? '0.0.0', releaseType, prerelease);
 }
 
 function getReleaseType(
