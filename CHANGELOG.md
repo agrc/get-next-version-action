@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.6](https://github.com/agrc/get-next-version-action/compare/v1.4.5...v1.4.6) (2024-10-07)
+
+
+### Bug Fixes
+
+* ignore previous prereleases if we are bumping a prod version ([54b7917](https://github.com/agrc/get-next-version-action/commit/54b7917743f37a4af5fe2db470df27576d589a5e)), closes [#181](https://github.com/agrc/get-next-version-action/issues/181)
+
 ## [1.4.5](https://github.com/agrc/get-next-version-action/compare/v1.4.4...v1.4.5) (2024-10-02)
 
 
