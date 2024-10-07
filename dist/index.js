@@ -26347,7 +26347,7 @@ function getNewVersion(lastTag, conventionalReleaseType, prerelease, lastProdTag
     return import_semver2.default.inc(lastTag, "prerelease", prerelease);
   }
   const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag);
-  return import_semver2.default.inc(lastTag, releaseType, prerelease);
+  return import_semver2.default.inc(prerelease ? lastTag : lastProdTag ?? "0.0.0", releaseType, prerelease);
 }
 function getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag) {
   if (prerelease) {
