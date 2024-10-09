@@ -6,7 +6,7 @@ import { getLatestRelease, getNewVersion } from './utils.js';
 
 async function run() {
   try {
-    core.startGroup('Finding last tag...');
+    core.info('Finding last tag...');
 
     // get the last tag
     const octokit = github.getOctokit(core.getInput('repo-token'));
@@ -70,15 +70,20 @@ async function run() {
 
     core.setOutput('current-version-number', currentVersion);
 
-    core.info(`latest release ${latestRelease ?? 'first release'}`);
-    core.endGroup();
-
     // pass an object rather than a string to make sure that it gets included in the build
     const bumper = new Bumper(process.cwd()).loadPreset('angular');
     const recommendation = await bumper.bump();
-    core.info(`conventional release type ${recommendation.releaseType}`);
 
     const prerelease = core.getBooleanInput('prerelease');
+
+    // these are helpful in diagnosing issues and adding new test cases
+    core.info(`latest tag: ${latestRelease ?? 'first release'}`);
+    core.info(`conventional release type ${recommendation.releaseType}`);
+    core.info(`prerelease: ${prerelease}`);
+    core.info(`latest prod release: ${latestProdRelease}`);
+
+    core.info(`current-version-number (output): ${currentVersion}`);
+
     const newVersion = getNewVersion(
       latestRelease,
       recommendation.releaseType as string,
@@ -86,8 +91,7 @@ async function run() {
       latestProdRelease as string,
     );
 
-    core.info(`prerelease: ${prerelease}`);
-    core.info(`next version: ${newVersion}`);
+    core.info(`version (output): ${newVersion}`);
 
     core.setOutput('version', newVersion);
     if (newVersion) {
