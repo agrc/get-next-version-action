@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.7](https://github.com/agrc/get-next-version-action/compare/v1.4.6...v1.4.7) (2024-10-09)
+
+
+### Bug Fixes
+
+* clean up and organize logs ([1c9142b](https://github.com/agrc/get-next-version-action/commit/1c9142bbffe38530de23a80d4c248a29cf42fbd8))
+* if no previous prod release, return 1.0.0 if no prerelease ([3a22bc2](https://github.com/agrc/get-next-version-action/commit/3a22bc23ee833ecd6dd0f23b186e4edd1e21f42c))
+
 ## [1.4.6](https://github.com/agrc/get-next-version-action/compare/v1.4.5...v1.4.6) (2024-10-07)
 
 
