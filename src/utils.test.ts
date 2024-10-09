@@ -38,6 +38,7 @@ describe('getNewVersion', () => {
     ['0.1.0-0', 'minor', true, null, '0.1.0-1'],
     ['2.0.0-5', 'minor', false, '1.3.4', '1.4.0'],
     [null, 'patch', false, null, '1.0.0'],
+    ['1.0.0-3', 'patch', false, null, '1.0.0'],
   ];
 
   test.each(cases)('%s, %s, %j, %s => %s', (lastTag, bumpType, prerelease, lastProdTag, expectation) => {
