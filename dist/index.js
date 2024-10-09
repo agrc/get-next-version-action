@@ -26343,11 +26343,14 @@ function getNewVersion(lastTag, conventionalReleaseType, prerelease, lastProdTag
   if (!lastTag) {
     return prerelease ? "1.0.0-0" : "1.0.0";
   }
+  if (!prerelease && !lastProdTag) {
+    return "1.0.0";
+  }
   if (isMajorPrerelease(lastTag) && prerelease) {
     return import_semver2.default.inc(lastTag, "prerelease", prerelease);
   }
   const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag);
-  return import_semver2.default.inc(prerelease ? lastTag : lastProdTag ?? "0.0.0", releaseType, prerelease);
+  return import_semver2.default.inc(prerelease ? lastTag : lastProdTag ?? "1.0.0", releaseType, prerelease);
 }
 function getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag) {
   if (prerelease) {
@@ -26376,7 +26379,7 @@ function getLatestRelease(releasesQueryResponse) {
 // src/index.ts
 async function run() {
   try {
-    import_core.default.startGroup("Finding last tag...");
+    import_core.default.info("Finding last tag...");
     const octokit = import_github.default.getOctokit(import_core.default.getInput("repo-token"));
     const repo = process.env.ACT ? {
       // for testing locally with act
@@ -26414,20 +26417,21 @@ async function run() {
     );
     const currentVersion = latestRelease?.slice(1);
     import_core.default.setOutput("current-version-number", currentVersion);
-    import_core.default.info(`latest release ${latestRelease ?? "first release"}`);
-    import_core.default.endGroup();
     const bumper = new Bumper(process.cwd()).loadPreset("angular");
     const recommendation = await bumper.bump();
-    import_core.default.info(`conventional release type ${recommendation.releaseType}`);
     const prerelease = import_core.default.getBooleanInput("prerelease");
+    import_core.default.info(`latest tag: ${latestRelease ?? "first release"}`);
+    import_core.default.info(`conventional release type ${recommendation.releaseType}`);
+    import_core.default.info(`prerelease: ${prerelease}`);
+    import_core.default.info(`latest prod release: ${latestProdRelease}`);
+    import_core.default.info(`current-version-number (output): ${currentVersion}`);
     const newVersion = getNewVersion(
       latestRelease,
       recommendation.releaseType,
       prerelease,
       latestProdRelease
     );
-    import_core.default.info(`prerelease: ${prerelease}`);
-    import_core.default.info(`next version: ${newVersion}`);
+    import_core.default.info(`version (output): ${newVersion}`);
     import_core.default.setOutput("version", newVersion);
     if (newVersion) {
       import_core.default.setOutput("major", import_semver3.default.major(newVersion));
