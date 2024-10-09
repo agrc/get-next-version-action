@@ -18,6 +18,10 @@ export function getNewVersion(
     return prerelease ? '1.0.0-0' : '1.0.0';
   }
 
+  if (!prerelease && !lastProdTag) {
+    return '1.0.0';
+  }
+
   /* If the last tag was a major prerelease, we shouldn't
   bump anything but the prerelease number. For example, if the
   last tag was 2.0.0-0 and this is a minor bump, we should
@@ -29,7 +33,7 @@ export function getNewVersion(
 
   const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag);
 
-  return semver.inc(prerelease ? lastTag : lastProdTag ?? '0.0.0', releaseType, prerelease);
+  return semver.inc(prerelease ? lastTag : lastProdTag ?? '1.0.0', releaseType, prerelease);
 }
 
 function getReleaseType(
