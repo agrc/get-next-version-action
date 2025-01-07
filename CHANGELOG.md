@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.8](https://github.com/agrc/get-next-version-action/compare/v1.4.7...v1.4.8) (2025-01-07)
+
+
+### Dependencies
+
+* bump cross-spawn from 7.0.3 to 7.0.6 in the npm_and_yarn group ([ad203e5](https://github.com/agrc/get-next-version-action/commit/ad203e57592ea89cd838f0d2a00e2f6f268ef7af))
+* bump nanoid from 3.3.7 to 3.3.8 in the npm_and_yarn group ([8ac6978](https://github.com/agrc/get-next-version-action/commit/8ac697878206dedc0f0ec20848f2472b6b69b499))
+* bump the safe-dependencies group with 9 updates ([b74ef07](https://github.com/agrc/get-next-version-action/commit/b74ef0776e5ae1deb9228d253d0d33467665ad24))
+* update deps ([d874a07](https://github.com/agrc/get-next-version-action/commit/d874a07e039b06243fad586cded8d303f7256fc5))
+
 ## [1.4.7](https://github.com/agrc/get-next-version-action/compare/v1.4.6...v1.4.7) (2024-10-09)
 
 
