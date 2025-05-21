@@ -26,14 +26,6 @@
     "prepare": "bash support/setup-dist.sh && esbuild src/index.ts --bundle --platform=node --format=esm --target=es2022 --inject:./support/cjs-shim.ts --outfile=dist/index.js && cpy \"./node_modules/conventional-changelog-angular/src/templates/**\" ./dist/templates",
     "test": "vitest --reporter verbose --coverage"
   },
-  "prettier": {
-    "plugins": [
-      "prettier-plugin-organize-imports",
-      "prettier-plugin-packagejson"
-    ],
-    "printWidth": 120,
-    "singleQuote": true
-  },
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.0",
