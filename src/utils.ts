@@ -1,4 +1,5 @@
 import semver from 'semver';
+import { GraphQLResponse } from './index.js';
 
 export function isPrerelease(version: string): boolean {
   return version.includes('-');
@@ -60,10 +61,12 @@ function getReleaseType(
   }
 }
 
-export function getLatestRelease(releasesQueryResponse: any[]): string | null {
+export function getLatestRelease(
+  releasesQueryResponse: GraphQLResponse['repository']['releases']['edges'],
+): string | null {
   const releases = releasesQueryResponse
     .filter((release) => release.node.tag && semver.valid(release.node.tag.name))
-    .map((release) => release.node.tag.name);
+    .map((release) => release.node.tag!.name);
 
   if (releases.length === 0) {
     return null;

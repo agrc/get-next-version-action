@@ -4,6 +4,10 @@ import { Bumper } from 'conventional-recommended-bump';
 import semver from 'semver';
 import { getLatestRelease, getNewVersion } from './utils.js';
 
+export type GraphQLResponse = {
+  repository: { releases: { edges: { node: { id: string; isPrerelease: boolean; tag: { name: string } | null } }[] } };
+};
+
 async function run() {
   try {
     core.info('Finding last tag...');
@@ -17,27 +21,8 @@ async function run() {
           owner: 'agrc',
           repo: 'get-next-version-action',
         }
-      : {
-          owner: github.context.payload.repository?.owner.login,
-          repo: github.context.payload.repository?.name,
-        };
+      : { owner: github.context.payload.repository?.owner.login, repo: github.context.payload.repository?.name };
     core.info(`querying tags for ${JSON.stringify(repo)}`);
-
-    type GraphQLResponse = {
-      repository: {
-        releases: {
-          edges: {
-            node: {
-              id: string;
-              isPrerelease: boolean;
-              tag: {
-                name: string;
-              };
-            };
-          }[];
-        };
-      };
-    };
 
     const data: GraphQLResponse = await octokit.graphql(
       `
@@ -99,8 +84,8 @@ async function run() {
       core.setOutput('minor', semver.minor(newVersion));
       core.setOutput('patch', semver.patch(newVersion));
     }
-  } catch (error: any) {
-    core.setFailed(error.message);
+  } catch (error: unknown) {
+    core.setFailed((error as Error).message);
   }
 }
 
