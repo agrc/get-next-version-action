@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest';
+import { type GraphQLResponse } from './index.js';
 import { getLatestRelease, getNewVersion, isPrerelease } from './utils.js';
 
 describe('isPrerelease', () => {
@@ -76,7 +77,7 @@ describe('getLatestRelease', () => {
   test.each(cases)('%s should return %j', (releases, expectation) => {
     const edges = releases.map((release) => ({ node: { tag: { name: release } } }));
 
-    expect(getLatestRelease(edges)).toBe(expectation);
+    expect(getLatestRelease(edges as GraphQLResponse['repository']['releases']['edges'])).toBe(expectation);
   });
 
   test('should skip null tags', () => {
@@ -86,12 +87,15 @@ describe('getLatestRelease', () => {
       { node: { tag: { name: 'v2.0.0' } } },
     ];
 
-    expect(getLatestRelease(edges)).toBe('v2.0.0');
+    expect(getLatestRelease(edges as GraphQLResponse['repository']['releases']['edges'])).toBe('v2.0.0');
   });
 
   test('can handle all null tags', () => {
-    const edges = [{ node: { tag: null } }, { node: { tag: null } }];
+    const edges = [
+      { node: { id: '1', isPrerelease: false, tag: null } },
+      { node: { id: '2', isPrerelease: false, tag: null } },
+    ];
 
-    expect(getLatestRelease(edges)).toBe(null);
+    expect(getLatestRelease(edges as GraphQLResponse['repository']['releases']['edges'])).toBe(null);
   });
 });
