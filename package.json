@@ -1,6 +1,7 @@
 {
   "name": "get-next-version-action",
   "version": "1.4.8",
+  "private": true,
   "description": "A GitHub Action for getting the proposed next version of a project for release based on conventional commits",
   "keywords": [
     "GitHub",
@@ -18,34 +19,35 @@
   "license": "MIT",
   "author": "ugrc-developers@utah.gov",
   "type": "module",
-  "main": "index.js",
   "scripts": {
-    "all": "pnpm run lint && pnpm run prepare && pnpm run test",
+    "build": "bash support/setup-dist.sh && rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript && cpy \"./node_modules/conventional-changelog-angular/src/templates/**\" ./dist/templates",
+    "check": "tsc -b",
     "format": "prettier . --write",
-    "lint": "eslint . && tsc --noEmit",
-    "prepare": "bash support/setup-dist.sh && esbuild src/index.ts --bundle --platform=node --format=esm --target=es2022 --inject:./support/cjs-shim.ts --outfile=dist/index.js && cpy \"./node_modules/conventional-changelog-angular/src/templates/**\" ./dist/templates",
+    "lint": "eslint .",
     "test": "vitest --reporter verbose --coverage"
   },
   "dependencies": {
     "@actions/core": "^1.11.1",
-    "@actions/github": "^6.0.0",
-    "@vitest/coverage-v8": "^2.1.8",
+    "@actions/github": "^6.0.1",
     "conventional-changelog-angular": "^8.0.0",
-    "conventional-recommended-bump": "^10.0.0",
-    "semver": "^7.6.3"
+    "conventional-recommended-bump": "^11.1.0",
+    "semver": "^7.7.2"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@total-typescript/tsconfig": "^1.0.4",
+    "@types/node": "^22.15.21",
     "@types/semver": "^7.7.0",
     "@ugrc/eslint-config": "^1.2.2",
+    "@vitest/coverage-v8": "^3.1.4",
     "cpy-cli": "^5.0.0",
-    "esbuild": "^0.24.2",
-    "eslint": "^9.17.0",
-    "globals": "^15.14.0",
-    "prettier": "^3.4.2",
+    "eslint": "^9.27.0",
+    "prettier": "^3.5.3",
     "prettier-plugin-organize-imports": "^4.1.0",
-    "prettier-plugin-packagejson": "^2.5.6",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "prettier-plugin-packagejson": "^2.5.14",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.4"
   }
 }

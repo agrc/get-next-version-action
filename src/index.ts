@@ -1,12 +1,8 @@
 import core from '@actions/core';
 import github from '@actions/github';
-import { Bumper } from 'conventional-recommended-bump';
+import { Bumper, type BumperRecommendation } from 'conventional-recommended-bump';
 import semver from 'semver';
-import { getLatestRelease, getNewVersion } from './utils.js';
-
-export type GraphQLResponse = {
-  repository: { releases: { edges: { node: { id: string; isPrerelease: boolean; tag: { name: string } | null } }[] } };
-};
+import { getLatestRelease, getNewVersion, type GraphQLResponse } from './utils.js';
 
 async function run() {
   try {
@@ -55,15 +51,18 @@ async function run() {
 
     core.setOutput('current-version-number', currentVersion);
 
-    // pass an object rather than a string to make sure that it gets included in the build
     const bumper = new Bumper(process.cwd()).loadPreset('angular');
-    const recommendation = await bumper.bump();
+    const recommendation = (await bumper.bump()) as BumperRecommendation;
 
     const prerelease = core.getBooleanInput('prerelease');
 
     // these are helpful in diagnosing issues and adding new test cases
     core.info(`latest tag: ${latestRelease ?? 'first release'}`);
-    core.info(`conventional release type ${recommendation.releaseType}`);
+    if (recommendation.releaseType) {
+      core.info(`conventional release type ${recommendation.releaseType}`);
+    } else {
+      core.info('no conventional release type');
+    }
     core.info(`prerelease: ${prerelease}`);
     core.info(`latest prod release: ${latestProdRelease}`);
 
@@ -71,7 +70,7 @@ async function run() {
 
     const newVersion = getNewVersion(
       latestRelease,
-      recommendation.releaseType as string,
+      recommendation.releaseType,
       prerelease,
       latestProdRelease as string,
     );

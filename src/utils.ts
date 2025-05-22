@@ -1,5 +1,8 @@
 import semver from 'semver';
-import { GraphQLResponse } from './index.js';
+
+export type GraphQLResponse = {
+  repository: { releases: { edges: { node: { id: string; isPrerelease: boolean; tag: { name: string } | null } }[] } };
+};
 
 export function isPrerelease(version: string): boolean {
   return version.includes('-');
@@ -49,7 +52,7 @@ function getReleaseType(
     }
     const prodBump = semver.inc(lastProdTag ?? '', conventionalReleaseType as semver.ReleaseType);
     if (
-      semver.gte(lastTag.split('-')[0], prodBump || '') ||
+      semver.gte(lastTag.split('-')[0] ?? lastTag, prodBump || '') ||
       (isPrerelease(lastTag) && conventionalReleaseType === 'patch')
     ) {
       return 'prerelease';
@@ -74,5 +77,5 @@ export function getLatestRelease(
 
   releases.sort((x, y) => (semver.gt(x, y) ? -1 : 1));
 
-  return releases[0];
+  return releases[0] ?? null;
 }
