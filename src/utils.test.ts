@@ -1,6 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { type GraphQLResponse } from './index.js';
-import { getLatestRelease, getNewVersion, isPrerelease } from './utils.js';
+import { getLatestRelease, getNewVersion, isPrerelease, type GraphQLResponse } from './utils.js';
 
 describe('isPrerelease', () => {
   const cases: [string, boolean][] = [
