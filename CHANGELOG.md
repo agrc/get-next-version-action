@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.9](https://github.com/agrc/get-next-version-action/compare/v1.4.8...v1.4.9) (2025-05-22)
+
+
+### Dependencies
+
+* bump codecov action ([d49e389](https://github.com/agrc/get-next-version-action/commit/d49e389d605ac60b135e5ea1045fc0dcbf246cda))
+
 ## [1.4.8](https://github.com/agrc/get-next-version-action/compare/v1.4.7...v1.4.8) (2025-01-07)
 
 
