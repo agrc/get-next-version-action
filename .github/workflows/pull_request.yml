@@ -33,6 +33,9 @@ jobs:
       - name: 🧵 Lint
         run: pnpm run lint
 
+      - name: 🧪 Check types
+        run: pnpm run check
+
   test-unit:
     name: Unit tests
     runs-on: ubuntu-latest
