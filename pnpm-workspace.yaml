@@ -1,2 +1,6 @@
 onlyBuiltDependencies:
   - esbuild
+
+overrides:
+  '@eslint/plugin-kit@<0.3.4': '>=0.3.4'
+  esbuild@<=0.24.2: '>=0.25.0'
