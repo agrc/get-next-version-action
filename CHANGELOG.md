@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.4.10](https://github.com/agrc/get-next-version-action/compare/v1.4.9...v1.4.10) (2025-07-30)
+
+
+### Dependencies
+
+* add missing rollup ([7235a14](https://github.com/agrc/get-next-version-action/commit/7235a1415685c0819224a034329e98b42a20f261))
+* audit fix ([b1031c9](https://github.com/agrc/get-next-version-action/commit/b1031c9e598be97fcc61d10aa90ea9d4b7f190e3))
+* bump brace-expansion in the npm_and_yarn group ([82e68fe](https://github.com/agrc/get-next-version-action/commit/82e68fe7e8cb7adc2d09a4d86d5943ed8d204a8b))
+
 ## [1.4.9](https://github.com/agrc/get-next-version-action/compare/v1.4.8...v1.4.9) (2025-05-22)
 
 
