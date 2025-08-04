@@ -34639,18 +34639,19 @@ function isPrerelease(version) {
 function isMajorPrerelease(version) {
     return !!(semver.minor(version) === 0 && semver.patch(version) === 0 && semver.prerelease(version));
 }
-const identifier = '';
+const identifier = 'rc';
 function getNewVersion(lastTag, conventionalReleaseType, prerelease, lastProdTag) {
     if (!lastTag) {
-        return prerelease ? '1.0.0-1' : '1.0.0';
+        return prerelease ? '1.0.0-rc.1' : '1.0.0';
     }
     if (!prerelease && !lastProdTag) {
         return '1.0.0';
     }
+    lastTag = lastTag.replace(/-(\d+)$/, '-rc.$1');
     /* If the last tag was a major prerelease, we shouldn't
     bump anything but the prerelease number. For example, if the
-    last tag was 2.0.0-0 and this is a minor bump, we should
-    return 2.0.0-1, not 2.1.0-0
+    last tag was 2.0.0-rc.1 and this is a minor bump, we should
+    return 2.0.0-rc.2, not 2.1.0-rc.1
     */
     if (isMajorPrerelease(lastTag) && prerelease) {
         // @ts-expect-error - @types/semver types are outdated
