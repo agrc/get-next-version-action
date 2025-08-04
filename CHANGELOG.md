@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.12](https://github.com/agrc/get-next-version-action/compare/v1.4.11...v1.4.12) (2025-08-04)
+
+
+### Bug Fixes
+
+* add a release candidate identifier "rc" ([c6e826f](https://github.com/agrc/get-next-version-action/commit/c6e826fb56d98a47152d52a7ee94aa9d6441073a))
+
 ## [1.4.11](https://github.com/agrc/get-next-version-action/compare/v1.4.10...v1.4.11) (2025-08-04)
 
 
