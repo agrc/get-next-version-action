@@ -4,7 +4,7 @@ import { getLatestRelease, getNewVersion, isPrerelease, type GraphQLResponse } f
 describe('isPrerelease', () => {
   const cases: [string, boolean][] = [
     ['1.0.0', false],
-    ['1.0.0-0', true],
+    ['1.0.0-1', true],
   ];
 
   test.each(cases)('when tag is %s', (tag: string, expectation: boolean) => {
@@ -20,21 +20,21 @@ describe('getNewVersion', () => {
   // 4: expected release type
   const cases: [string | null, string, boolean, string | null, string][] = [
     ['1.0.0', 'patch', false, '1.0.0', '1.0.1'],
-    ['1.0.0', 'patch', true, '1.0.0', '1.0.1-0'],
-    ['1.0.1-0', 'patch', true, '1.0.1', '1.0.1-1'],
-    ['1.0.0-0', 'patch', true, '1.0.0', '1.0.0-1'],
-    ['1.0.1-0', 'minor', true, '1.0.1', '1.1.0-0'],
-    ['1.1.0-0', 'minor', true, '1.0.1', '1.1.0-1'],
+    ['1.0.0', 'patch', true, '1.0.0', '1.0.1-1'],
+    ['1.0.1-1', 'patch', true, '1.0.1', '1.0.1-2'],
+    ['1.0.1-1', 'minor', true, '1.0.1', '1.1.0-1'],
+    ['1.1.0-1', 'minor', true, '1.0.1', '1.1.0-2'],
     ['1.0.1', 'minor', false, '1.0.1', '1.1.0'],
     ['1.0.1', 'major', false, '1.0.1', '2.0.0'],
-    ['1.0.1', 'major', true, '1.0.1', '2.0.0-0'],
-    ['1.0.1-0', 'major', true, '1.0.1', '2.0.0-0'],
+    ['1.0.1', 'major', true, '1.0.1', '2.0.0-1'],
+    ['1.0.1-1', 'major', true, '1.0.1', '2.0.0-1'],
     [null, 'minor', false, null, '1.0.0'],
     [null, 'major', false, null, '1.0.0'],
-    [null, 'major', true, null, '1.0.0-0'],
-    ['2.0.0-0', 'minor', true, '2.0.0', '2.0.0-1'],
+    [null, 'major', true, null, '1.0.0-1'],
+    ['2.0.0-1', 'patch', true, '1.0.0', '2.0.0-2'],
+    ['2.0.0-1', 'minor', true, '2.0.0', '2.0.0-2'],
     ['1.3.0-7', 'minor', true, '1.2.6', '1.3.0-8'],
-    ['1.3.0-7', 'major', true, '1.2.6', '2.0.0-0'],
+    ['1.3.0-7', 'major', true, '1.2.6', '2.0.0-1'],
     ['0.1.0-0', 'minor', true, null, '0.1.0-1'],
     ['2.0.0-5', 'minor', false, '1.3.4', '1.4.0'],
     [null, 'patch', false, null, '1.0.0'],
