@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.11](https://github.com/agrc/get-next-version-action/compare/v1.4.10...v1.4.11) (2025-08-04)
+
+
+### Bug Fixes
+
+* move to 1 based prereleases ([c4ecc92](https://github.com/agrc/get-next-version-action/commit/c4ecc92a63592781360801f84388e9eb9a7d5d1b))
+
 ## [1.4.10](https://github.com/agrc/get-next-version-action/compare/v1.4.9...v1.4.10) (2025-07-30)
 
 
