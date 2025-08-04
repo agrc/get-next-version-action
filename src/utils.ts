@@ -12,6 +12,8 @@ function isMajorPrerelease(version: string): boolean {
   return !!(semver.minor(version) === 0 && semver.patch(version) === 0 && semver.prerelease(version));
 }
 
+const identifier = '';
+
 export function getNewVersion(
   lastTag: string | null,
   conventionalReleaseType: string,
@@ -19,7 +21,7 @@ export function getNewVersion(
   lastProdTag: string | null,
 ): string | null {
   if (!lastTag) {
-    return prerelease ? '1.0.0-0' : '1.0.0';
+    return prerelease ? '1.0.0-1' : '1.0.0';
   }
 
   if (!prerelease && !lastProdTag) {
@@ -32,12 +34,12 @@ export function getNewVersion(
   return 2.0.0-1, not 2.1.0-0
   */
   if (isMajorPrerelease(lastTag) && prerelease) {
-    return semver.inc(lastTag, 'prerelease', prerelease);
+    return semver.inc(lastTag, 'prerelease', prerelease, identifier, '1');
   }
 
   const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag);
-
-  return semver.inc(prerelease ? lastTag : (lastProdTag ?? '1.0.0'), releaseType, prerelease);
+  
+  return semver.inc(prerelease ? lastTag : (lastProdTag ?? '1.0.0'), releaseType, prerelease, identifier, '1');
 }
 
 function getReleaseType(
