@@ -34639,9 +34639,10 @@ function isPrerelease(version) {
 function isMajorPrerelease(version) {
     return !!(semver.minor(version) === 0 && semver.patch(version) === 0 && semver.prerelease(version));
 }
+const identifier = '';
 function getNewVersion(lastTag, conventionalReleaseType, prerelease, lastProdTag) {
     if (!lastTag) {
-        return prerelease ? '1.0.0-0' : '1.0.0';
+        return prerelease ? '1.0.0-1' : '1.0.0';
     }
     if (!prerelease && !lastProdTag) {
         return '1.0.0';
@@ -34652,10 +34653,12 @@ function getNewVersion(lastTag, conventionalReleaseType, prerelease, lastProdTag
     return 2.0.0-1, not 2.1.0-0
     */
     if (isMajorPrerelease(lastTag) && prerelease) {
-        return semver.inc(lastTag, 'prerelease', prerelease);
+        // @ts-expect-error - @types/semver types are outdated
+        return semver.inc(lastTag, 'prerelease', {}, identifier, '1');
     }
     const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag);
-    return semver.inc(prerelease ? lastTag : (lastProdTag ?? '1.0.0'), releaseType, prerelease);
+    // @ts-expect-error - @types/semver types are outdated
+    return semver.inc(prerelease ? lastTag : (lastProdTag ?? '1.0.0'), releaseType, {}, identifier, '1');
 }
 function getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag) {
     if (prerelease) {
