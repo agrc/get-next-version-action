@@ -34,12 +34,12 @@ export function getNewVersion(
   return 2.0.0-1, not 2.1.0-0
   */
   if (isMajorPrerelease(lastTag) && prerelease) {
-    return semver.inc(lastTag, 'prerelease', prerelease, identifier, '1');
+    return semver.inc(lastTag, 'prerelease', {}, identifier, '1');
   }
 
   const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag);
-  
-  return semver.inc(prerelease ? lastTag : (lastProdTag ?? '1.0.0'), releaseType, prerelease, identifier, '1');
+
+  return semver.inc(prerelease ? lastTag : (lastProdTag ?? '1.0.0'), releaseType, {}, identifier, '1');
 }
 
 function getReleaseType(
