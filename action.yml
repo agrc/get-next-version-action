@@ -6,7 +6,7 @@ branding:
   color: 'purple'
 inputs:
   prerelease:
-    description: 'Determines if the proposed version number includes a prerelease tag (e.g. 1.0.0-0)'
+    description: 'Determines if the proposed version number includes a prerelease tag (e.g. 1.0.0-rc.1)'
     required: false
     default: 'false'
   repo-token:
