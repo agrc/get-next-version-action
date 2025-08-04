@@ -72,7 +72,7 @@ describe('getLatestRelease', () => {
     ],
     [['v1.0.0', 'v2.0.0'], 'v2.0.0'],
     [['v10.0.0', 'v2.0.0'], 'v10.0.0'],
-    [['v1.0.0-0', 'v2.0.0-1'], 'v2.0.0-1'],
+    [['v1.0.0-rc.0', 'v2.0.0-rc.1'], 'v2.0.0-rc.1'],
   ];
 
   test.each(cases)('%s should return %j', (releases, expectation) => {
