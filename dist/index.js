@@ -1,7 +1,7 @@
 import require$$0 from 'os';
 import require$$0$1 from 'crypto';
 import require$$1 from 'fs';
-import require$$1$5 from 'path';
+import require$$1$4 from 'path';
 import require$$2$1 from 'http';
 import require$$3$1 from 'https';
 import require$$0$4 from 'net';
@@ -13,19 +13,17 @@ import require$$0$5 from 'stream';
 import require$$7 from 'buffer';
 import require$$8 from 'querystring';
 import require$$14 from 'stream/web';
-import require$$0$7 from 'node:stream';
-import require$$1$2 from 'node:util';
-import require$$0$6 from 'node:events';
-import require$$0$8 from 'worker_threads';
+import { createRequire } from 'node:module';
+import require$$0$6 from 'worker_threads';
 import require$$2$2 from 'perf_hooks';
 import require$$5 from 'util/types';
 import require$$4$2 from 'async_hooks';
-import require$$1$3 from 'console';
-import require$$1$4 from 'url';
+import require$$1$2 from 'console';
+import require$$1$3 from 'url';
 import require$$3$2 from 'zlib';
 import require$$6 from 'string_decoder';
-import require$$0$9 from 'diagnostics_channel';
-import require$$2$3, { spawn as spawn$1 } from 'child_process';
+import require$$0$7 from 'diagnostics_channel';
+import require$$2$3, { spawn } from 'child_process';
 import require$$6$1 from 'timers';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -39,7 +37,11 @@ function getAugmentedNamespace(n) {
   var f = n.default;
 	if (typeof f == "function") {
 		var a = function a () {
-			if (this instanceof a) {
+			var isInstance = false;
+      try {
+        isInstance = this instanceof a;
+      } catch {}
+			if (isInstance) {
         return Reflect.construct(f, arguments, this.constructor);
 			}
 			return f.apply(this, arguments);
@@ -1749,6 +1751,15 @@ function requireTimers () {
 
 var main = {exports: {}};
 
+const require$3 = createRequire(import.meta.url);
+function __require$2() { return require$3("node:stream"); }
+
+const require$2 = createRequire(import.meta.url);
+function __require$1() { return require$2("node:util"); }
+
+const require$1 = createRequire(import.meta.url);
+function __require() { return require$1("node:events"); }
+
 var sbmh;
 var hasRequiredSbmh;
 
@@ -1782,8 +1793,8 @@ function requireSbmh () {
 	 * Based heavily on the Streaming Boyer-Moore-Horspool C++ implementation
 	 * by Hongli Lai at: https://github.com/FooBarWidget/boyer-moore-horspool
 	 */
-	const EventEmitter = require$$0$6.EventEmitter;
-	const inherits = require$$1$2.inherits;
+	const EventEmitter = __require().EventEmitter;
+	const inherits = __require$1().inherits;
 
 	function SBMH (needle) {
 	  if (typeof needle === 'string') {
@@ -1992,8 +2003,8 @@ function requirePartStream () {
 	if (hasRequiredPartStream) return PartStream_1;
 	hasRequiredPartStream = 1;
 
-	const inherits = require$$1$2.inherits;
-	const ReadableStream = require$$0$7.Readable;
+	const inherits = __require$1().inherits;
+	const ReadableStream = __require$2().Readable;
 
 	function PartStream (opts) {
 	  ReadableStream.call(this, opts);
@@ -2037,8 +2048,8 @@ function requireHeaderParser () {
 	if (hasRequiredHeaderParser) return HeaderParser_1;
 	hasRequiredHeaderParser = 1;
 
-	const EventEmitter = require$$0$6.EventEmitter;
-	const inherits = require$$1$2.inherits;
+	const EventEmitter = __require().EventEmitter;
+	const inherits = __require$1().inherits;
 	const getLimit = requireGetLimit();
 
 	const StreamSearch = requireSbmh();
@@ -2145,8 +2156,8 @@ function requireDicer () {
 	if (hasRequiredDicer) return Dicer_1;
 	hasRequiredDicer = 1;
 
-	const WritableStream = require$$0$7.Writable;
-	const inherits = require$$1$2.inherits;
+	const WritableStream = __require$2().Writable;
+	const inherits = __require$1().inherits;
 
 	const StreamSearch = requireSbmh();
 
@@ -2722,8 +2733,8 @@ function requireMultipart () {
 	//  * support limits.fieldNameSize
 	//     -- this will require modifications to utils.parseParams
 
-	const { Readable } = require$$0$7;
-	const { inherits } = require$$1$2;
+	const { Readable } = __require$2();
+	const { inherits } = __require$1();
 
 	const Dicer = requireDicer();
 
@@ -3288,8 +3299,8 @@ function requireMain () {
 	if (hasRequiredMain) return main.exports;
 	hasRequiredMain = 1;
 
-	const WritableStream = require$$0$7.Writable;
-	const { inherits } = require$$1$2;
+	const WritableStream = __require$2().Writable;
+	const { inherits } = __require$1();
 	const Dicer = requireDicer();
 
 	const MultipartParser = requireMultipart();
@@ -3381,7 +3392,7 @@ function requireConstants$4 () {
 	if (hasRequiredConstants$4) return constants$4;
 	hasRequiredConstants$4 = 1;
 
-	const { MessageChannel, receiveMessageOnPort } = require$$0$8;
+	const { MessageChannel, receiveMessageOnPort } = require$$0$6;
 
 	const corsSafeListedMethods = ['GET', 'HEAD', 'POST'];
 	const corsSafeListedMethodsSet = new Set(corsSafeListedMethods);
@@ -14137,7 +14148,7 @@ function requirePendingInterceptorsFormatter () {
 	hasRequiredPendingInterceptorsFormatter = 1;
 
 	const { Transform } = require$$0$5;
-	const { Console } = require$$1$3;
+	const { Console } = require$$1$2;
 
 	/**
 	 * Gets the output of `console.table(…)` as a string.
@@ -14364,7 +14375,7 @@ function requireProxyAgent () {
 	hasRequiredProxyAgent = 1;
 
 	const { kProxy, kClose, kDestroy, kInterceptors } = requireSymbols$4();
-	const { URL } = require$$1$4;
+	const { URL } = require$$1$3;
 	const Agent = requireAgent();
 	const Pool = requirePool();
 	const DispatcherBase = requireDispatcherBase();
@@ -22314,7 +22325,7 @@ function requireEvents () {
 
 	const { webidl } = requireWebidl();
 	const { kEnumerableProperty } = requireUtil$6();
-	const { MessagePort } = require$$0$8;
+	const { MessagePort } = require$$0$6;
 
 	/**
 	 * @see https://html.spec.whatwg.org/multipage/comms.html#messageevent
@@ -22831,7 +22842,7 @@ function requireConnection () {
 	if (hasRequiredConnection) return connection;
 	hasRequiredConnection = 1;
 
-	const diagnosticsChannel = require$$0$9;
+	const diagnosticsChannel = require$$0$7;
 	const { uid, states } = requireConstants$1();
 	const {
 	  kReadyState,
@@ -23212,7 +23223,7 @@ function requireReceiver () {
 	hasRequiredReceiver = 1;
 
 	const { Writable } = require$$0$5;
-	const diagnosticsChannel = require$$0$9;
+	const diagnosticsChannel = require$$0$7;
 	const { parserStates, opcodes, states, emptyBuffer } = requireConstants$1();
 	const { kReadyState, kSentClose, kResponse, kReceivedClose } = requireSymbols();
 	const { isValidStatusCode, failWebsocketConnection, websocketMessageReceived } = requireUtil();
@@ -25535,7 +25546,7 @@ function requirePathUtils () {
 	};
 	Object.defineProperty(pathUtils, "__esModule", { value: true });
 	pathUtils.toPlatformPath = pathUtils.toWin32Path = pathUtils.toPosixPath = void 0;
-	const path = __importStar(require$$1$5);
+	const path = __importStar(require$$1$4);
 	/**
 	 * toPosixPath converts the given path to the posix form. On Windows, \\ will be
 	 * replaced with /.
@@ -25622,7 +25633,7 @@ function requireIoUtil () {
 		Object.defineProperty(exports, "__esModule", { value: true });
 		exports.getCmdPath = exports.tryGetExecutablePath = exports.isRooted = exports.isDirectory = exports.exists = exports.READONLY = exports.UV_FS_O_EXLOCK = exports.IS_WINDOWS = exports.unlink = exports.symlink = exports.stat = exports.rmdir = exports.rm = exports.rename = exports.readlink = exports.readdir = exports.open = exports.mkdir = exports.lstat = exports.copyFile = exports.chmod = void 0;
 		const fs = __importStar(require$$1);
-		const path = __importStar(require$$1$5);
+		const path = __importStar(require$$1$4);
 		_a = fs.promises
 		// export const {open} = 'fs'
 		, exports.chmod = _a.chmod, exports.copyFile = _a.copyFile, exports.lstat = _a.lstat, exports.mkdir = _a.mkdir, exports.open = _a.open, exports.readdir = _a.readdir, exports.readlink = _a.readlink, exports.rename = _a.rename, exports.rm = _a.rm, exports.rmdir = _a.rmdir, exports.stat = _a.stat, exports.symlink = _a.symlink, exports.unlink = _a.unlink;
@@ -25812,7 +25823,7 @@ function requireIo () {
 	Object.defineProperty(io, "__esModule", { value: true });
 	io.findInPath = io.which = io.mkdirP = io.rmRF = io.mv = io.cp = void 0;
 	const assert_1 = require$$0$3;
-	const path = __importStar(require$$1$5);
+	const path = __importStar(require$$1$4);
 	const ioUtil = __importStar(requireIoUtil());
 	/**
 	 * Copies a file or folder.
@@ -26120,7 +26131,7 @@ function requireToolrunner () {
 	const os = __importStar(require$$0);
 	const events = __importStar(require$$4$1);
 	const child = __importStar(require$$2$3);
-	const path = __importStar(require$$1$5);
+	const path = __importStar(require$$1$4);
 	const io = __importStar(requireIo());
 	const ioUtil = __importStar(requireIoUtil());
 	const timers_1 = require$$6$1;
@@ -26964,7 +26975,7 @@ function requireCore () {
 		const file_command_1 = requireFileCommand();
 		const utils_1 = requireUtils$3();
 		const os = __importStar(require$$0);
-		const path = __importStar(require$$1$5);
+		const path = __importStar(require$$1$4);
 		const oidc_utils_1 = requireOidcUtils();
 		/**
 		 * The code to exit an action
@@ -28467,13 +28478,28 @@ const createTokenAuth = function createTokenAuth2(token) {
 // pkg/dist-src/index.js
 
 // pkg/dist-src/version.js
-var VERSION$2 = "5.2.1";
+var VERSION$2 = "5.2.2";
 
 // pkg/dist-src/index.js
 var noop = () => {
 };
 var consoleWarn = console.warn.bind(console);
 var consoleError = console.error.bind(console);
+function createLogger(logger = {}) {
+  if (typeof logger.debug !== "function") {
+    logger.debug = noop;
+  }
+  if (typeof logger.info !== "function") {
+    logger.info = noop;
+  }
+  if (typeof logger.warn !== "function") {
+    logger.warn = consoleWarn;
+  }
+  if (typeof logger.error !== "function") {
+    logger.error = consoleError;
+  }
+  return logger;
+}
 var userAgentTrail = `octokit-core.js/${VERSION$2} ${getUserAgent()}`;
 var Octokit = class {
   static {
@@ -28547,15 +28573,7 @@ var Octokit = class {
     }
     this.request = request.defaults(requestDefaults);
     this.graphql = withCustomRequest(this.request).defaults(requestDefaults);
-    this.log = Object.assign(
-      {
-        debug: noop,
-        info: noop,
-        warn: consoleWarn,
-        error: consoleError
-      },
-      options.log
-    );
+    this.log = createLogger(options.log);
     this.hook = hook;
     if (!options.authStrategy) {
       if (!options.auth) {
@@ -31232,61 +31250,58 @@ function requireGithub () {
 var githubExports = requireGithub();
 var github = /*@__PURE__*/getDefaultExportFromCjs(githubExports);
 
-/* eslint-disable @typescript-eslint/no-misused-promises */
 /**
- * Catch process error.
- * @param child
- * @returns Process error.
+ * Format arguments.
+ * @param args
+ * @returns Formatted arguments.
  */
-function catchProcessError(child) {
-    return new Promise((resolve) => {
-        let stderr = '';
-        let error = null;
-        child.stderr.on('data', (chunk) => {
-            stderr += chunk.toString();
-        });
-        child.on('error', (err) => {
-            error = err;
-        });
-        child.on('close', (code) => {
-            if (stderr) {
-                error = new Error(stderr);
-            }
-            resolve(code ? error : null);
-        });
-    });
+function formatArgs(...args) {
+    return args.reduce((finalArgs, arg) => {
+        if (arg) {
+            finalArgs.push(String(arg));
+        }
+        return finalArgs;
+    }, []);
 }
 /**
- * Spawn child process and return stdout stream.
- * @param cmd
- * @param args
- * @param options
- * @yields Stdout chunks.
+ * Convert value to array.
+ * @param value
+ * @returns Array.
  */
-async function* stdoutSpawn(cmd, args, options) {
-    const child = spawn$1(cmd, args, options);
-    const errorPromise = catchProcessError(child);
-    yield* child.stdout;
-    const error = await errorPromise;
-    if (error) {
-        throw error;
+function toArray$1(value) {
+    return Array.isArray(value) ? value : [value];
+}
+
+/**
+ * Get all items from an async iterable and return them as an array.
+ * @param iterable
+ * @returns A promise that resolves to an array of items.
+ */
+async function toArray(iterable) {
+    const result = [];
+    for await (const item of iterable) {
+        result.push(item);
     }
+    return result;
 }
 /**
- * Spawn child process.
- * @param cmd
- * @param args
- * @param options
- * @returns Process output.
+ * Concatenate all buffers from an async iterable into a single Buffer.
+ * @param iterable
+ * @returns A promise that resolves to a single Buffer containing all concatenated buffers.
  */
-async function spawn(cmd, args, options) {
-    const stdout = stdoutSpawn(cmd, args, options);
-    let chunk;
-    const output = [];
-    for await (chunk of stdout) {
-        output.push(chunk);
+async function concatBufferStream(iterable) {
+    return Buffer.concat(await toArray(iterable));
+}
+/**
+ * Get the first item from an async iterable.
+ * @param stream
+ * @returns A promise that resolves to the first item, or null if the iterable is empty.
+ */
+async function firstFromStream(stream) {
+    for await (const tag of stream) {
+        return tag;
     }
-    return Buffer.concat(output);
+    return null;
 }
 /**
  * Split stream by separator.
@@ -31310,38 +31325,74 @@ async function* splitStream(stream, separator) {
         yield buffer;
     }
 }
+
 /**
- * Return first element of a stream
- * @param stream
- * @returns First element or null if empty
+ * Wait for a child process to exit and return its exit code.
+ * @param process
+ * @returns A promise that resolves to the exit code of the process.
  */
-async function getFirstFromStream(stream) {
-    // eslint-disable-next-line no-unreachable-loop
-    for await (const tag of stream) {
-        return tag;
+async function exitCode(process) {
+    if (process.exitCode !== null) {
+        return process.exitCode;
     }
-    return null;
+    return new Promise(resolve => process.once('close', resolve));
 }
 /**
- * Format arguments.
- * @param args
- * @returns Formatted arguments.
+ * Catch error from a child process.
+ * Also captures stderr output.
+ * @param process
+ * @returns A promise that resolves to an Error if the process exited with a non-zero code, or null if it exited successfully.
  */
-function formatArgs(...args) {
-    return args.reduce((finalArgs, arg) => {
-        if (arg) {
-            finalArgs.push(String(arg));
+async function catchProcessError(process) {
+    let error = new Error('Process exited with non-zero code');
+    let stderr = '';
+    process.on('error', (err) => {
+        error = err;
+    });
+    if (process.stderr) {
+        let chunk;
+        for await (chunk of process.stderr) {
+            stderr += chunk.toString();
         }
-        return finalArgs;
-    }, []);
+    }
+    const code = await exitCode(process);
+    if (stderr) {
+        error = new Error(stderr);
+    }
+    return code ? error : null;
 }
 /**
- * Convert value to array.
- * @param value
- * @returns Array.
+ * Yields the stdout of a child process.
+ * It will throw an error if the process exits with a non-zero code.
+ * @param process
+ * @yields The stdout of the process.
  */
-function toArray(value) {
-    return Array.isArray(value) ? value : [value];
+async function* outputStream(process) {
+    const { stdout } = process;
+    const errorPromise = catchProcessError(process);
+    if (stdout) {
+        stdout.on('error', (err) => {
+            // Iteration was interrupted, e.g. by `break` or `return` in a for-await loop.
+            if (err.name === 'AbortError' && process.exitCode === null) {
+                process.kill('SIGKILL');
+            }
+        });
+        yield* stdout;
+    }
+    // Handle error only if iteration was not interrupted.
+    const error = await errorPromise;
+    if (error) {
+        throw error;
+    }
+}
+/**
+ * Collects the stdout of a child process into a single Buffer.
+ * It will throw an error if the process exits with a non-zero code.
+ * @param process
+ * @returns A promise that resolves to a Buffer containing the stdout of the process.
+ */
+function output(process) {
+    return concatBufferStream(outputStream(process));
 }
 
 const SCISSOR$1 = '------------------------ >8 ------------------------';
@@ -31363,6 +31414,39 @@ class GitClient {
         return finalArgs;
     }
     /**
+     * Raw exec method to run git commands.
+     * @param args
+     * @returns Stdout string output of the command.
+     */
+    async exec(...args) {
+        return (await output(spawn('git', this.formatArgs(...args), {
+            cwd: this.cwd
+        }))).toString().trim();
+    }
+    /**
+     * Raw exec method to run git commands with stream output.
+     * @param args
+     * @returns Stdout stream of the command.
+     */
+    execStream(...args) {
+        return outputStream(spawn('git', this.formatArgs(...args), {
+            cwd: this.cwd
+        }));
+    }
+    /**
+     * Initialize a new git repository.
+     * @returns Boolean result.
+     */
+    async init() {
+        try {
+            await this.exec('init');
+            return true;
+        }
+        catch (err) {
+            return false;
+        }
+    }
+    /**
      * Get raw commits stream.
      * @param params
      * @param params.path - Read commits from specific path.
@@ -31376,10 +31460,7 @@ class GitClient {
         const shouldNotIgnore = ignore
             ? (chunk) => !ignore.test(chunk)
             : () => true;
-        const args = this.formatArgs('log', `--format=${format}%n${SCISSOR$1}`, since && `--since=${since instanceof Date ? since.toISOString() : since}`, reverse && '--reverse', merges && '--merges', merges === false && '--no-merges', [from, to].filter(Boolean).join('..'), ...path ? ['--', ...toArray(path)] : []);
-        const stdout = stdoutSpawn('git', args, {
-            cwd: this.cwd
-        });
+        const stdout = this.execStream('log', `--format=${format}%n${SCISSOR$1}`, since && `--since=${since instanceof Date ? since.toISOString() : since}`, reverse && '--reverse', merges && '--merges', merges === false && '--no-merges', [from, to].filter(Boolean).join('..'), ...path ? ['--', ...toArray$1(path)] : []);
         const commitsStream = splitStream(stdout, `${SCISSOR$1}\n`);
         let chunk;
         for await (chunk of commitsStream) {
@@ -31390,14 +31471,13 @@ class GitClient {
     }
     /**
      * Get tags stream.
+     * @param params
      * @yields Tags
      */
-    async *getTags() {
+    async *getTags(params = {}) {
+        const { path, from = '', to = 'HEAD', since } = params;
         const tagRegex = /tag:\s*(.+?)[,)]/gi;
-        const args = this.formatArgs('log', '--decorate', '--no-color', '--date-order');
-        const stdout = stdoutSpawn('git', args, {
-            cwd: this.cwd
-        });
+        const stdout = this.execStream('log', '--decorate', '--no-color', '--date-order', since && `--since=${since instanceof Date ? since.toISOString() : since}`, [from, to].filter(Boolean).join('..'), ...path ? ['--', ...toArray$1(path)] : []);
         let chunk;
         let matches;
         let tag;
@@ -31410,10 +31490,11 @@ class GitClient {
     }
     /**
      * Get last tag.
+     * @param params
      * @returns Last tag, `null` if not found.
      */
-    async getLastTag() {
-        return getFirstFromStream(this.getTags());
+    async getLastTag(params) {
+        return firstFromStream(this.getTags(params));
     }
     /**
      * Check file is ignored via .gitignore.
@@ -31421,11 +31502,8 @@ class GitClient {
      * @returns Boolean value.
      */
     async checkIgnore(file) {
-        const args = this.formatArgs('check-ignore', '--', file);
         try {
-            await spawn('git', args, {
-                cwd: this.cwd
-            });
+            await this.exec('check-ignore', '--', file);
             return true;
         }
         catch (err) {
@@ -31437,10 +31515,7 @@ class GitClient {
      * @param files - Files to stage.
      */
     async add(files) {
-        const args = this.formatArgs('add', '--', ...toArray(files));
-        await spawn('git', args, {
-            cwd: this.cwd
-        });
+        await this.exec('add', '--', ...toArray$1(files));
     }
     /**
      * Commit changes.
@@ -31448,14 +31523,12 @@ class GitClient {
      * @param params.verify
      * @param params.sign
      * @param params.files
+     * @param params.allowEmpty
      * @param params.message
      */
     async commit(params) {
-        const { verify = true, sign = false, files = [], message } = params;
-        const args = this.formatArgs('commit', !verify && '--no-verify', sign && '-S', '-m', message, '--', ...files);
-        await spawn('git', args, {
-            cwd: this.cwd
-        });
+        const { verify = true, sign = false, files = [], allowEmpty = false, message } = params;
+        await this.exec('commit', !verify && '--no-verify', sign && '-S', allowEmpty && '--allow-empty', '-m', message, '--', ...files);
     }
     /**
      * Create a tag for the current commit.
@@ -31469,20 +31542,14 @@ class GitClient {
         if (sign) {
             message = '';
         }
-        const args = this.formatArgs('tag', sign && '-s', message && '-a', ...message ? ['-m', message] : [], '--', name);
-        await spawn('git', args, {
-            cwd: this.cwd
-        });
+        await this.exec('tag', sign && '-s', message && '-a', ...message ? ['-m', message] : [], '--', name);
     }
     /**
      * Get current branch name.
      * @returns Current branch name.
      */
     async getCurrentBranch() {
-        const args = this.formatArgs('rev-parse', '--abbrev-ref', 'HEAD');
-        const branch = (await spawn('git', args, {
-            cwd: this.cwd
-        })).toString().trim();
+        const branch = await this.exec('rev-parse', '--abbrev-ref', 'HEAD');
         return branch;
     }
     /**
@@ -31490,10 +31557,7 @@ class GitClient {
      * @returns Default branch name.
      */
     async getDefaultBranch() {
-        const args = this.formatArgs('rev-parse', '--abbrev-ref', 'origin/HEAD');
-        const branch = (await spawn('git', args, {
-            cwd: this.cwd
-        })).toString().trim().replace(/^origin\//, '');
+        const branch = (await this.exec('rev-parse', '--abbrev-ref', 'origin/HEAD')).replace(/^origin\//, '');
         return branch;
     }
     /**
@@ -31503,11 +31567,8 @@ class GitClient {
      * @param params.verify
      */
     async push(branch, params = {}) {
-        const { verify = true, tags = false, followTags = false } = params;
-        const args = this.formatArgs('push', followTags && '--follow-tags', tags && '--tags', !verify && '--no-verify', 'origin', '--', branch);
-        await spawn('git', args, {
-            cwd: this.cwd
-        });
+        const { verify = true, tags = false, followTags = false, force = false } = params;
+        await this.exec('push', followTags && '--follow-tags', tags && '--tags', !verify && '--no-verify', force && '--force', 'origin', '--', branch);
     }
     /**
      * Verify rev exists.
@@ -31516,14 +31577,11 @@ class GitClient {
      * @returns Target hash.
      */
     async verify(rev, safe) {
-        const args = this.formatArgs('rev-parse', '--verify', rev);
-        let git = spawn('git', args, {
-            cwd: this.cwd
-        });
+        let git = this.exec('rev-parse', '--verify', rev);
         if (safe) {
-            git = git.catch(() => Buffer.from(''));
+            git = git.catch(() => '');
         }
-        return (await git).toString().trim();
+        return await git;
     }
     /**
      * Get config value by key.
@@ -31531,10 +31589,48 @@ class GitClient {
      * @returns Config value.
      */
     async getConfig(key) {
-        const args = this.formatArgs('config', '--get', '--', key);
-        return (await spawn('git', args, {
-            cwd: this.cwd
-        })).toString().trim();
+        return await this.exec('config', '--get', '--', key);
+    }
+    /**
+     * Set config value by key.
+     * @param key - Config key.
+     * @param value - Config value.
+     */
+    async setConfig(key, value) {
+        await this.exec('config', '--', key, value);
+    }
+    /**
+     * Fetch changes from remote.
+     * @param params
+     */
+    async fetch(params = {}) {
+        const { prune = false, unshallow = false, tags = false, all = false, remote, branch } = params;
+        await this.exec('fetch', prune && '--prune', unshallow && '--unshallow', tags && '--tags', all && '--all', ...remote && branch ? [
+            '--',
+            remote,
+            branch
+        ] : []);
+    }
+    /**
+     * Create a new branch.
+     * @param branch - Branch name.
+     */
+    async createBranch(branch) {
+        await this.exec('checkout', '-b', branch);
+    }
+    /**
+     * Delete a branch.
+     * @param branch - Branch name.
+     */
+    async deleteBranch(branch) {
+        await this.exec('branch', '-D', '--', branch);
+    }
+    /**
+     * Checkout a branch.
+     * @param branch - Branch name.
+     */
+    async checkout(branch) {
+        await this.exec('checkout', branch);
     }
 }
 
@@ -31870,6 +31966,10 @@ function requireIdentifiers () {
 
 	const numeric = /^[0-9]+$/;
 	const compareIdentifiers = (a, b) => {
+	  if (typeof a === 'number' && typeof b === 'number') {
+	    return a === b ? 0 : a < b ? -1 : 1
+	  }
+
 	  const anum = numeric.test(a);
 	  const bnum = numeric.test(b);
 
@@ -32012,11 +32112,25 @@ function requireSemver$1 () {
 	      other = new SemVer(other, this.options);
 	    }
 
-	    return (
-	      compareIdentifiers(this.major, other.major) ||
-	      compareIdentifiers(this.minor, other.minor) ||
-	      compareIdentifiers(this.patch, other.patch)
-	    )
+	    if (this.major < other.major) {
+	      return -1
+	    }
+	    if (this.major > other.major) {
+	      return 1
+	    }
+	    if (this.minor < other.minor) {
+	      return -1
+	    }
+	    if (this.minor > other.minor) {
+	      return 1
+	    }
+	    if (this.patch < other.patch) {
+	      return -1
+	    }
+	    if (this.patch > other.patch) {
+	      return 1
+	    }
+	    return 0
 	  }
 
 	  comparePre (other) {
@@ -33037,6 +33151,7 @@ function requireRange () {
 	// already replaced the hyphen ranges
 	// turn into a set of JUST comparators.
 	const parseComparator = (comp, options) => {
+	  comp = comp.replace(re[t.BUILD], '');
 	  debug('comp', comp, options);
 	  comp = replaceCarets(comp, options);
 	  debug('caret', comp);
@@ -34328,7 +34443,7 @@ class ConventionalGitClient extends GitClient {
      * @returns Last semver tag, `null` if not found.
      */
     async getLastSemverTag(params = {}) {
-        return getFirstFromStream(this.getSemverTags(params));
+        return firstFromStream(this.getSemverTags(params));
     }
     /**
      * Get current sematic version from git tags.
@@ -34357,7 +34472,7 @@ class ConventionalGitClient extends GitClient {
  * @returns Variants of preset names.
  */
 function resolvePresetNameVariants(preset) {
-    if (require$$1$5.isAbsolute(preset)) {
+    if (require$$1$4.isAbsolute(preset)) {
         return [preset];
     }
     let scope = '';
@@ -34533,10 +34648,12 @@ class Bumper {
     /**
      * Load configs from a preset
      * @param preset
+     * @param loader - Preset module loader, if not provided, will use default loader
      * @returns this
      */
-    loadPreset(preset) {
-        const config = loadPreset(preset).then((config) => {
+    loadPreset(preset, loader) {
+        const loadPreset$1 = loader ? createPresetLoader(loader) : loadPreset;
+        const config = loadPreset$1(preset).then((config) => {
             if (!config) {
                 throw Error('Preset is not loaded or have incorrect exports');
             }
@@ -34654,11 +34771,9 @@ function getNewVersion(lastTag, conventionalReleaseType, prerelease, lastProdTag
     return 2.0.0-rc.2, not 2.1.0-rc.1
     */
     if (isMajorPrerelease(lastTag) && prerelease) {
-        // @ts-expect-error - @types/semver types are outdated
         return semver.inc(lastTag, 'prerelease', {}, identifier, '1');
     }
     const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag);
-    // @ts-expect-error - @types/semver types are outdated
     return semver.inc(prerelease ? lastTag : (lastProdTag ?? '1.0.0'), releaseType, {}, identifier, '1');
 }
 function getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag) {
@@ -34776,7 +34891,7 @@ function getReferencePartsRegex(issuePrefixes, issuePrefixesCaseSensitive) {
         return nomatchRegex;
     }
     const flags = issuePrefixesCaseSensitive ? 'g' : 'gi';
-    return new RegExp(`(?:.*?)??\\s*([\\w-\\.\\/]*?)??(${join(issuePrefixes, '|')})([\\w-]*\\d+)`, flags);
+    return new RegExp(`(?:.*?)??\\s*([\\w-\\.\\/]*?)??(${join(issuePrefixes, '|')})([\\w-]+)(?=\\s|$|[,;)\\]])`, flags);
 }
 function getReferencesRegex(referenceActions) {
     if (!referenceActions) {
@@ -34804,7 +34919,7 @@ function getParserRegexes(options = {}) {
     };
 }
 
-const SCISSOR = '# ------------------------ >8 ------------------------';
+const SCISSOR = '------------------------ >8 ------------------------';
 /**
  * Remove leading and trailing newlines.
  * @param input
@@ -34845,10 +34960,11 @@ function getCommentFilter(char) {
 /**
  * Select lines before the scissor.
  * @param lines
+ * @param commentChar
  * @returns Lines before the scissor.
  */
-function truncateToScissor(lines) {
-    const scissorIndex = lines.indexOf(SCISSOR);
+function truncateToScissor(lines, commentChar) {
+    const scissorIndex = lines.indexOf(`${commentChar} ${SCISSOR}`);
     if (scissorIndex === -1) {
         return lines;
     }
@@ -34861,6 +34977,21 @@ function truncateToScissor(lines) {
  */
 function gpgFilter(line) {
     return !line.match(/^\s*gpg:/);
+}
+/**
+ * Assign matched correspondence to the target object.
+ * @param target - The target object to assign values to.
+ * @param matches - The RegExp match array containing the matched groups.
+ * @param correspondence - An array of keys that correspond to the matched groups.
+ * @returns The target object with assigned values.
+ */
+function assignMatchedCorrespondence(target, matches, correspondence) {
+    const { groups } = matches;
+    for (let i = 0, len = correspondence.length, key; i < len; i++) {
+        key = correspondence[i];
+        target[key] = (groups ? groups[key] : matches[i + 1]) || null;
+    }
+    return target;
 }
 
 const defaultOptions = {
@@ -35003,9 +35134,7 @@ class CommitParser {
         if (matches) {
             this.nextLine();
             commit.merge = matches[0] || null;
-            correspondence.forEach((key, index) => {
-                commit[key] = matches[index + 1] || null;
-            });
+            assignMatchedCorrespondence(commit, matches, correspondence);
             return true;
         }
         return false;
@@ -35030,9 +35159,7 @@ class CommitParser {
             commit.header = header;
         }
         if (matches) {
-            correspondence.forEach((key, index) => {
-                commit[key] = matches[index + 1] || null;
-            });
+            assignMatchedCorrespondence(commit, matches, correspondence);
         }
     }
     parseMeta() {
@@ -35148,10 +35275,7 @@ class CommitParser {
             ? input.match(options.revertPattern)
             : null;
         if (matches) {
-            commit.revert = correspondence.reduce((meta, key, index) => {
-                meta[key] = matches[index + 1] || null;
-                return meta;
-            }, {});
+            commit.revert = assignMatchedCorrespondence({}, matches, correspondence);
         }
     }
     cleanupCommit() {
@@ -35175,9 +35299,12 @@ class CommitParser {
         if (!input.trim()) {
             throw new TypeError('Expected a raw commit');
         }
-        const commentFilter = getCommentFilter(this.options.commentChar);
+        const { commentChar } = this.options;
+        const commentFilter = getCommentFilter(commentChar);
         const rawLines = trimNewLines(input).split(/\r?\n/);
-        const lines = truncateToScissor(rawLines).filter(line => commentFilter(line) && gpgFilter(line));
+        const lines = commentChar
+            ? truncateToScissor(rawLines, commentChar).filter(line => commentFilter(line) && gpgFilter(line))
+            : rawLines.filter(line => gpgFilter(line));
         const commit = createCommitObject();
         this.lines = lines;
         this.lineIndex = 0;

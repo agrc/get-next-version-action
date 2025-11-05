@@ -28,6 +28,6 @@
     "test": ""
   },
   "dependencies": {
-    "conventional-changelog-angular": "^8.0.0"
+    "conventional-changelog-angular": "^8.1.0"
   }
 }
