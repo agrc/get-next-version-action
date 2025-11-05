@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.13](https://github.com/agrc/get-next-version-action/compare/v1.4.12...v1.4.13) (2025-11-05)
+
+
+### Dependencies
+
+* bump npm dependencies 🌲 ([1126946](https://github.com/agrc/get-next-version-action/commit/11269466eca0d36474d7ff577f92a78453e5a022))
+* node 20 -&gt; 24 ([ee840be](https://github.com/agrc/get-next-version-action/commit/ee840be1882cd8417acc6212b11721ad936172df))
+
 ## [1.4.12](https://github.com/agrc/get-next-version-action/compare/v1.4.11...v1.4.12) (2025-08-04)
 
 
