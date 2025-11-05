@@ -29,26 +29,26 @@
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.1",
-    "conventional-changelog-angular": "^8.0.0",
-    "conventional-recommended-bump": "^11.1.0",
-    "semver": "^7.7.2"
+    "conventional-changelog-angular": "^8.1.0",
+    "conventional-recommended-bump": "^11.2.0",
+    "semver": "^7.7.3"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.3",
-    "@rollup/plugin-node-resolve": "^16.0.1",
-    "@rollup/plugin-typescript": "^12.1.2",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-typescript": "^12.3.0",
     "@total-typescript/tsconfig": "^1.0.4",
     "@types/node": "^24.10.0",
-    "@types/semver": "^7.7.0",
+    "@types/semver": "^7.7.1",
     "@ugrc/eslint-config": "^1.2.3",
     "@vitest/coverage-v8": "^3.1.4",
-    "cpy-cli": "^5.0.0",
+    "cpy-cli": "^6.0.0",
     "eslint": "^9.27.0",
-    "prettier": "^3.5.3",
-    "prettier-plugin-organize-imports": "^4.1.0",
-    "prettier-plugin-packagejson": "^2.5.14",
-    "rollup": "^4.46.2",
-    "typescript": "^5.8.3",
+    "prettier": "^3.6.2",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "prettier-plugin-packagejson": "^2.5.19",
+    "rollup": "^4.52.5",
+    "typescript": "^5.9.3",
     "vitest": "^3.1.4"
   }
 }

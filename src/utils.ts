@@ -36,13 +36,11 @@ export function getNewVersion(
   return 2.0.0-rc.2, not 2.1.0-rc.1
   */
   if (isMajorPrerelease(lastTag) && prerelease) {
-    // @ts-expect-error - @types/semver types are outdated
     return semver.inc(lastTag, 'prerelease', {}, identifier, '1');
   }
 
   const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag);
 
-  // @ts-expect-error - @types/semver types are outdated
   return semver.inc(prerelease ? lastTag : (lastProdTag ?? '1.0.0'), releaseType, {}, identifier, '1');
 }
 
