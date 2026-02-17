@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.14](https://github.com/agrc/get-next-version-action/compare/v1.4.13...v1.4.14) (2026-02-17)
+
+
+### Dependencies
+
+* bump npm dependencies 🌲 ([35886b4](https://github.com/agrc/get-next-version-action/commit/35886b4ca844c1516b9edebc402df32131a231da))
+* **dev:** bump eslint in the safe-dependencies group across 1 directory ([27ae28e](https://github.com/agrc/get-next-version-action/commit/27ae28e967d519e1fc13f95c92511771e02dea70))
+
 ## [1.4.13](https://github.com/agrc/get-next-version-action/compare/v1.4.12...v1.4.13) (2025-11-05)
 
 
