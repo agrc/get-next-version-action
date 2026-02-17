@@ -14,9 +14,21 @@ function isMajorPrerelease(version: string): boolean {
 
 const identifier = 'rc';
 
+function normalizeReleaseType(conventionalReleaseType: string | null | undefined): 'major' | 'minor' | 'patch' | null {
+  if (
+    conventionalReleaseType === 'major' ||
+    conventionalReleaseType === 'minor' ||
+    conventionalReleaseType === 'patch'
+  ) {
+    return conventionalReleaseType;
+  }
+
+  return null;
+}
+
 export function getNewVersion(
   lastTag: string | null,
-  conventionalReleaseType: string,
+  conventionalReleaseType: string | null | undefined,
   prerelease: boolean,
   lastProdTag: string | null,
 ): string | null {
@@ -40,31 +52,37 @@ export function getNewVersion(
   }
 
   const releaseType = getReleaseType(lastTag, conventionalReleaseType, prerelease, lastProdTag);
+  const baseVersion = prerelease ? lastTag : lastProdTag;
 
-  return semver.inc(prerelease ? lastTag : (lastProdTag ?? '1.0.0'), releaseType, {}, identifier, '1');
+  return semver.inc(baseVersion!, releaseType, {}, identifier, '1');
 }
 
 function getReleaseType(
   lastTag: string,
-  conventionalReleaseType: string,
+  conventionalReleaseType: string | null | undefined,
   prerelease: boolean,
   lastProdTag: string | null,
 ): semver.ReleaseType {
+  const releaseType = normalizeReleaseType(conventionalReleaseType);
+
   if (prerelease) {
-    if (!lastProdTag) {
+    if (!lastProdTag || !releaseType) {
       return 'prerelease';
     }
-    const prodBump = semver.inc(lastProdTag ?? '', conventionalReleaseType as semver.ReleaseType);
-    if (
-      semver.gte(lastTag.split('-')[0] ?? lastTag, prodBump || '') ||
-      (isPrerelease(lastTag) && conventionalReleaseType === 'patch')
-    ) {
+
+    const prodBump = semver.inc(lastProdTag, releaseType);
+
+    if (!prodBump) {
+      return 'prerelease';
+    }
+
+    if (semver.gte(lastTag.split('-')[0] || lastTag, prodBump) || (isPrerelease(lastTag) && releaseType === 'patch')) {
       return 'prerelease';
     } else {
-      return `pre${conventionalReleaseType as 'major' | 'minor' | 'patch'}`;
+      return `pre${releaseType}`;
     }
   } else {
-    return conventionalReleaseType as semver.ReleaseType;
+    return releaseType ?? 'patch';
   }
 }
 
@@ -81,5 +99,5 @@ export function getLatestRelease(
 
   releases.sort((x, y) => (semver.gt(x, y) ? -1 : 1));
 
-  return releases[0] ?? null;
+  return releases[0]!;
 }
