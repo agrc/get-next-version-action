@@ -46,6 +46,14 @@ describe('getNewVersion', () => {
   test.each(cases)('%s, %s, %j, %s => %s', (lastTag, bumpType, prerelease, lastProdTag, expectation) => {
     expect(getNewVersion(lastTag, bumpType, prerelease, lastProdTag)).toBe(expectation);
   });
+
+  test('defaults to prerelease bump when release type is invalid in prerelease mode', () => {
+    expect(getNewVersion('1.2.0-rc.2', 'invalid', true, '1.1.4')).toBe('1.2.0-rc.3');
+  });
+
+  test('defaults to patch bump when release type is missing for production release', () => {
+    expect(getNewVersion('1.2.3', undefined, false, '1.2.3')).toBe('1.2.4');
+  });
 });
 
 describe('getLatestRelease', () => {

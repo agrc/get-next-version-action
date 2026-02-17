@@ -25,7 +25,7 @@
 ## Tests and validation workflow
 - Main tests are table-driven Vitest cases in `src/utils.test.ts`; extend the `cases` arrays for new versioning rules.
 - Run targeted checks before proposing changes:
-  - `pnpm test` (coverage enabled by default)
+  - `pnpm test -- --run` (coverage enabled by default; `--run` prevents Vitest watch mode from hanging in interactive terminals)
   - `pnpm check` (TypeScript build check)
   - `pnpm lint`
 
