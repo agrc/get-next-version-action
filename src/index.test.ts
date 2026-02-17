@@ -10,6 +10,11 @@ const graphql = vi.fn();
 const bump = vi.fn();
 const loadPreset = vi.fn();
 
+class MockBumper {
+  loadPreset = loadPreset;
+  bump = bump;
+}
+
 vi.mock('@actions/core', () => ({
   debug,
   getBooleanInput,
@@ -34,10 +39,9 @@ vi.mock('@actions/github', () => ({
 }));
 
 vi.mock('conventional-recommended-bump', () => ({
-  Bumper: vi.fn(() => ({
-    bump,
-    loadPreset,
-  })),
+  Bumper: vi.fn(function MockBumperConstructor() {
+    return new MockBumper();
+  }),
 }));
 
 describe('index', () => {
@@ -48,7 +52,9 @@ describe('index', () => {
     getInput.mockReturnValue('fake-token');
     getBooleanInput.mockReturnValue(false);
 
-    loadPreset.mockReturnThis();
+    loadPreset.mockImplementation(function (this: MockBumper) {
+      return this;
+    });
     bump.mockResolvedValue({ releaseType: 'minor' });
 
     graphql.mockResolvedValue({
@@ -77,11 +83,12 @@ describe('index', () => {
       expect(setOutput).toHaveBeenCalledWith('version', '1.1.0');
     });
 
+    expect(setFailed).not.toHaveBeenCalled();
+    expect(setOutput).toHaveBeenCalledWith('version', '1.1.0');
     expect(setOutput).toHaveBeenCalledWith('current-version-number', '1.0.0');
     expect(setOutput).toHaveBeenCalledWith('major', 1);
     expect(setOutput).toHaveBeenCalledWith('minor', 1);
     expect(setOutput).toHaveBeenCalledWith('patch', 0);
-    expect(setFailed).not.toHaveBeenCalled();
   });
 
   test('marks the action as failed when a dependency throws', async () => {
