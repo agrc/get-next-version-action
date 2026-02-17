@@ -1,5 +1,5 @@
-import core from '@actions/core';
-import github from '@actions/github';
+import * as core from '@actions/core';
+import * as github from '@actions/github';
 import { Bumper, type BumperRecommendation } from 'conventional-recommended-bump';
 import semver from 'semver';
 import { getLatestRelease, getNewVersion, type GraphQLResponse } from './utils.js';
