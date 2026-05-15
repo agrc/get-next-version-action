@@ -11,7 +11,16 @@ const config = {
     inlineDynamicImports: true,
     sourcemap: true,
   },
-  plugins: [typescript(), resolve({ preferBuiltins: true }), commonjs()],
+  plugins: [
+    typescript({
+      tsconfig: './tsconfig.json',
+      compilerOptions: {
+        moduleResolution: 'bundler',
+      },
+    }),
+    resolve({ preferBuiltins: true }),
+    commonjs(),
+  ],
 };
 
 export default config;

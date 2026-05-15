@@ -1,7 +1,6 @@
-allowBuilds:
-  esbuild: false
-
 minimumReleaseAge: 10080
 minimumReleaseAgeStrict: true
 minimumReleaseAgeExclude:
   - '@ugrc/*'
+allowBuilds:
+  esbuild: true
