@@ -77,7 +77,7 @@ describe('index', () => {
   });
 
   test('sets outputs from latest release and recommended bump', async () => {
-    await import('./index');
+    await import('./index.js');
 
     await vi.waitFor(() => {
       expect(setOutput).toHaveBeenCalledWith('version', '1.1.0');
@@ -94,7 +94,7 @@ describe('index', () => {
   test('marks the action as failed when a dependency throws', async () => {
     graphql.mockRejectedValue(new Error('graphql failed'));
 
-    await import('./index');
+    await import('./index.js');
 
     await vi.waitFor(() => {
       expect(setFailed).toHaveBeenCalledWith('graphql failed');
