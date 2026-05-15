@@ -71,6 +71,8 @@ jobs:
     name: Functional Tests
     runs-on: ubuntu-latest
     needs: build
+    # allow for functional tests to run if build fails but act is true, so that we can test the workflow end-to-end in act without needing to have a successful build
+    if: ${{ always() && (contains(toJSON(github.event), '"act":true') || needs.build.result == 'success') }}
     steps:
       - name: ⬇️ Set up code
         uses: actions/checkout@v6

@@ -21,7 +21,7 @@ This action is built and distributed via the included GitHub action workflows.
 
 ## Development
 
-The [act project](https://github.com/nektos/act) can be helpful for testing locally with a command something like this: `act -j test-functional -s GITHUB_TOKEN="$(gh auth token)"`.
+The [act project](https://github.com/nektos/act) can be helpful for testing locally with a command something like this: `act pull_request -j test-functional -s GITHUB_TOKEN="$(gh auth token)" --container-architecture "linux/amd64"`.
 
 ## Attribution
 
