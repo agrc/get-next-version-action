@@ -9,4 +9,4 @@ echo "installing conventional-changelog-angular@$VERSION in dist"
 
 cd dist
 pnpm init --init-type module
-pnpm i conventional-changelog-angular@$VERSION
+pnpm i conventional-changelog-angular@$VERSION --config.node-linker=hoisted --config.prefer-symlinked-executables=false --config.package-import-method=copy
