@@ -8,5 +8,6 @@ VERSION=$(node -e 'console.log(require("./package.json").dependencies["conventio
 echo "installing conventional-changelog-angular@$VERSION in dist"
 
 cd dist
-pnpm init --init-type module
-pnpm i conventional-changelog-angular@$VERSION --config.node-linker=hoisted --config.prefer-symlinked-executables=false --config.package-import-method=copy
+# this needs to be npm so that the node_modules folder is created and committed to git properly with no symlinks
+npm init es6 -y
+npm i conventional-changelog-angular@$VERSION
