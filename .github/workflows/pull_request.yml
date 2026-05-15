@@ -17,9 +17,9 @@ jobs:
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
-          version: latest
+          version: 11
 
       - name: ⎔ Setup Node.js
         uses: actions/setup-node@v6
@@ -28,7 +28,7 @@ jobs:
           cache: pnpm
 
       - name: 📥 Download dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: 🧵 Lint
         run: pnpm run lint
@@ -46,9 +46,9 @@ jobs:
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
-          version: latest
+          version: 11
 
       - name: ⎔ Setup Node.js
         uses: actions/setup-node@v6
@@ -57,7 +57,7 @@ jobs:
           cache: pnpm
 
       - name: 📥 Download dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: 🧪 Run tests
         run: pnpm test
@@ -79,9 +79,9 @@ jobs:
           fetch-depth: 0
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
-          version: latest
+          version: 11
 
       - name: ⎔ Setup Node.js
         uses: actions/setup-node@v6
@@ -90,7 +90,7 @@ jobs:
           cache: pnpm
 
       - name: 📥 Download dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: 🗑️ Remove node_modules
         run: rm -rf node_modules
@@ -122,10 +122,10 @@ jobs:
       contents: write
     steps:
       - name: 🪙 Convert token
-        uses: actions/create-github-app-token@v2
+        uses: actions/create-github-app-token@v3
         id: generate_token
         with:
-          app-id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
+          client-id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
           private-key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
 
       - name: ⬇️ Set up code
@@ -136,9 +136,9 @@ jobs:
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
-          version: latest
+          version: 11
 
       - name: ⎔ Setup Node.js
         uses: actions/setup-node@v6
@@ -147,7 +147,7 @@ jobs:
           cache: pnpm
 
       - name: 📥 Download dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: 🏗️ Build release assets
         run: pnpm run build
