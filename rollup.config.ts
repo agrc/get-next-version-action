@@ -14,9 +14,6 @@ const config = {
   plugins: [
     typescript({
       tsconfig: './tsconfig.json',
-      compilerOptions: {
-        moduleResolution: 'bundler',
-      },
     }),
     resolve({ preferBuiltins: true }),
     commonjs(),
