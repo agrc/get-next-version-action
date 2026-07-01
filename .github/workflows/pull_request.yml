@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Set up code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v6.0.5
+        uses: pnpm/action-setup@v6.0.9
         with:
           version: 11
 
@@ -41,12 +41,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Set up code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v6.0.5
+        uses: pnpm/action-setup@v6.0.9
         with:
           version: 11
 
@@ -63,7 +63,7 @@ jobs:
         run: pnpm test
 
       - name: 📤 Report coverage to Codecov
-        uses: codecov/codecov-action@v6
+        uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
@@ -75,13 +75,13 @@ jobs:
     if: ${{ always() && (contains(toJSON(github.event), '"act":true') || needs.build.result == 'success') }}
     steps:
       - name: ⬇️ Set up code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           show-progress: false
           fetch-depth: 0
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v6.0.5
+        uses: pnpm/action-setup@v6.0.9
         with:
           version: 11
 
@@ -124,21 +124,21 @@ jobs:
       contents: write
     steps:
       - name: 🪙 Convert token
-        uses: actions/create-github-app-token@v3.1.1
+        uses: actions/create-github-app-token@v3.2.0
         id: generate_token
         with:
           client-id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
           private-key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
 
       - name: ⬇️ Set up code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: ${{ github.head_ref }}
           token: ${{ steps.generate_token.outputs.token }}
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v6.0.5
+        uses: pnpm/action-setup@v6.0.9
         with:
           version: 11
 
