@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.4.16](https://github.com/agrc/get-next-version-action/compare/v1.4.15...v1.4.16) (2026-08-11)
+
+
+### Dependencies
+
+* bump NPM dependencies 🌲 ([547202a](https://github.com/agrc/get-next-version-action/commit/547202ad1e977957bc01fa996a5d567ed0234cb8))
+* bump ws from 8.20.0 to 8.21.2 ([ddc9bbf](https://github.com/agrc/get-next-version-action/commit/ddc9bbfd986cd4bd4181a9e70258a0de223e5d85))
+* TypeScript v5 -&gt; v6 ([d8ecbce](https://github.com/agrc/get-next-version-action/commit/d8ecbce680072f4c603725902a8580e82b10b790))
+
 ## [1.4.15](https://github.com/agrc/get-next-version-action/compare/v1.4.14...v1.4.15) (2026-05-15)
 
 
