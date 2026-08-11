@@ -6,9 +6,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
   cancel-in-progress: true
 
-env:
-  PNPM_CONFIG_MINIMUM_RELEASE_AGE: ${{ github.actor == 'dependabot[bot]' && '0' || '' }}
-
 jobs:
   lint:
     name: Lint
