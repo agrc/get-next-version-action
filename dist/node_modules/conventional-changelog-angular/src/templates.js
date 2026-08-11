@@ -1,118 +1,131 @@
-export const mainTemplate = `{{> header}}
+import {
+  bold,
+  compareUrl,
+  each,
+  link,
+  list,
+  reference,
+  referenceRepositoryUrl,
+  repositoryUrl,
+  heading,
+  url,
+  newline,
+  segments,
+  strings,
+  words
+} from '@conventional-changelog/template'
 
-{{#each commitGroups}}
+export function headerPartial(context) {
+  const {
+    isPatch,
+    linkCompare,
+    version,
+    title,
+    date
+  } = context
+  const versionText = linkCompare
+    ? link(version, compareUrl(context))
+    : version
 
-{{#if title}}
-### {{title}}
+  return heading(
+    Boolean(isPatch) + 1,
+    words(
+      versionText,
+      title && `"${title}"`,
+      date && `(${date})`
+    )
+  )
+}
 
-{{/if}}
-{{#each commits}}
-{{> commit root=@root}}
-{{/each}}
+export function preamblePartial(context) {
+  return strings(context.preamble)
+}
 
-{{/each}}
-{{> footer}}
-`
+export function commitPartial(context, commit) {
+  const {
+    linkReferences,
+    issue,
+    commit: commitUrlPath
+  } = context
+  const {
+    scope,
+    subject,
+    header,
+    shortHash,
+    hash,
+    references
+  } = commit
+  const commitLink =
+    hash
+      ? linkReferences
+        ? `(${link(shortHash, url(repositoryUrl(context), commitUrlPath, hash))})`
+        : shortHash
+      : ''
+  const renderedReferences = each(
+    references,
+    (linkReference) => {
+      if (linkReferences) {
+        return link(
+          reference(linkReference),
+          url(referenceRepositoryUrl(context, linkReference), issue, linkReference.issue)
+        )
+      }
 
-export const headerPartial = `{{#if isPatch~}}
-  ##
-{{~else~}}
-  #
-{{~/if}} {{#if @root.linkCompare~}}
-  [{{version}}](
-  {{~#if @root.repository~}}
-    {{~#if @root.host}}
-      {{~@root.host}}/
-    {{~/if}}
-    {{~#if @root.owner}}
-      {{~@root.owner}}/
-    {{~/if}}
-    {{~@root.repository}}
-  {{~else}}
-    {{~@root.repoUrl}}
-  {{~/if~}}
-  /compare/{{previousTag}}...{{currentTag}})
-{{~else}}
-  {{~version}}
-{{~/if}}
-{{~#if title}} "{{title}}"
-{{~/if}}
-{{~#if date}} ({{date}})
-{{/if}}
-`
+      return reference(linkReference)
+    },
+    ' '
+  )
 
-export const commitPartial = `*{{#if scope}} **{{scope}}:**
-{{~/if}} {{#if subject}}
-  {{~subject}}
-{{~else}}
-  {{~header}}
-{{~/if}}
+  return strings(
+    words(
+      scope && bold(`${scope}:`),
+      subject || header || '',
+      commitLink
+    ),
+    renderedReferences && `, closes ${renderedReferences}`
+  )
+}
 
-{{~!-- commit link --}} {{#if @root.linkReferences~}}
-  ([{{shortHash}}](
-  {{~#if @root.repository}}
-    {{~#if @root.host}}
-      {{~@root.host}}/
-    {{~/if}}
-    {{~#if @root.owner}}
-      {{~@root.owner}}/
-    {{~/if}}
-    {{~@root.repository}}
-  {{~else}}
-    {{~@root.repoUrl}}
-  {{~/if}}/
-  {{~@root.commit}}/{{hash}}))
-{{~else}}
-  {{~shortHash}}
-{{~/if}}
+export function footerPartial({ noteGroups }) {
+  return each(
+    noteGroups,
+    group => segments(
+      heading(3, group.title),
+      list(
+        group.notes,
+        note => words(
+          note.commit.scope && bold(`${note.commit.scope}:`),
+          note.text
+        )
+      )
+    ),
+    newline(2)
+  )
+}
 
-{{~!-- commit references --}}
-{{~#if references~}}
-  , closes
-  {{~#each references}} {{#if @root.linkReferences~}}
-    [
-    {{~#if this.owner}}
-      {{~this.owner}}/
-    {{~/if}}
-    {{~this.repository}}#{{this.issue}}](
-    {{~#if @root.repository}}
-      {{~#if @root.host}}
-        {{~@root.host}}/
-      {{~/if}}
-      {{~#if this.repository}}
-        {{~#if this.owner}}
-          {{~this.owner}}/
-        {{~/if}}
-        {{~this.repository}}
-      {{~else}}
-        {{~#if @root.owner}}
-          {{~@root.owner}}/
-        {{~/if}}
-          {{~@root.repository}}
-        {{~/if}}
-    {{~else}}
-      {{~@root.repoUrl}}
-    {{~/if}}/
-    {{~@root.issue}}/{{this.issue}})
-  {{~else}}
-    {{~#if this.owner}}
-      {{~this.owner}}/
-    {{~/if}}
-    {{~this.repository}}#{{this.issue}}
-  {{~/if}}{{/each}}
-{{~/if}}
+export function template(context) {
+  const {
+    headerPartial,
+    preamblePartial,
+    commitPartial,
+    footerPartial,
+    commitGroups
+  } = context
 
-`
-
-export const footerPartial = `{{#if noteGroups}}
-{{#each noteGroups}}
-
-### {{title}}
-
-{{#each notes}}
-* {{#if commit.scope}}**{{commit.scope}}:** {{/if}}{{text}}
-{{/each}}
-{{/each}}
-
-{{/if}}
-`
+  return segments(
+    headerPartial(context),
+    preamblePartial(context),
+    each(
+      commitGroups,
+      group => segments(
+        group.title && heading(3, group.title),
+        list(
+          group.commits,
+          commit => commitPartial(context, commit)
+        )
+      ),
+      newline(2)
+    ),
+    footerPartial(context)
+  )
+}
