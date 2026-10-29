@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.17](https://github.com/agrc/get-next-version-action/compare/v1.4.16...v1.4.17) (2026-10-29)
+
+
+### Dependencies
+
+* bump js-yaml from 4.3.1 to 4.3.2 ([c947130](https://github.com/agrc/get-next-version-action/commit/c9471301b16d945d8da5e4e5be6235a317151524))
+* bump safe dependencies ([f0ce120](https://github.com/agrc/get-next-version-action/commit/f0ce120ef005c958ed0943b3c88384a14203e8e6))
+* bump source-map-js from 1.2.1 to 1.2.2 ([6a1eef5](https://github.com/agrc/get-next-version-action/commit/6a1eef5465b585ab365c15ad68bd8443bed7776f))
+* bump undici from 6.28.0 to 6.29.1 ([dffaf8c](https://github.com/agrc/get-next-version-action/commit/dffaf8c7fff2e5279f3cee101d679cadafc5cc69))
+* bump vite from 8.2.0 to 8.3.5 ([#260](https://github.com/agrc/get-next-version-action/issues/260)) ([21fd42e](https://github.com/agrc/get-next-version-action/commit/21fd42efdb71c38899f463825f42e94484551999))
+* **dev:** bump the major-dependencies group across 1 directory with 3 updates ([#252](https://github.com/agrc/get-next-version-action/issues/252)) ([46f86f2](https://github.com/agrc/get-next-version-action/commit/46f86f29d64e1bd31b2043598533a6471634e35a))
+
 ## [1.4.16](https://github.com/agrc/get-next-version-action/compare/v1.4.15...v1.4.16) (2026-08-11)
 
 
